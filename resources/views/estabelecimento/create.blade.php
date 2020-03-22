@@ -22,7 +22,7 @@
                     <select class="browser-default custom-select" id="modalidade_id" required name="modalidade_id">
                         <option value="" disable="" selected="" hidden="">-- Selecionar a Categoria --</option>
                         @foreach($modalidades as $modalidade)
-                            <option value="{{ $modalidade->id }}">{{ $modalidade->nome }}</option>
+                            <option value="{{ $modalidade->id }}" @if($modalidade->id == old('modalidade_id')) selected @endif>{{ $modalidade->nome }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -51,19 +51,21 @@
                     @enderror
                 </div>
                 <div class="col-md-3">
-                    <label class="col-form-label" for="imagemCapa">Imagem de Capa</label>
-                    <input type="file" class="form-control-file" id="imagemCapa" name="imagemCapa" placeholder="Selecione um arquivo">
-                    @error('imagemCapa')
-                        <span class="invalid-feedback" role="alert">
+                    <label class="col-form-label" for="imagemCapa">Imagem de Capa (jpg ou png)</label>
+                    <input type="file" class="form-control-file" id="imagemCapa" name="imagemCapa" placeholder="Selecione um arquivo" />
+
+                    @error('imagemcapa')
+                    <span class="invalid-feedback" role="alert" style="display: block;">
                         <strong>{{ $message }}</strong>
                         </span>
                     @enderror
+
                 </div>
                 <div class="col-md-3">
-                    <label class="col-form-label" for="imagemInterna">Imagem Interna</label>
-                    <input type="file" class="form-control-file" id="imagemInterna" name="imagemInterna" placeholder="Selecione um arquivo">
-                    @error('imagemInterna')
-                    <span class="invalid-feedback" role="alert">
+                    <label class="col-form-label" for="imagemInterna">Imagem Interna  (jpg ou png)</label>
+                    <input type="file" class="form-control-file" id="imagemInterna" name="imagemInterna" placeholder="Selecione um arquivo" />
+                    @error('imageminterna')
+                    <span class="invalid-feedback" role="alert" style="display: block;">
                         <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -93,15 +95,15 @@
                         <label class="form-check-label" for="pagamentoDinheiro">Dinheiro</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input type="checkbox" class="form-check-input" id="pagamentoTransferencia" name="pagamentoTransferencia">
+                        <input @if(old('pagamentoTransferencia')) checked @endif type="checkbox" class="form-check-input" id="pagamentoTransferencia" name="pagamentoTransferencia">
                         <label class="form-check-label" for="pagamentoTransferencia">Transferência</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input type="checkbox" class="form-check-input" id="pagamentoCredito" name="pagamentoCredito">
+                        <input @if(old('pagamentoCredito'))  checked @endif type="checkbox" class="form-check-input" id="pagamentoCredito" name="pagamentoCredito">
                         <label class="form-check-label" for="pagamentoCredito">Cartão de Crédito</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input type="checkbox" class="form-check-input" id="pagamentoDebito" name="pagamentoDebito">
+                        <input @if(old('pagamentoDebito')) checked @endif type="checkbox" class="form-check-input" id="pagamentoDebito" name="pagamentoDebito">
                         <label class="form-check-label" for="pagamentoDebito">Cartão de Débito</label>
                     </div>
                 </div>
@@ -136,21 +138,48 @@
             <div class="row" style="margin-top:20px">
                 <div class="col-md-12">
                     <div id="telefones">
-                        <div class='row align-items-end' >
-                            <div class='col-md-4'>
-                                <label class='col-form-label'>Telefone *</label>
-                                <input type='text' class='form-control' name='telefone[]' required autofocus>
-                            </div>
-                            <div class='col-md-4'>
-                                <label class='col-form-label'>Operadora *</label>
-                                <input type='text' class='form-control' name='operadora[]' required autofocus>
-                            </div>
-                            <div class='col-md-3' >
-                                <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
-                                <label class='form-check-label'>Whatsapp</label>
-                            </div>
-                        </div>
+                        <?php
+                            $qtdTelefone = (null===old('telefone'))?0:count(old('telefone'));
+                        ?>
 
+                        @if($qtdTelefone >0)
+                            @for($i=0;$i<$qtdTelefone;$i++)
+                                <div class='row align-items-end' >
+                                    <div class='col-md-4'>
+                                        <label class='col-form-label'>Telefone *</label>
+                                        <input type='text' class='form-control' name='telefone[]' value="{{ old('telefone')[$i] }}" required autofocus>
+                                    </div>
+                                    <div class='col-md-4'>
+                                        <label class='col-form-label'>Operadora *</label>
+                                        <input type='text' class='form-control' name='operadora[]' value="{{ old('operadora')[$i] }}" required autofocus>
+                                    </div>
+                                    <div class='col-md-3' >
+                                        <input type='hidden' name='zap[]' value='{{ old('zap')[$i]}}'><input type='checkbox' @if(old('zap')[$i]) checked @endif class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
+                                        <label class='form-check-label'>Whatsapp</label>
+                                    </div>
+                                    @if($i>0)
+                                    <div class='col-md-1'>
+                                        <input type='button' class='btn btn-danger' value='X' onclick='deletar(this)' />
+                                    </div>
+                                    @endif
+                                </div>
+                            @endfor
+                        @else
+                            <div class='row align-items-end' >
+                                <div class='col-md-4'>
+                                    <label class='col-form-label'>Telefone *</label>
+                                    <input type='text' class='form-control' name='telefone[]' required autofocus>
+                                </div>
+                                <div class='col-md-4'>
+                                    <label class='col-form-label'>Operadora *</label>
+                                    <input type='text' class='form-control' name='operadora[]' required autofocus>
+                                </div>
+                                <div class='col-md-3' >
+                                    <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
+                                    <label class='form-check-label'>Whatsapp</label>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     <input type="button" onclick="adicionarTelefone()" class="btn btn-primary" id="addCoautor" style="width:100%;margin-top:10px" value="Telefone +"></input>
                 </div>
@@ -206,7 +235,7 @@
                 </div>
                 <div class="col-md-8">
                     <label for="rua" class="col-form-label">{{ __('Rua') }}</label>
-                    <input readonly value="{{old('rua')}}" id="rua" type="text" class="form-control @error('rua') is-invalid @enderror" name="rua" required >
+                    <input value="{{old('rua')}}" id="rua" type="text" class="form-control @error('rua') is-invalid @enderror" name="rua" required >
                     @error('rua')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -226,7 +255,7 @@
             <div class="form-group row">
                 <div class="col-md-4">
                     <label for="bairro" class="col-form-label">Bairro</label>
-                    <input readonly value="{{old('bairro')}}" id="bairro" type="text" class="form-control @error('bairro') is-invalid @enderror" name="bairro" >
+                    <input value="{{old('bairro')}}" id="bairro" type="text" class="form-control @error('bairro') is-invalid @enderror" name="bairro" >
                 </div>
                 <div class="col-md-4">
                     <label for="bairro" class="col-form-label">Cidade</label>

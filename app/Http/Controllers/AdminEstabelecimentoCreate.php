@@ -29,7 +29,7 @@ class AdminEstabelecimentoCreate extends Controller
         if($request->hasFile('imagemCapa') && $request->file('imagemCapa')->isValid()) {
             $ext = strtolower(request()->imagemCapa->getClientOriginalExtension());
             if(!in_array($ext, array("jpg", "png")))
-                $validator->errors()->add("imagemCapa", "Formato de imagem inválido, utilize imagem jpg ou png");
+                $validator->errors()->add("imagemcapa", "Formato de imagem inválido, utilize imagem jpg ou png");
             else {
                 $imagemCapa = time() . '.' . $ext;
 
@@ -43,7 +43,7 @@ class AdminEstabelecimentoCreate extends Controller
         if($request->hasFile('imagemInterna') && $request->file('imagemInterna')->isValid()) {
             $ext = strtolower(request()->imagemInterna->getClientOriginalExtension());
             if(!in_array($ext, array("jpg", "png")))
-                $validator->errors()->add("imagemInterna", "Formato de imagem inválido, utilize imagem jpg ou png");
+                $validator->errors()->add("imageminterna", "Formato de imagem inválido, utilize imagem jpg ou png");
             else {
                 $imagemInterna = time() . '.' . $ext;
                 $upload = $request->imagemInterna->storeAs('imagens', $imagemInterna);
