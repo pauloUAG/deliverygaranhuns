@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::get("/admin/estabelecimento/create", "AdminEstabelecimentoCreate@prepare")->name("estabelecimento.create");
 Route::post("/admin/estabelecimento/save", "AdminEstabelecimentoCreate@save")->name("estabelecimento.save");
 
+Route::get("/categorias/list", "CategoriaListController@all");
+
 
 Auth::routes();
 

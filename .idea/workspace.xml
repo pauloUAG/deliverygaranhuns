@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c5d1a68-f827-424f-98e1-5bca576541e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminEstabelecimentoCreate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminEstabelecimentoCreate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/pagination.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/pagination.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/passwords.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/passwords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/estabelecimento/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estabelecimento/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Modalidade.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Modalidade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/ModalidadeSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ModalidadeSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +122,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1ZRevB81kWAlVOptjT2SSn7d8xy" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -167,7 +166,7 @@
       <updated>1584806561190</updated>
       <workItem from="1584806564892" duration="6497000" />
       <workItem from="1584815563910" duration="25053000" />
-      <workItem from="1584884720641" duration="19802000" />
+      <workItem from="1584884720641" duration="22191000" />
     </task>
     <servers />
   </component>
