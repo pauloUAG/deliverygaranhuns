@@ -10,7 +10,9 @@ class Estabelecimento extends Model
         "descricao", "imagemCapa", "imagemInterna",
         "site", "pagamentoDinheiro", "pagamentoTransferencia",
         "instagram", "twitter", "facebook",
-        "pagamentoCredito", "pagamentoDebito", "user_id", "endereco_id", "modalidade_id"
+        "pagamentoCredito", "pagamentoDebito", "user_id", "endereco_id", "modalidade_id",
+        //status de aprovada ou não
+        "status"
     ];
 
     public function endereco() {
@@ -23,6 +25,10 @@ class Estabelecimento extends Model
 
     public function telefones() {
         return $this->hasMany("\App\Telefone");
+    }
+
+    public function modalidade() {
+        return $this->belongsTo("\App\Modalidade");
     }
 
 }

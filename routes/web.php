@@ -25,6 +25,10 @@ Route::get("/categorias/list", "CategoriaListController@all")->name("categoria.l
 Route::get("/categorias/show/{id}", "CategoriaShowController@show")->name("categoria.show");
 Route::post("/estabelecimentos/busca", "CategoriaShowController@search")->name("estabelecimento.busca");
 
+// Pendentes e julgar pendentes
+Route::get("/admin/estabelecimento/pending", "AdminEstabelecimentoCreate@pending")->name("estabelecimento.pending");
+Route::get("/admin/estabelecimento/pending/details", "AdminEstabelecimentoCreate@pendingDetails")->name("estabelecimento.pending.details");
+Route::post("/admin/estabelecimento/pending/judge", "AdminEstabelecimentoCreate@pendingJudge")->name("estabelecimento.pending.judge");
 
 Auth::routes();
 

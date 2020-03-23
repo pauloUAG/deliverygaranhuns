@@ -3,12 +3,11 @@
 @section('content')
 <div class="container ">
     <div class="row titulo col-md-12">
-        <h1>Cadastro</h1>
+        <h1>Detalhes</h1>
     </div>
 
     <div class="col-md-12">
-        <form method="POST" enctype="multipart/form-data" action="{{ route('estabelecimento.save') }}">
-            @csrf
+
 
             <div class="row subtitulo">
                 <div class="col-sm-12">
@@ -19,16 +18,13 @@
             <div class="form-group row">
                 <div class="col-md-6">
                     <label for="modalidade_id" class="col-form-label">Categoria *</label>
-                    <select class="browser-default custom-select" id="modalidade_id" required name="modalidade_id">
-                        <option value="" disable="" selected="" hidden="">-- Selecionar a Categoria --</option>
-                        @foreach($modalidades as $modalidade)
-                            <option value="{{ $modalidade->id }}" @if($modalidade->id == old('modalidade_id')) selected @endif>{{ $modalidade->nome }}</option>
-                        @endforeach
+                    <select disabled class="browser-default custom-select" id="modalidade_id" required name="modalidade_id">
+                        <option selected>{{$estabelecimento->modalidade->nome}}</option>
                     </select>
                 </div>
                 <div class="col-md-6">
                     <label for="name" class="col-form-label">Nome *</label>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                    <input disabled id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $estabelecimento->user->name }}">
 
                     @error('name')
                     <span class="invalid-feedback" role="alert">
@@ -42,7 +38,7 @@
 
                 <div class="col-md-6">
                     <label for="site" class="col-form-label">Site</label>
-                    <input id="site" type="url" class="form-control @error('site') is-invalid @enderror" name="site" value="{{ old('site') }}"  autocomplete="site" autofocus>
+                    <input disabled id="site" type="url" class="form-control @error('site') is-invalid @enderror" name="site" value="{{ $estabelecimento->site }}">
 
                     @error('site')
                     <span class="invalid-feedback" role="alert">
@@ -52,8 +48,11 @@
                 </div>
                 <div class="col-md-3">
                     <label class="col-form-label" for="imagemCapa">Imagem de Capa (jpg ou png)</label>
-                    <input type="file" class="form-control-file" id="imagemCapa" name="imagemCapa" placeholder="Selecione um arquivo" />
-
+                    @if(isset($estabelecimento->imagemCapa))
+                      <img src="{{$estabelecimento->imagemCapa}}" alt="...">
+                    @else
+                      Colocar uma imagem que diz sem imagem
+                    @endif
                     @error('imagemcapa')
                     <span class="invalid-feedback" role="alert" style="display: block;">
                         <strong>{{ $message }}</strong>
@@ -63,7 +62,11 @@
                 </div>
                 <div class="col-md-3">
                     <label class="col-form-label" for="imagemInterna">Imagem Interna  (jpg ou png)</label>
-                    <input type="file" class="form-control-file" id="imagemInterna" name="imagemInterna" placeholder="Selecione um arquivo" />
+                    @if(isset($estabelecimento->imagemInterna))
+                      <img src="{{$estabelecimento->imagemInterna}}" alt="...">
+                    @else
+                      Colocar uma imagem que diz sem imagem
+                    @endif
                     @error('imageminterna')
                     <span class="invalid-feedback" role="alert" style="display: block;">
                         <strong>{{ $message }}</strong>
@@ -74,7 +77,7 @@
             <div class="form-group row">
                 <div class="col-md-12">
                     <label for="descricao" class="col-form-label">Descrição *</label>
-                    <textarea id="descricao" class="form-control @error('descricao') is-invalid @enderror" name="descricao" required autocomplete="name" autofocus>{{ old('descricao') }}</textarea>
+                    <textarea disabled id="descricao" class="form-control @error('descricao') is-invalid @enderror" name="descricao" >{{ $estabelecimento->descricao }}</textarea>
 
                     @error('descricao')
                     <span class="invalid-feedback" role="alert">
@@ -91,19 +94,19 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-check form-check-inline">
-                        <input @if(old('pagamentoDinheiro')) checked @endif  type="checkbox" class="form-check-input" id="pagamentoDinheiro" name="pagamentoDinheiro">
+                        <input disabled @if($estabelecimento->pagamentoDinheiro) checked @endif  type="checkbox" class="form-check-input" id="pagamentoDinheiro" name="pagamentoDinheiro">
                         <label class="form-check-label" for="pagamentoDinheiro">Dinheiro</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input @if(old('pagamentoTransferencia')) checked @endif type="checkbox" class="form-check-input" id="pagamentoTransferencia" name="pagamentoTransferencia">
+                        <input disabled @if($estabelecimento->pagamentoTransferencia)) checked @endif type="checkbox" class="form-check-input" id="pagamentoTransferencia" name="pagamentoTransferencia">
                         <label class="form-check-label" for="pagamentoTransferencia">Transferência</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input @if(old('pagamentoCredito'))  checked @endif type="checkbox" class="form-check-input" id="pagamentoCredito" name="pagamentoCredito">
+                        <input disabled @if($estabelecimento->pagamentoCredito))  checked @endif type="checkbox" class="form-check-input" id="pagamentoCredito" name="pagamentoCredito">
                         <label class="form-check-label" for="pagamentoCredito">Cartão de Crédito</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input @if(old('pagamentoDebito')) checked @endif type="checkbox" class="form-check-input" id="pagamentoDebito" name="pagamentoDebito">
+                        <input disabled @if($estabelecimento->pagamentoDebito)) checked @endif type="checkbox" class="form-check-input" id="pagamentoDebito" name="pagamentoDebito">
                         <label class="form-check-label" for="pagamentoDebito">Cartão de Débito</label>
                     </div>
                 </div>
@@ -117,15 +120,15 @@
             <div class="row" style="margin-top:20px">
                 <div class="col-md-4">
                     <label for="facebook" class="col-form-label">Facebook</label>
-                    <input id="facebook" type="url" class="form-control" name="facebook" value="{{ old('facebook') }}" autocomplete="facebook">
+                    <input disabled id="facebook" type="url" class="form-control" name="facebook" value="{{ $estabelecimento->facebook }}">
                 </div>
                 <div class="col-md-4">
                     <label for="instagram" class="col-form-label">Instagram</label>
-                    <input id="instagram" type="text" class="form-control" name="instagram" value="{{ old('instagram') }}" autocomplete="instagram">
+                    <input disabled id="instagram" type="text" class="form-control" name="instagram" value="{{ $estabelecimento->instagram }}">
                 </div>
                 <div class="col-md-4">
                     <label for="twitter" class="col-form-label">Twitter</label>
-                    <input id="twitter" type="text" class="form-control" name="twitter" value="{{ old('twitter') }}" autocomplete="twitter">
+                    <input disabled id="twitter" type="text" class="form-control" name="twitter" value="{{ $estabelecimento->twitter }}">
                 </div>
             </div>
 
@@ -138,50 +141,24 @@
             <div class="row" style="margin-top:20px">
                 <div class="col-md-12">
                     <div id="telefones">
-                        <?php
-                            $qtdTelefone = (null===old('telefone'))?0:count(old('telefone'));
-                        ?>
 
-                        @if($qtdTelefone >0)
-                            @for($i=0;$i<$qtdTelefone;$i++)
-                                <div class='row align-items-end' >
-                                    <div class='col-md-4'>
-                                        <label class='col-form-label'>Telefone *</label>
-                                        <input type='text' class='form-control' name='telefone[]' value="{{ old('telefone')[$i] }}" required autofocus>
-                                    </div>
-                                    <div class='col-md-4'>
-                                        <label class='col-form-label'>Operadora *</label>
-                                        <input type='text' class='form-control' name='operadora[]' value="{{ old('operadora')[$i] }}" required autofocus>
-                                    </div>
-                                    <div class='col-md-3' >
-                                        <input type='hidden' name='zap[]' value='{{ old('zap')[$i]}}'><input type='checkbox' @if(old('zap')[$i]) checked @endif class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
-                                        <label class='form-check-label'>Whatsapp</label>
-                                    </div>
-                                    @if($i>0)
-                                    <div class='col-md-1'>
-                                        <input type='button' class='btn btn-danger' value='X' onclick='deletar(this)' />
-                                    </div>
-                                    @endif
-                                </div>
-                            @endfor
-                        @else
-                            <div class='row align-items-end' >
-                                <div class='col-md-4'>
-                                    <label class='col-form-label'>Telefone *</label>
-                                    <input type='text' class='form-control' name='telefone[]' required autofocus>
-                                </div>
-                                <div class='col-md-4'>
-                                    <label class='col-form-label'>Operadora *</label>
-                                    <input type='text' class='form-control' name='operadora[]' required autofocus>
-                                </div>
-                                <div class='col-md-3' >
-                                    <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
-                                    <label class='form-check-label'>Whatsapp</label>
-                                </div>
-                            </div>
-                        @endif
+                      @foreach($estabelecimento->telefones as $key)
+                          <div class='row align-items-end' >
+                              <div class='col-md-4'>
+                                  <label class='col-form-label'>Telefone</label>
+                                  <input disabled type='text' class='form-control' name='telefone[]' value="{{ $key->numero }}" >
+                              </div>
+                              <div class='col-md-4'>
+                                  <label class='col-form-label'>Operadora</label>
+                                  <input disabled type='text' class='form-control' name='operadora[]' value="{{ $key->operadora }}" required autofocus>
+                              </div>
+                              <div class='col-md-3' >
+                                  <input disabled type='checkbox' @if($key->zap) checked @endif class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
+                                  <label class='form-check-label'>Whatsapp</label>
+                              </div>
+                          </div>
+                      @endforeach
                     </div>
-                    <input type="button" onclick="adicionarTelefone()" class="btn btn-primary" id="addCoautor" style="width:100%;margin-top:10px" value="Telefone +"></input>
                 </div>
             </div>
 
@@ -192,28 +169,16 @@
             </div>
 
             <div class="form-group row">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <label for="email" class="col-form-label">E-mail *</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    <input disabled id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $estabelecimento->user->email }}">
                     @error('email')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
-                <div class="col-md-4">
-                    <label for="password" class="col-form-label">Senha *</label>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="col-md-4">
-                    <label for="password-confirm" class="col-form-label">Confirme a Senha *</label>
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                </div>
+
             </div>
 
             <div class="row subtitulo">
@@ -226,7 +191,7 @@
             <div class="form-group row">
                 <div class="col-md-2">
                     <label for="cep" class="col-form-label">CEP *</label>
-                    <input value="{{old('cep')}}" onblur="pesquisacep(this.value);" id="cep" type="text" required autocomplete="cep" name="cep" autofocus class="form-control field__input a-field__input" placeholder="CEP" size="10" maxlength="9" >
+                    <input disabled value="{{$estabelecimento->endereco->cep}}" id="cep" type="text" class="form-control field__input a-field__input" placeholder="CEP" size="10" maxlength="9" >
                     @error('cep')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -235,7 +200,7 @@
                 </div>
                 <div class="col-md-8">
                     <label for="rua" class="col-form-label">{{ __('Rua') }}</label>
-                    <input value="{{old('rua')}}" id="rua" type="text" class="form-control @error('rua') is-invalid @enderror" name="rua" required >
+                    <input disabled value="{{$estabelecimento->endereco->rua}}" id="rua" type="text" class="form-control @error('rua') is-invalid @enderror" name="rua" required >
                     @error('rua')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -244,7 +209,7 @@
                 </div>
                 <div class="col-md-2">
                     <label for="numero" class="col-form-label">{{ __('Número') }}</label>
-                    <input value="{{old('numero')}}" id="numero" type="text" class="form-control @error('numero') is-invalid @enderror" name="numero" autocomplete="numero">
+                    <input disabled value="{{$estabelecimento->endereco->numero}}" id="numero" type="text" class="form-control @error('numero') is-invalid @enderror" name="numero" autocomplete="numero">
                     @error('numero')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -255,27 +220,36 @@
             <div class="form-group row">
                 <div class="col-md-4">
                     <label for="bairro" class="col-form-label">Bairro</label>
-                    <input value="{{old('bairro')}}" id="bairro" type="text" class="form-control @error('bairro') is-invalid @enderror" name="bairro" >
+                    <input disabled value="{{$estabelecimento->endereco->bairro}}" id="bairro" type="text" class="form-control @error('bairro') is-invalid @enderror" name="bairro" >
                 </div>
                 <div class="col-md-4">
                     <label for="bairro" class="col-form-label">Cidade</label>
-                    <input readonly type="text" class="form-control" name="cidade" id="cidade" value="{{ old('cidade') }}" />
+                    <input disabled readonly type="text" class="form-control" name="cidade" id="cidade" value="{{ $estabelecimento->endereco->cidade }}" />
                 </div>
                 <div class="col-md-4">
                     <label for="bairro" class="col-form-label">UF</label>
-                    <input readonly type="text" class="form-control" name="uf" id="uf" value="{{ old('uf') }}" />
+                    <input disabled readonly type="text" class="form-control" name="uf" id="uf" value="{{ $estabelecimento->endereco->uf }}" />
                 </div>
 
             </div>
             <div class="form-group row mb-0" style="margin: 20px 0 20px 0">
-                <div class="col-md-6" style="padding-left:0">
-                    <a class="btn btn-secondary botao-form" href="/" style="width:100%">Cancelar Cadastro</a>
+                <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'false']) }}">
+                  @csrf
+                <div class="col-md-12" style="padding-left:0">
+                      <button type="submit" class="btn btn-secondary botao-form" style="width:100%">
+                          Reprovar Cadastro
+                      </button>
                 </div>
-                <div class="col-md-6" style="padding-right:0">
-                    <button type="submit" class="btn btn-primary botao-form" style="width:100%">
-                        Concluir Cadastro
-                    </button>
-                </div>
+                </form>
+                <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'true']) }}">
+                  @csrf
+                  <div class="col-md-12" style="padding-right:0">
+                      <button type="submit" class="btn btn-primary botao-form" style="width:100%">
+                          Aprovar Cadastro
+                      </button>
+                  </div>
+                </form>
+
             </div>
         </form>
     </div>
