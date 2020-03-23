@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="row">
         <div class="col-md-12">
-            <label>Categoria</label>
+            <h3>Categorias</h3>
         </div>
         <div class="col-md-12">
             <div class="container">
@@ -83,9 +84,21 @@
                 </div>
             </div>
         </div>
+        
+    </div>
+    <div class="row" align="center">
+        <div class="col-sm-12">
+            <a href="#" class="btn btn-outline-dark">Ver todas as categorias</a>
+        </div>
+    </div>
 
+    <div class="row" style="margin-top:20px">
+        <div class="col-sm-12">
+            <h3>Recomendações</h3>
+        </div>
+    </div>
+    <div class="row justify-content-center">
         <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 2rem;">
-            <label>Recomendações</label>
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="height:350px; background-color: gray;">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -109,5 +122,6 @@
             </div>
         </div>
     </div>
+
 
 @endsection

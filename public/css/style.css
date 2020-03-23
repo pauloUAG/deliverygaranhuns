@@ -190,7 +190,7 @@ body {
   margin-top: 0.5rem;
   padding-bottom: 1rem;
   margin-left: 0.5rem;
-  height: 90%;
+  height: 100%;
 }
 
 .styleRodape_linha_top {
@@ -204,6 +204,9 @@ body {
   .navbar{
     align-items: center;
   }
+  .styleRodape .container{
+    align-items: center;
+  }
   .styleMenuPrincipal_titulo{
     align-items: center;
   }
@@ -215,5 +218,6 @@ body {
       margin-top:10px;
       width: 100%;
     }
+
 
 }
