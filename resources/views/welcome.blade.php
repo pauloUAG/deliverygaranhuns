@@ -25,13 +25,13 @@
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="background-color: gray;">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{asset('storage/slides/aviso_1.png')}}" class="d-block w-100"  alt="Primeiro Slide">
+                        <img src="{{asset('slides/aviso_1.png')}}" class="d-block w-100"  alt="Primeiro Slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('storage/slides/aviso_2.png')}}" class="d-block w-100"  alt="Segundo Slide">
+                        <img src="{{asset('slides/aviso_2.png')}}" class="d-block w-100"  alt="Segundo Slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('storage/slides/aviso_3.png')}}" class="d-block w-100" alt="Terceiro Slide">
+                        <img src="{{asset('slides/aviso_3.png')}}" class="d-block w-100" alt="Terceiro Slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
