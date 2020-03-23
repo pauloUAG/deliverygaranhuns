@@ -28,7 +28,7 @@
             <div class="container">
                 <div class="row justify-content-center" style=" width: 100%">
                     <div class="col-sm-3">
-                        <a class="styleMenuPrincipal_titulo" style="color: white;">Delivery Garanhuns</a>
+                        <a href="{{route('inicio')}}"class="styleMenuPrincipal_titulo" style="color: white;">Delivery Garanhuns</a>
                     </div>
                     <div class="col-sm-8">
                         <form method="post" action="{{route('estabelecimento.busca')}}">
@@ -44,6 +44,9 @@
                             <div class="col-sm-2">
                                 <input type="submit" class="btn btn-danger styleMenuPrincipal_button" type="btn" class="btn " value="Pesquisar" ></input>
                             </div>
+                            <div class="col-sm-2">
+                                <a href="{{route('estabelecimento.create')}}"><img src="{{asset('icones/sign-in.png')}}" height="38px" ></a>
+                            </div>
 
                         </div>
                         </form>
@@ -55,11 +58,11 @@
         <!--x barra menu x-->
         <!-- conteudo -->
         <!-- avisos -->
-        <div class="styleConteudo_aviso" align="center">
-            <div class="container">
+        <div class="styleConteudo_aviso" align="center" >
+            <div class="container" >
                 <div class="row justify-content-center">
                     <img src="{{ asset('/icones/alerta_logo.svg') }}" width="40px;" class="svg" />
-                    <div class="col-sm-7">
+                    <div class="col-sm-7" >
                         <p class="styleConteudo_mensagem"><strong>#FICAEMCASA</strong> - POR VOCÊ, POR MIM, POR ELES, PELO BEM DE TODOS NÓS.</p>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class CategoriaShowController extends Controller
 {
     public function show($id) {
-        $estabelecimentos = \App\Estabelecimento::where("modalidade_id", $id)->get();
+        $estabelecimentos = \App\Estabelecimento::where([["modalidade_id", $id],['status', 'Aprovado']])->get();
         $modalidades = \App\Modalidade::all();
         return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos,
                                                   'modalidades' => $modalidades,
@@ -23,7 +23,7 @@ class CategoriaShowController extends Controller
         //$estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->get();
         //$estabelecimentos = \App\Estabelecimento::whereIn("iser_id", $usuarios)->get();
 
-        $estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->orWhereIn("iser_id", $usuarios)->get();
+        $estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->orWhereIn("user_id", $usuarios)->where('status', 'Aprovado')->get();
         return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos,
                                                    'modalidades' => $modalidades]);
     }
