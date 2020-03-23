@@ -175,13 +175,13 @@
                                     <input type='text' class='form-control' name='operadora[]' required autofocus>
                                 </div>
                                 <div class='col-md-3' >
-                                    <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
-                                    <label class='form-check-label'>Whatsapp</label>
+                                    <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; ' style="margin-left:5px">
+                                    <label class='form-check-label' style="margin-left:25px">Whatsapp</label>
                                 </div>
                             </div>
                         @endif
                     </div>
-                    <input type="button" onclick="adicionarTelefone()" class="btn btn-primary" id="addCoautor" style="width:100%;margin-top:10px" value="Telefone +"></input>
+                    <input type="button" onclick="adicionarTelefone()" class="btn btn-primary" id="addCoautor" style="width:100%;margin-top:10px" value="Novo Telefone"></input>
                 </div>
             </div>
 
@@ -268,10 +268,10 @@
 
             </div>
             <div class="form-group row mb-0" style="margin: 20px 0 20px 0">
-                <div class="col-md-6" style="padding-left:0">
+                <div class="col-md-6">
                     <a class="btn btn-secondary botao-form" href="/" style="width:100%">Cancelar Cadastro</a>
                 </div>
-                <div class="col-md-6" style="padding-right:0">
+                <div class="col-md-6">
                     <button type="submit" class="btn btn-primary botao-form" style="width:100%">
                         Concluir Cadastro
                     </button>
@@ -389,8 +389,8 @@
                 "                                <input type='text' class='form-control' name='operadora[]' required autofocus>\n" +
                 "                            </div>\n" +
                 "                            <div class='col-md-3' >\n" +
-                "                                <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>\n" +
-                "                                <label class='form-check-label'>Whatsapp</label>\n" +
+                "                                <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; ' style="+"margin-left:5px"+">\n" +
+                "                                <label class='form-check-label' style="+"margin-left:25px"+">Whatsapp</label>\n" +
                 "                            </div>\n" +
                 "                            <div class='col-md-1'>\n" +
                 "                                <input type='button' class='btn btn-danger' value='X' onclick='deletar(this)' />\n" +

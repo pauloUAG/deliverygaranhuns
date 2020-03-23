@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -32,7 +33,7 @@
                         <div class="row">
                             <div class="col-sm-8">
                                 <input class="form-control mr-sm-2 styleMenuPrincipal_input" id="pesquisa" name="pesquisa" type="search"
-                                       placeholder="Digite o nome do estabelecimento ou categoria"  aria-label="Pesquisar">
+                                       placeholder="Buscar estabelecimento ou categoria"  aria-label="Pesquisar">
                             </div>
                             <div class="col-sm-2">
                                 <button class="btn btn-danger styleMenuPrincipal_button" type="btn" class="btn ">Pesquisar</button>
@@ -48,10 +49,10 @@
         <!-- avisos -->
         <div class="styleConteudo_aviso">
             <div class="container">
-                <div class="row justify-content-center" style="padding-top: 1rem;">
+                <div class="row justify-content-center">
+                    <img src="{{ asset('/icones/alerta_logo.svg') }}" width="40px;" class="svg" />
                     <div class="col-sm-8">
-                        <img src="{{ asset('/icones/alerta_logo.svg') }}" width="40px;" class="svg" />
-                        <a class="styleConteudo_mensagem">#FICAEMCASA - POR VOCÊ, POR MIM, POR ELES, PELO BEM DE TODOS NÓS.</a>
+                        <p class="styleConteudo_mensagem"><strong>#FICAEMCASA</strong> - POR VOCÊ, POR MIM, POR ELES, PELO BEM DE TODOS NÓS.</p>
                     </div>
                 </div>
             </div>
@@ -85,7 +86,7 @@
                         </div>
                     </div>
                     <div class="col-sm-2" >
-                        <div class="row" style="width: 90%">
+                        <div class="row">
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Mapa do site</div>
                                 <div class="col-sm-12 styleRodape_Texto_Conteudo_MapaDoSite">Quem Somos</div>
@@ -95,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3" style="width: 110%;">
+                    <div class="col-sm-3">
                         <div class="row">
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Contato</div>
