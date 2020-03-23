@@ -90,4 +90,43 @@ class AdminEstabelecimentoCreate extends Controller
         session()->flash('success', 'Estabelecimento cadastrado com sucesso');
         return redirect()->back();
     }
+
+    public function pending(){
+        $estabelecimentos = \App\Estabelecimento::where('status', 'Pendente')->orderBy('created_at', 'desc')->get();
+        return view("estabelecimento.pending")->with([
+            "estabelecimentos" => $estabelecimentos,
+        ]);
+    }
+
+    public function pendingDetails(Request $request){
+        $validator = Validator::make($request->all(), [
+            'estabelecimentoId' => 'required|integer',
+        ]);
+        $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
+        return view("estabelecimento.pendingDetails")->with([
+            "estabelecimento" => $estabelecimento,
+        ]);
+    }
+
+    public function pendingJudge(Request $request){
+        $validator = Validator::make($request->all(), [
+            'estabelecimentoId' => 'required|integer',
+            'decisao'           => 'required|string'
+        ]);
+        $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
+        if($request->decisao == 'true'){
+          $estabelecimento->status = "Aprovado";
+          $estabelecimento->save();
+
+          session()->flash('success', 'Estabelecimento aprovado com sucesso');
+          return redirect()->route('estabelecimento.pending');
+        }
+        else{
+          $estabelecimento->status = "Reprovado";
+          $estabelecimento->save();
+
+          session()->flash('success', 'Estabelecimento reprovado com sucesso');
+          return redirect()->route('estabelecimento.pending');
+        }
+    }
 }

@@ -26,6 +26,8 @@ class CreateEstabelecimentosTable extends Migration
             $table->boolean("pagamentoTransferencia")->default(false);
             $table->boolean("pagamentoCredito")->default(false);
             $table->boolean("pagamentoDebito")->default(false);
+            //status de aprovada ou não
+            $table->string("status")->default("Pendente");
 
             $table->bigInteger("endereco_id")->nullable();
             $table->foreign("endereco_id")->references("id")->on("enderecos");
