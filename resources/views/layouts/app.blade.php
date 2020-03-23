@@ -44,8 +44,18 @@
                             <div class="col-sm-2">
                                 <input type="submit" class="btn btn-danger styleMenuPrincipal_button" type="btn" class="btn " value="Pesquisar" ></input>
                             </div>
+
                             <div class="col-sm-2">
-                                <a href="{{route('estabelecimento.create')}}"><img src="{{asset('icones/sign-in.png')}}" height="38px" ></a>
+                                @guest
+                                    <a href="{{route('estabelecimento.create')}}"><img src="{{asset('icones/sign-in.png')}}" height="38px" ></a>
+                                @endguest
+                                @auth
+                                    <form action="{{route('logout')}}" method="post">
+                                        @csrf
+                                        <input type="submit" value="sair" >
+                                    </form>
+                                @endauth
+
                             </div>
 
                         </div>

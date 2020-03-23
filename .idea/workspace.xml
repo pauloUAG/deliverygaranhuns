@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c5d1a68-f827-424f-98e1-5bca576541e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/cgus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cgus.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminEstabelecimentoCreate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminEstabelecimentoCreate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoriaShowController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoriaShowController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/categoria/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/categoria/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/estabelecimento/pendingDetails.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estabelecimento/pendingDetails.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +165,7 @@
       <workItem from="1584806564892" duration="6497000" />
       <workItem from="1584815563910" duration="25053000" />
       <workItem from="1584884720641" duration="30598000" />
-      <workItem from="1584989296148" duration="12463000" />
+      <workItem from="1584989296148" duration="13255000" />
     </task>
     <servers />
   </component>
