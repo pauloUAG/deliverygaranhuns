@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
     <div id="app">
@@ -53,12 +55,12 @@
         <!--x barra menu x-->
         <!-- conteudo -->
         <!-- avisos -->
-        <div class="styleConteudo_aviso">
+        <div class="styleConteudo_aviso" align="center">
             <div class="container">
-                <div class="row justify-content-center" style="padding-top: 1rem;">
-                    <div class="col-sm-8">
-                        <img src="{{ asset('/icones/alerta_logo.svg') }}" width="40px;" class="svg" />
-                        <a class="styleConteudo_mensagem">#FICAEMCASA - POR VOCÊ, POR MIM, POR ELES, PELO BEM DE TODOS NÓS.</a>
+                <div class="row justify-content-center">
+                    <img src="{{ asset('/icones/alerta_logo.svg') }}" width="40px;" class="svg" />
+                    <div class="col-sm-7">
+                        <p class="styleConteudo_mensagem"><strong>#FICAEMCASA</strong> - POR VOCÊ, POR MIM, POR ELES, PELO BEM DE TODOS NÓS.</p>
                     </div>
                 </div>
             </div>
@@ -69,9 +71,9 @@
         </div>
 
         <div class="styleRodape">
-            <div class="container">
+            <div class="container" >
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" align="center">
                         <div class="row justify-content-center">
                             <div class="col-sm-12 styleRodape_Imagem_ufape">
                                 <img src="{{ asset('/icones/ufape_logo.png') }}" alt="Logo" width="40px;" />
@@ -81,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" align="center">
                         <div class="row justify-content-center">
                             <div class="col-sm-12 styleRodape_Imagem_lmts">
                                 <img src="{{ asset('/icones/lmts_logo.png') }}" alt="Logo" width="125px;" />
@@ -91,8 +93,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2" >
-                        <div class="row" style="width: 90%">
+                    <div class="col-sm-2" align="center">
+                        <div class="row justify-content-center" >
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Mapa do site</div>
                                 <div class="col-sm-12 styleRodape_Texto_Conteudo_MapaDoSite">Quem Somos</div>
@@ -102,8 +104,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3" style="width: 110%;">
-                        <div class="row">
+                    <div class="col-sm-3" align="center">
+                        <div class="row justify-content-center">
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Contato</div>
                                 <div class="col-sm-12 styleRodape_container">
@@ -142,8 +144,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2 ">
-                        <div class="row">
+                    <div class="col-sm-2 " align="center">
+                        <div class="row justify-content-center">
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Apoio</div>
                                 <div class="col-sm-12">
