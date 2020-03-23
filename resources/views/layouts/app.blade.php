@@ -31,15 +31,22 @@
                         <a class="styleMenuPrincipal_titulo" style="color: white;">Delivery Garanhuns</a>
                     </div>
                     <div class="col-sm-8">
-                        <div class="row">
+                        <form method="post" action="{{route('estabelecimento.busca')}}">
+                            @csrf
+                        <div class="form-group row" style="margin-bottom: 0px;">
+
                             <div class="col-sm-8">
-                                <input class="form-control mr-sm-2 styleMenuPrincipal_input" id="pesquisa" name="pesquisa" type="search"
+
+                                <input class="form-control styleMenuPrincipal_input" id="pesquisa" name="pesquisa" type="search"
                                        placeholder="Digite o nome do estabelecimento ou categoria"  aria-label="Pesquisar">
+
                             </div>
                             <div class="col-sm-2">
-                                <button class="btn btn-danger styleMenuPrincipal_button" type="btn" class="btn ">Pesquisar</button>
+                                <input type="submit" class="btn btn-danger styleMenuPrincipal_button" type="btn" class="btn " value="Pesquisar" ></input>
                             </div>
+
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
