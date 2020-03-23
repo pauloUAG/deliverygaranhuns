@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c5d1a68-f827-424f-98e1-5bca576541e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoriaShowController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/categoria/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/categoria/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/categoria/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +116,7 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZRevB81kWAlVOptjT2SSn7d8xy" />
@@ -168,6 +165,7 @@
       <workItem from="1584806564892" duration="6497000" />
       <workItem from="1584815563910" duration="25053000" />
       <workItem from="1584884720641" duration="30598000" />
+      <workItem from="1584989296148" duration="13255000" />
     </task>
     <servers />
   </component>
@@ -179,5 +177,9 @@
       <screen x="0" y="0" width="1280" height="687" />
     </state>
     <state x="373" y="103" width="530" height="481" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.687@0.0.1280.687" timestamp="1584824512851" />
+    <state x="301" y="150" key="run.anything.popup" timestamp="1585000901360">
+      <screen x="0" y="0" width="1280" height="687" />
+    </state>
+    <state x="301" y="150" key="run.anything.popup/0.0.1280.687@0.0.1280.687" timestamp="1585000901360" />
   </component>
 </project>

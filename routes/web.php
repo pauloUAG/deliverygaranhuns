@@ -14,25 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $modalidades = \App\Modalidade::all();
+    return view('welcome')->with(['modalidades' => $modalidades]);
+})->name("inicio");
 
-Route::get("/admin/estabelecimento/create", "AdminEstabelecimentoCreate@prepare")->name("estabelecimento.create");
-Route::post("/admin/estabelecimento/save", "AdminEstabelecimentoCreate@save")->name("estabelecimento.save");
+Route::get("/estabelecimento/cadastro", "AdminEstabelecimentoCreate@prepare")->name("estabelecimento.create");
+Route::post("/estabelecimento/cadastro", "AdminEstabelecimentoCreate@save")->name("estabelecimento.save");
+Route::get("/estabelecimento/confirma", function () {
+    return view('estabelecimento.confirm');
+})->name("estabelecimento.confirma");
+
 
 Route::get("/categorias/list", "CategoriaListController@all")->name("categoria.list");
-
 Route::get("/categorias/show/{id}", "CategoriaShowController@show")->name("categoria.show");
 Route::post("/estabelecimentos/busca", "CategoriaShowController@search")->name("estabelecimento.busca");
 
 // Pendentes e julgar pendentes
-Route::get("/admin/estabelecimento/pending", "AdminEstabelecimentoCreate@pending")->name("estabelecimento.pending");
-Route::get("/admin/estabelecimento/pending/details", "AdminEstabelecimentoCreate@pendingDetails")->name("estabelecimento.pending.details");
-Route::post("/admin/estabelecimento/pending/judge", "AdminEstabelecimentoCreate@pendingJudge")->name("estabelecimento.pending.judge");
+Route::middleware('can:autorizarCadastro,App\Estabelecimento')->group(function () {
+    Route::get("/home", "AdminEstabelecimentoCreate@pending")->name("estabelecimento.pending");
+    Route::get("/admin/estabelecimento/pending/details", "AdminEstabelecimentoCreate@pendingDetails")->name("estabelecimento.pending.details");
+    Route::post("/admin/estabelecimento/pending/judge", "AdminEstabelecimentoCreate@pendingJudge")->name("estabelecimento.pending.judge");
+});
+
 
 Auth::routes();
-
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');

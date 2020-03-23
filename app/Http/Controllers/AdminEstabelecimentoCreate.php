@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AdminEstabelecimentoCreate extends Controller
 {
@@ -27,13 +28,26 @@ class AdminEstabelecimentoCreate extends Controller
 
         $imagemCapa = "";
         if($request->hasFile('imagemCapa') && $request->file('imagemCapa')->isValid()) {
+
+
             $ext = strtolower(request()->imagemCapa->getClientOriginalExtension());
             if(!in_array($ext, array("jpg", "png")))
                 $validator->errors()->add("imagemcapa", "Formato de imagem inválido, utilize imagem jpg ou png");
             else {
                 $imagemCapa = time() . '.' . $ext;
+                $thumbPath = storage_path('app/public/imagens/'.$imagemCapa);
+                $image = Image::make(request()->imagemCapa->path());
+                if($image->width() > $image->height()) {
+                    $image->resize(65, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($thumbPath);
+                } else {
+                    $image->resize(null, 65, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($thumbPath);
+                }
 
-                $request->imagemCapa->storeAs('imagens', $imagemCapa);
+                //$request->imagemCapa->storeAs('public/imagens', $imagemCapa);
 
                 //$request->imagemCapa->move(public_path('imagens'), $imagemCapa);
             }
@@ -88,7 +102,7 @@ class AdminEstabelecimentoCreate extends Controller
         $estabelecimento->telefones()->saveMany($fones);
 
         session()->flash('success', 'Estabelecimento cadastrado com sucesso');
-        return redirect()->back();
+        return redirect()->route('estabelecimento.confirma');
     }
 
     public function pending(){

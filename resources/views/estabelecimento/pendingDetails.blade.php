@@ -48,8 +48,8 @@
                 </div>
                 <div class="col-md-3">
                     <label class="col-form-label" for="imagemCapa">Imagem de Capa (jpg ou png)</label>
-                    @if(isset($estabelecimento->imagemCapa))
-                      <img src="{{$estabelecimento->imagemCapa}}" alt="...">
+                    @if(isset($estabelecimento->imagemCapa) && $estabelecimento->imagemCapa!="")
+                      <img src="{{asset('storage/imagens/' . $estabelecimento->imagemCapa)}}" alt="...">
                     @else
                       Colocar uma imagem que diz sem imagem
                     @endif
@@ -62,8 +62,8 @@
                 </div>
                 <div class="col-md-3">
                     <label class="col-form-label" for="imagemInterna">Imagem Interna  (jpg ou png)</label>
-                    @if(isset($estabelecimento->imagemInterna))
-                      <img src="{{$estabelecimento->imagemInterna}}" alt="...">
+                    @if(isset($estabelecimento->imagemInterna) && $estabelecimento->imagemInterna!="")
+                      <img height="145" src="{{asset('storage/imagens/' .$estabelecimento->imagemInterna)}}" alt="...">
                     @else
                       Colocar uma imagem que diz sem imagem
                     @endif
