@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $modalidades = \App\Modalidade::all();
+    return view('welcome')->with(['modalidades' => $modalidades]);
 });
 
 Route::get("/admin/estabelecimento/create", "AdminEstabelecimentoCreate@prepare")->name("estabelecimento.create");

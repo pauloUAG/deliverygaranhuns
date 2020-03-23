@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('layouts.slideCategoria')
+
     <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 0rem;">
         <label>Resultado</label>
     </div>
