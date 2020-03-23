@@ -10,8 +10,9 @@
                 <div class="row justify-content-left">
                     @foreach($modalidades as $modalidade)
                         <div class="styleCategoria_button_padding">
-                            <button class="btn styleCategoria_button">
-                                <div class="container">
+                            <a href="{{ route('categoria.show', ['id' => $modalidade->id]) }}"class="btn styleCategoria_button" style="display: block; line-height: 110px;">
+                                <span style="line-height: normal; display: inline-block; vertical-align: middle;">
+                                <div class="container" >
                                     <div class="row justify-content-center">
                                         <div class="col-sm-12 styleCategoria_imagem">
                                             <img src="{{ asset('/icones/' . $modalidade->icone ) }}" alt="{{ $modalidade->nome }}" width="35px;">
@@ -21,7 +22,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </button>
+                                </span>
+                            </a>
                         </div>
                     @endforeach
                 </div>
