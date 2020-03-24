@@ -34,22 +34,18 @@ class AdminEstabelecimentoCreate extends Controller
             if(!in_array($ext, array("jpg", "png")))
                 $validator->errors()->add("imagemcapa", "Formato de imagem inválido, utilize imagem jpg ou png");
             else {
-                $imagemCapa = time() . '.' . $ext;
+                $imagemCapa = 'c' . time() . '.' . $ext;
                 $thumbPath = storage_path('app/public/imagens/'.$imagemCapa);
                 $image = Image::make(request()->imagemCapa->path());
                 if($image->width() > $image->height()) {
-                    $image->resize(65, null, function ($constraint) {
+                    $image->resize(120, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($thumbPath);
                 } else {
-                    $image->resize(null, 65, function ($constraint) {
+                    $image->resize(null, 120, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($thumbPath);
                 }
-
-                //$request->imagemCapa->storeAs('public/imagens', $imagemCapa);
-
-                //$request->imagemCapa->move(public_path('imagens'), $imagemCapa);
             }
         }
 
@@ -59,8 +55,13 @@ class AdminEstabelecimentoCreate extends Controller
             if(!in_array($ext, array("jpg", "png")))
                 $validator->errors()->add("imageminterna", "Formato de imagem inválido, utilize imagem jpg ou png");
             else {
-                $imagemInterna = time() . '.' . $ext;
-                $upload = $request->imagemInterna->storeAs('imagens', $imagemInterna);
+
+                $imagemInterna = 'i' . time() . '.' . $ext;
+                $imagePath = storage_path('app/public/imagens/'.$imagemInterna);
+                Image::make(request()->imagemInterna->path())->resize(440, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save($imagePath);
+                //$upload = $request->imagemInterna->storeAs('imagens', $imagemInterna);
             }
         }
 

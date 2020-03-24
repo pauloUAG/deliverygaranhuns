@@ -42,7 +42,7 @@
 
                 <div class="col-md-6">
                     <label for="site" class="col-form-label">Site</label>
-                    <input id="site" type="url" class="form-control @error('site') is-invalid @enderror" name="site" value="{{ old('site') }}"  autocomplete="site" autofocus>
+                    <input id="site" placeholder="http://exemplo.com" type="url" class="form-control @error('site') is-invalid @enderror" name="site" value="{{ old('site') }}"  autocomplete="site" autofocus>
 
                     @error('site')
                     <span class="invalid-feedback" role="alert">
@@ -147,7 +147,7 @@
                                 <div class='row align-items-end' >
                                     <div class='col-md-4'>
                                         <label class='col-form-label'>Telefone *</label>
-                                        <input type='text' class='form-control' name='telefone[]' value="{{ old('telefone')[$i] }}" required autofocus>
+                                        <input type='text' class='celular form-control' name='telefone[]' value="{{ old('telefone')[$i] }}" required autofocus>
                                     </div>
                                     <div class='col-md-4'>
                                         <label class='col-form-label'>Operadora *</label>
@@ -168,7 +168,7 @@
                             <div class='row align-items-end' >
                                 <div class='col-md-4'>
                                     <label class='col-form-label'>Telefone *</label>
-                                    <input type='text' class='form-control' name='telefone[]' required autofocus>
+                                    <input type='text' class='celular form-control' name='telefone[]' required autofocus>
                                 </div>
                                 <div class='col-md-4'>
                                     <label class='col-form-label'>Operadora *</label>
@@ -269,7 +269,7 @@
             </div>
             <div class="form-group row mb-0" style="margin: 20px 0 20px 0">
                 <div class="col-md-6">
-                    <a class="btn btn-secondary botao-form" href="/" style="width:100%">Cancelar Cadastro</a>
+                    <a class="btn btn-secondary botao-form" href="{{route('inicio')}}" style="width:100%">Cancelar Cadastro</a>
                 </div>
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-primary botao-form" style="width:100%">
@@ -285,7 +285,6 @@
     <script type="text/javascript" >
         $(document).ready(function($){
             $('#cep').mask('00000-000');
-            //$('#cpf').mask('000.000.000-00');
             var SPMaskBehavior = function (val) {
                     return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
                 },
@@ -294,7 +293,7 @@
                         field.mask(SPMaskBehavior.apply({}, arguments), options);
                     }
                 };
-           // $('#celular').mask(SPMaskBehavior, spOptions);
+            $('.celular').mask(SPMaskBehavior, spOptions);
 
         });
         function limpa_formulário_cep() {
@@ -382,7 +381,7 @@
             return "<div class='row align-items-end' >\n" +
                 "                            <div class='col-md-4'>\n" +
                 "                                <label class='col-form-label'>Telefone</label>\n" +
-                "                                <input type='text' class='form-control' name='telefone[]' required autofocus>\n" +
+                "                                <input type='text' class='celular form-control' name='telefone[]' required autofocus>\n" +
                 "                            </div>\n" +
                 "                            <div class='col-md-4'>\n" +
                 "                                <label class='col-form-label'>Operadora</label>\n" +

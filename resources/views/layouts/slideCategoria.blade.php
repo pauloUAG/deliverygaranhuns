@@ -39,6 +39,8 @@
     <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
 </div>
 
+
+
 <script>
     var pag = {{ $pagina ?? 0}}
     // console.log(pag);
@@ -60,3 +62,9 @@
         x[slideIndex-1].style.display = "block";
     }
 </script>
+
+<div class="row" align="center">
+    <div class="col-sm-12">
+        <a href="{{route('categoria.list')}}" class="btn btn-outline-dark">Ver todas as categorias</a>
+    </div>
+</div>

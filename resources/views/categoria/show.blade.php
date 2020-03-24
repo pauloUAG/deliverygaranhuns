@@ -34,7 +34,10 @@
                             </div>
                         </button>
 
+<<<<<<< HEAD
                         
+=======
+>>>>>>> 8233fbf94b2f4dc256248e758f1f01f344d16b1b
                         <div class="modal fade" id="modal{{$estabelecimento->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -48,33 +51,48 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-3" style="height: 100px;">
-                                                    <img src="{{asset('icones/a-lab.svg')}}" width="90px;">
+                                                    @if(isset($estabelecimento->imagemCapa) && $estabelecimento->imagemCapa != "" )
+                                                        <img src="{{ asset('storage/imagens/' . $estabelecimento->imagemCapa) }}" alt="torre" width="120px;">
+                                                    @else
+                                                        <img src="{{ asset('icones/sem_imagem.png') }}" alt="torre" width="65px;">
+                                                    @endif
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <output style="color: #2f306f; font-size: 19px">Quentinha da Dona Maria</output>
+                                                                <output style="color: #2f306f; font-size: 19px">{{$estabelecimento->user->name}}</output>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <img src="{{asset('icones/local_logo_azul.svg')}}" width="19px;">
-                                                                <output >Endereço</output>
+                                                                <output ><strong>Endereço</strong></output>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                {{$estabelecimento->endereco->rua }}, {{$estabelecimento->endereco->numero }}, {{$estabelecimento->endereco->bairro }}
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <div class="row">
                                                                     <div class="col-sm-6">
-                                                                        <img src="{{asset('icones/Icon awesome-whatsapp.svg')}}" width="19px;">
-                                                                        <label>(81)99172-3212</label>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <img src="{{asset('icones/Icon awesome-phone-alt.svg')}}" width="19px;">
-                                                                        <label>(81)99172-3212</label>
+                                                                        @foreach($estabelecimento->telefones as $telefone)
+                                                                            @if($telefone->zap)
+                                                                                <img src="{{asset('icones/Icon awesome-whatsapp.svg')}}" width="19px;">
+                                                                                <label>(81)99172-3212</label>
+                                                                                @break
+                                                                            @endif
+                                                                        @endforeach
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <img src="{{asset('icones/Icon awesome-calendar-alt.svg')}}" width="18px;">
                                                                 <label>Horário de funcionamento</label>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <img src="{{asset('icones/Icon awesome-calendar-alt.svg')}}" width="18px;">
+                                                                <label>Horário de funcionamento</label>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                Seg a Sex das 8:00h às 18:00h / Sab das 08:00h às 14:00h
                                                             </div>
                                                         </div>
                                                     </div>
@@ -86,38 +104,88 @@
                                                 <div class="col-md-12">
                                                     <label style="color: #2f306f; font-weight: bold;">Descrição:</label>
                                                     <div style="margin-left: 0.5rem;">
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Fica em casa!!!!"></textarea>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">{{$estabelecimento->descricao}}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <hr style="background-color: #2f306f; ">
-                                            <label style="color: #2f306f; padding-top: 1rem; font-weight: bold;">Outros Contatos:</label>
+                                            <!-- <hr style="background-color: #2f306f; "> -->
+                                            @if(null!==$estabelecimento->imagemInterna && $estabelecimento->imagemInterna!="")
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label style="color: #2f306f; font-weight: bold;">Produtos:</label>
+                                                    <img src="{{asset('storage/imagens/' . $estabelecimento->imagemInterna)}}" width="440px" >
+                                                </div>
+                                            </div>
+                                            @endif
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label style="color: #2f306f; font-weight: bold;">Contatos:</label>
+                                                    <div>
+                                                        <table class="table table-sm">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">#</th>
+                                                                <th scope="col">Telefone</th>
+                                                                <th scope="col">Operadora</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($estabelecimento->telefones as $telefone)
+                                                            <tr>
+                                                                @if($telefone->zap)
+                                                                    <th scope="row"><img src="{{asset('icones/Icon awesome-whatsapp.svg')}}" width="19px;"></th>
+                                                                @else
+                                                                    <th scope="row"></th>
+                                                                @endif
+
+                                                                <td>{{ $telefone->numero }}</td>
+                                                                <td>{{ $telefone->operadora }}</td>
+                                                            </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <label style="color: #2f306f; padding-top: 1rem; font-weight: bold;">Redes Sociais:</label>
                                             <div class="col-md-12">
                                                 <div class="row">
+                                                    @if(null!==$estabelecimento->instagram && $estabelecimento->instagram != "")
                                                     <div class="col-md-12">
                                                         <div style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
                                                             <img src="{{asset('icones/instagram_logo_azul.svg')}}" width="20px;">
-                                                            <a href="">@ficaemcasa</a>
+                                                            {{ $estabelecimento->instagram }}
                                                         </div>
                                                     </div>
+                                                    @endif
+                                                    @if(null!==$estabelecimento->facebook && $estabelecimento->facebook != "")
                                                     <div class="col-md-12">
                                                         <div style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
                                                             <img src="{{asset('icones/facebook_logo_azul.svg')}}" width="20px;">
-                                                            <a href="">@ficaemcasa</a>
+                                                            {{ $estabelecimento->facebook }}
                                                         </div>
                                                     </div>
+                                                    @endif
+                                                    @if(null!==$estabelecimento->twitter && $estabelecimento->twitter != "")
                                                     <div class="col-md-12">
                                                         <div style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
                                                             <img src="{{asset('icones/@_logo_azul.svg')}}" width="20px;">
-                                                            <a href="">@ficaemcasa</a>
+                                                            {{ $estabelecimento->twitter }}
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <div style="padding-top: 0rem; padding-bottom: 0.2rem;">
-                                                            <label style="color: #2f306f; font-size: 20px; margin-top: -2px; font-family: time; font-weight: bold;">W</label>
-                                                            <a href="">www.quentinhadamaria.com.br</a>
+                                                    @endif
+                                                    @if(null!==$estabelecimento->site && $estabelecimento->site != "")
+                                                        <div class="col-md-12">
+                                                            <div style="padding-top: 0rem; padding-bottom: 0.2rem;">
+                                                                <label style="color: #2f306f; font-size: 20px; margin-top: -2px; font-family: time; font-weight: bold;">W</label>
+                                                                {{$estabelecimento->site}}
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endif
+                                                    <!-- <img src="icones/instagram_logo.svg" width="40px;"><a href="">@ficaemcasa</a>
+                                                    <img src="icones/facebook_logo.svg" width="40px;"><a href="">@ficaemcasa</a>
+                                                    <img src="icones/a-lab.svg" width="90px;"><a href="">a</a>
+                                                    <img src="icones/a-lab.svg" width="90px;"><a href="">a</a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -127,6 +195,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
                     @endforeach
                 </div>
