@@ -3,10 +3,9 @@
     $total = count($modalidades);
     $slides = intdiv($total, 5);
     ?>
-    
     @for($s=0; $s <= $slides; $s++)
     {{-- {{$s}} --}}
-        <div class="mySlides" >
+    <div class="mySlides" id="{{$s}}">
             <div class="col-md-12">
                 <div class="container">
                     <div class="row justify-content-center">

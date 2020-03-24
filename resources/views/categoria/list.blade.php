@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <?php
+    $total = count($modalidades);
+    $slides = intdiv($total, 5);
+    ?>
+    
     <div class="row">
         <div class="col-md-12">
             <h3>Categorias</h3>
