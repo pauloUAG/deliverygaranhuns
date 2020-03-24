@@ -6,12 +6,12 @@
     <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 0rem;">
         <label>{{$estabelecimentos->count()}} Resultado(s)</label>
     </div>
+    
     <div class="container">
         <div class="row" style="padding-bottom: 3rem;">
             <div class="col-md-12 " >
                 <div class="row" style="margin:1px;">
                    @foreach($estabelecimentos as $estabelecimento)
-
                         <button class="btn styleCategoriaButton" style="width: 318px;" data-toggle="modal" data-target="#modal{{$estabelecimento->id}}">
                             <div class="container">
                                 <div class="row">
