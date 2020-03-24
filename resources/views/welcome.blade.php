@@ -9,11 +9,7 @@
 
     @include('layouts.slideCategoria')
 
-    <div class="row" align="center">
-        <div class="col-sm-12">
-            <a href="{{route('categoria.list')}}" class="btn btn-outline-dark">Ver todas as categorias</a>
-        </div>
-    </div>
+
 
     <div class="row" style="margin-top:20px">
         <div class="col-sm-12">

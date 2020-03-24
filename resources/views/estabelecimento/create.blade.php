@@ -269,7 +269,7 @@
             </div>
             <div class="form-group row mb-0" style="margin: 20px 0 20px 0">
                 <div class="col-md-6">
-                    <a class="btn btn-secondary botao-form" href="/" style="width:100%">Cancelar Cadastro</a>
+                    <a class="btn btn-secondary botao-form" href="{{route('inicio')}}" style="width:100%">Cancelar Cadastro</a>
                 </div>
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-primary botao-form" style="width:100%">
