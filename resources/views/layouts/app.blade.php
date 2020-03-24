@@ -72,7 +72,7 @@
         <!--x barra menu x-->
         <!-- conteudo -->
         <!-- avisos -->
-        <div class="styleConteudo_aviso" align="center" >
+        <div class="styleConteudo_aviso" align="center" style="padding-top: 0px; height: 50px;">
             <div class="container" >
                 <div class="row justify-content-center">
                     <img src="{{ asset('/icones/alerta_logo.svg') }}" width="40px;" class="svg" />
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2" align="center">
+                    <!--<div class="col-sm-2" align="center">
                         <div class="row justify-content-center" >
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Mapa do site</div>
@@ -120,9 +120,9 @@
                                 <div class="col-sm-12 styleRodape_Texto_Conteudo_MapaDoSite">Projetos</div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="col-sm-3" align="center">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center" style="height: 170px;">
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Contato</div>
                                 <div class="col-sm-12 styleRodape_container">
@@ -162,13 +162,13 @@
                         </div>
                     </div>
                     <div class="col-sm-2 " align="center">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center" style="height: 170px;">
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Apoio</div>
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6" style="padding-bottom: 1rem; padding-left: 10px;">
-                                            <img src="{{ asset('/icones/prefeitura_logo.png') }}" alt="Logo" width="90px;" />
+                                            <img src="{{ asset('/icones/sebrae.jpg') }}" alt="Logo" width="90px;" />
                                         </div>
                                         <div class="col-sm-6">
                                             <img src="{{ asset('/icones/cdl_logo.png')}}" alt="Logo" width="120px;" />

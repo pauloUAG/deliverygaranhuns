@@ -85,28 +85,40 @@
             </div>
 
             <div class="form-group row">
+                <div class="col-md-5">
+                    <label for="horarioFuncionamento" class="col-form-label">Horário de Funcionamento</label>
+                    <input id="horarioFuncionamento" placeholder="Seg a Sex das 8:00h às 18:00h" type="text" class="form-control @error('horarioFuncionamento') is-invalid @enderror" name="horarioFuncionamento" value="{{ old('horarioFuncionamento') }}"  autocomplete="horarioFuncionamento" autofocus>
 
-                <div class="col-md-12">
+                    @error('horarioFuncionamento')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="col-md-7">
                     <label class="col-form-label"><strong>Formas de Pagamento</strong></label>
+                    <div >
+                        <div class="form-check form-check-inline">
+                            <input @if(old('pagamentoDinheiro')) checked @endif  type="checkbox" class="form-check-input" id="pagamentoDinheiro" name="pagamentoDinheiro">
+                            <label class="form-check-label" for="pagamentoDinheiro">Dinheiro</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input @if(old('pagamentoTransferencia')) checked @endif type="checkbox" class="form-check-input" id="pagamentoTransferencia" name="pagamentoTransferencia">
+                            <label class="form-check-label" for="pagamentoTransferencia">Transferência</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input @if(old('pagamentoCredito'))  checked @endif type="checkbox" class="form-check-input" id="pagamentoCredito" name="pagamentoCredito">
+                            <label class="form-check-label" for="pagamentoCredito">Cartão de Crédito</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input @if(old('pagamentoDebito')) checked @endif type="checkbox" class="form-check-input" id="pagamentoDebito" name="pagamentoDebito">
+                            <label class="form-check-label" for="pagamentoDebito">Cartão de Débito</label>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="col-md-12">
-                    <div class="form-check form-check-inline">
-                        <input @if(old('pagamentoDinheiro')) checked @endif  type="checkbox" class="form-check-input" id="pagamentoDinheiro" name="pagamentoDinheiro">
-                        <label class="form-check-label" for="pagamentoDinheiro">Dinheiro</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input @if(old('pagamentoTransferencia')) checked @endif type="checkbox" class="form-check-input" id="pagamentoTransferencia" name="pagamentoTransferencia">
-                        <label class="form-check-label" for="pagamentoTransferencia">Transferência</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input @if(old('pagamentoCredito'))  checked @endif type="checkbox" class="form-check-input" id="pagamentoCredito" name="pagamentoCredito">
-                        <label class="form-check-label" for="pagamentoCredito">Cartão de Crédito</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input @if(old('pagamentoDebito')) checked @endif type="checkbox" class="form-check-input" id="pagamentoDebito" name="pagamentoDebito">
-                        <label class="form-check-label" for="pagamentoDebito">Cartão de Débito</label>
-                    </div>
-                </div>
+
             </div>
 
             <div class="row">
@@ -117,15 +129,15 @@
             <div class="row" style="margin-top:20px">
                 <div class="col-md-4">
                     <label for="facebook" class="col-form-label">Facebook</label>
-                    <input id="facebook" type="url" class="form-control" name="facebook" value="{{ old('facebook') }}" autocomplete="facebook">
+                    <input id="facebook" placeholder="http://facebook.com/usuario" type="url" class="form-control" name="facebook" value="{{ old('facebook') }}" autocomplete="facebook">
                 </div>
                 <div class="col-md-4">
                     <label for="instagram" class="col-form-label">Instagram</label>
-                    <input id="instagram" type="text" class="form-control" name="instagram" value="{{ old('instagram') }}" autocomplete="instagram">
+                    <input id="instagram" placeholder="@usuario" type="text" class="form-control" name="instagram" value="{{ old('instagram') }}" autocomplete="instagram">
                 </div>
                 <div class="col-md-4">
                     <label for="twitter" class="col-form-label">Twitter</label>
-                    <input id="twitter" type="text" class="form-control" name="twitter" value="{{ old('twitter') }}" autocomplete="twitter">
+                    <input id="twitter" placeholder="@usuario" type="text" class="form-control" name="twitter" value="{{ old('twitter') }}" autocomplete="twitter">
                 </div>
             </div>
 
@@ -202,7 +214,7 @@
                     @enderror
                 </div>
                 <div class="col-md-4">
-                    <label for="password" class="col-form-label">Senha *</label>
+                    <label for="password" class="col-form-label">Senha (no mínimo 8 letras/números)*</label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                     @error('password')
                     <span class="invalid-feedback" role="alert">

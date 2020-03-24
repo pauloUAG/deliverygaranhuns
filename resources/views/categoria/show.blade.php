@@ -88,7 +88,7 @@
                                                                 <label>Horário de funcionamento</label>
                                                             </div>
                                                             <div class="col-md-12">
-                                                                Seg a Sex das 8:00h às 18:00h / Sab das 08:00h às 14:00h
+                                                                {{$estabelecimento->horarioFuncionamento}}
                                                             </div>
                                                         </div>
                                                     </div>

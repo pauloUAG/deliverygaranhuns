@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12">
             <h3>Categorias</h3>
         </div>
-    </div>
-
-    @include('layouts.slideCategoria')
+    </div> -->
 
 
 
+
+<!--
     <div class="row" style="margin-top:20px">
         <div class="col-sm-12">
             <h3>Recomendações</h3>
         </div>
-    </div>
-    <div class="row justify-content-center">
+    </div> -->
+    <div class="row justify-content-center" style="margin-top: -15px;">
         <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 2rem;">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="background-color: gray;">
                 <div class="carousel-inner">
@@ -41,4 +41,6 @@
             </div>
         </div>
     </div>
+
+    @include('layouts.slideCategoria')
 @endsection
