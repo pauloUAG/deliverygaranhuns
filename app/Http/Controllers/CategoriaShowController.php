@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 
 class CategoriaShowController extends Controller
 {
-    public function show($id) {
+    public function show($pagina,$id) {
+        // dd($pagina);
         $estabelecimentos = \App\Estabelecimento::where([["modalidade_id", $id],['status', 'Aprovado']])->get();
         $modalidades = \App\Modalidade::all();
         return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos,
                                                   'modalidades' => $modalidades,
-                                                  'modalidadeS' => $id  ]);
+                                                  'modalidadeS' => $id,
+                                                  'pagina'      => $pagina ]);
 
     }
 

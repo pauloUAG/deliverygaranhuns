@@ -6,12 +6,12 @@
     <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 0rem;">
         <label>Resultado</label>
     </div>
+    
     <div class="container">
         <div class="row" style="padding-bottom: 3rem;">
             <div class="col-md-12 " >
                 <div class="row" style="margin:1px;">
                    @foreach($estabelecimentos as $estabelecimento)
-
                         <button class="btn styleCategoriaButton" style="width: 318px;" data-toggle="modal" data-target="#modal{{$estabelecimento->id}}">
                             <div class="container">
                                 <div class="row">
@@ -34,7 +34,7 @@
                             </div>
                         </button>
 
-
+                        
                         <div class="modal fade" id="modal{{$estabelecimento->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
