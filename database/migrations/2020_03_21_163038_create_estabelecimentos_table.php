@@ -26,7 +26,7 @@ class CreateEstabelecimentosTable extends Migration
             $table->boolean("pagamentoTransferencia")->default(false);
             $table->boolean("pagamentoCredito")->default(false);
             $table->boolean("pagamentoDebito")->default(false);
-            $table->boolean("horarioFuncionamento")->default(false);
+            $table->string("horarioFuncionamento")->default(false);
 
             //status de aprovada ou não
             $table->string("status")->default("Pendente");
