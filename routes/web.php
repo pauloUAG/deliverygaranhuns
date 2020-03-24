@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $modalidades = \App\Modalidade::all();
+    $modalidades = \App\Modalidade::where('nome', '<>', 'null')->orderBy('nome', 'asc')->get();
     return view('welcome')->with(['modalidades' => $modalidades]);
 })->name("inicio");
 

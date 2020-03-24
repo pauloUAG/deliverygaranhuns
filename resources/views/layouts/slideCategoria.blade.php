@@ -2,6 +2,8 @@
     <?php
     $total = count($modalidades);
     $slides = intdiv($total, 5);
+    if($total % 5 == 0)
+        $slides = $slides - 1;
     ?>
     @for($s=0; $s <= $slides; $s++)
     {{-- {{$s}} --}}
