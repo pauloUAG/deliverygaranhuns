@@ -11,7 +11,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 class AdminEstabelecimentoCreate extends Controller
 {
     public function prepare() {
-        $modalidades = \App\Modalidade::all();
+        $modalidades = \App\Modalidade::where('nome', '<>', 'null')->orderBy('nome', 'asc')->get();
         return view("estabelecimento.create")->with([
             "modalidades" => $modalidades,
         ]);

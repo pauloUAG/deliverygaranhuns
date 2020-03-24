@@ -6,7 +6,7 @@
     <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 0rem;">
         <label>{{$estabelecimentos->count()}} Resultado(s)</label>
     </div>
-    
+
     <div class="container">
         <div class="row" style="padding-bottom: 3rem;">
             <div class="col-md-12 " >
@@ -15,17 +15,17 @@
                         <button class="btn styleCategoriaButton" style="width: 318px;" data-toggle="modal" data-target="#modal{{$estabelecimento->id}}">
                             <div class="container">
                                 <div class="row">
-                                    <div style="padding: 0.5em; margin-top: 0.5rem;">
+                                    <div style="padding: 0.5em; margin-top: 0.5rem;" class="col-md-2">
                                         @if(isset($estabelecimento->imagemCapa) && $estabelecimento->imagemCapa != "" )
                                             <img src="{{ asset('storage/imagens/' . $estabelecimento->imagemCapa) }}" alt="torre" width="65px;">
                                         @else
                                             <img src="{{ asset('icones/sem_imagem.png') }}" alt="torre" width="65px;">
                                         @endif
                                     </div>
-                                    <div>
+                                    <div class="col-md-10">
                                         <div class="form-group styleCategoriaButton_container">
                                             <div class="styleCategoriaButton_titulo">{{ $estabelecimento->user->name }}</div>
-                                            <div class="styleCategoriaButton_subtitulo">{{ $estabelecimento->endereco->rua }}, {{ $estabelecimento->endereco->bairro }}</div>
+                                            <div class="styleCategoriaButton_subtitulo">{{ mb_strimwidth($estabelecimento->endereco->rua . ", " . $estabelecimento->endereco->bairro, 0, 24, '...' ) }}</div>
                                             <div class="styleCategoriaButton_subtitulo">{{ $estabelecimento->telefones[0]->numero }}</div>
                                         </div>
                                     </div>
@@ -78,10 +78,6 @@
                                                                         @endforeach
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <img src="{{asset('icones/Icon awesome-calendar-alt.svg')}}" width="18px;">
-                                                                <label>Horário de funcionamento</label>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <img src="{{asset('icones/Icon awesome-calendar-alt.svg')}}" width="18px;">
