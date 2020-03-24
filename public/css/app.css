@@ -11080,5 +11080,15 @@ body {
   margin: 0.5rem;
 }
 
+.styleRodape a:link {
+  color: white;
+  text-decoration: none;
+}
+
+.styleRodape a:hover {
+  color: white;
+  font-weight: bold;
+}
+
 /*--x RODAPE x--*/
 

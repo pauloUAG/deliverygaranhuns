@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    @if ($message = Session::get('errors'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>ERRO NO CADASTRO!</strong> Corrija as informações marcadas abaixo e tente novamente.
+        </div>
+    @endif
+
 <div class="container ">
     <div class="row titulo col-md-12">
         <h1>Cadastro</h1>
@@ -246,7 +253,7 @@
                     @enderror
                 </div>
                 <div class="col-md-8">
-                    <label for="rua" class="col-form-label">{{ __('Rua') }}</label>
+                    <label for="rua" class="col-form-label">Rua *</label>
                     <input value="{{old('rua')}}" id="rua" type="text" class="form-control @error('rua') is-invalid @enderror" name="rua" required >
                     @error('rua')
                     <span class="invalid-feedback" role="alert">
