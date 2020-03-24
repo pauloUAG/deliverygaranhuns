@@ -34,10 +34,6 @@
                             </div>
                         </button>
 
-<<<<<<< HEAD
-                        
-=======
->>>>>>> 8233fbf94b2f4dc256248e758f1f01f344d16b1b
                         <div class="modal fade" id="modal{{$estabelecimento->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">

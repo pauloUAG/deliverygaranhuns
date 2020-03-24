@@ -5,6 +5,7 @@
     ?>
     
     @for($s=0; $s <= $slides; $s++)
+    {{-- {{$s}} --}}
         <div class="mySlides" >
             <div class="col-md-12">
                 <div class="container">
