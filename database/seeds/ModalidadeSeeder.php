@@ -15,7 +15,7 @@ class ModalidadeSeeder extends Seeder
         \App\Modalidade::create(['nome' => 'Água', "icone" => "agua_logo.svg"]);
         \App\Modalidade::create(['nome' => 'Bar', "icone" => "bar_logo.svg"]);
         \App\Modalidade::create(['nome' => 'Borracharia', "icone" => "borracharia_logo.svg"]);
-        \App\Modalidade::create(['nome' => 'Bomboniere', "icone" => "comida2_logo.svg"]);
+        \App\Modalidade::create(['nome' => 'Bomboniere', "icone" => "bomboniere_logo.svg"]);
         \App\Modalidade::create(['nome' => 'Cabeleireiro', "icone" => "cabeleireiro_logo.svg"]);
         \App\Modalidade::create(['nome' => 'Cafeteria', "icone" => "cafe_logo.svg"]);
         \App\Modalidade::create(['nome' => 'Dedetização', "icone" => "dedetizacao_logo.svg"]);
