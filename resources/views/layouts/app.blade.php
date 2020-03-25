@@ -26,32 +26,35 @@
 <body>
     <div id="app">
         <!-- barra menu -->
-        <nav class="navbar styleMenuPrincipal">
+        <nav class="styleMenuPrincipal">
             <div class="container">
-                <div class="row justify-content-center" style=" width: 100%">
-                    <div class="col-sm-3">
-                        <a href="{{route('inicio')}}"class="styleMenuPrincipal_titulo" style="color: white;">Delivery Garanhuns</a>
+                <div class="row justify-content-center">
+                    <div class="col-sm-3" style="padding-bottom: 10px; text-align: center;">
+                        <a href="{{route('inicio')}}"class="styleMenuPrincipal_titulo" style="color: black; ">
+                            <img src="{{asset('icones/encontreecompre_logo.svg')}}" width="170px"></a>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-9">
                         <form method="post" action="{{route('estabelecimento.busca')}}">
                             @csrf
                         <div class="form-group row" style="margin-bottom: 0px;">
 
-                            <div class="col-sm-8">
-
-                                <input class="form-control styleMenuPrincipal_input" id="pesquisa" name="pesquisa" type="search"
-                                       placeholder="Digite o nome do estabelecimento ou categoria"  aria-label="Pesquisar">
-
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="submit" class="btn btn-danger styleMenuPrincipal_button" type="btn" class="btn " value="Pesquisar" ></input>
+                            <div class="col-sm-8" style="">
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control" placeholder="Digite o nome do estabelecimento ou categoria" aria-label="Recipient's username" aria-describedby="basic-addon2" style="height: 40px; border-color: #f0f0f0; border-radius: 6px;">
+                                  <div class="input-group-append" style="margin-left: 5px; ">
+                                    <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoPesquisar" style="border-radius: 6px;">
+                                        <img src="{{asset('icones/procurar.svg')}}" width="20px">
+                                        <a style="color: #1f56fc; font-family: arial; font-size: 15px;">Pesquisar</a>
+                                    </button>
+                                  </div>
+                                </div>
                             </div>
                             </form>
-
-
-                            <div class="col-sm-2">
+                            <div class="col-sm-4" >
                                 @guest
-                                    <a href="{{route('estabelecimento.create')}}"><img src="{{asset('icones/sign-in.png')}}" height="38px" ></a>
+                                <form method="get" action="{{route('estabelecimento.create')}}">
+                                    <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Cadastre-se</button>
+                                </form>
                                 @endguest
                                 @auth
                                     <form action="{{route('logout')}}" method="post">
@@ -61,9 +64,7 @@
                                         </button>
                                     </form>
                                 @endauth
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                 </div>
             </div>
         </div> --}}
-        <div class="row justify-content-center styleConteudo_aviso" align="center">
+        <!-- <div class="row justify-content-center styleConteudo_aviso" align="center">
 
             <div class="col-sm-6">
                 <img src="{{ asset('/icones/alerta_logo.svg') }}" class="svg" />
@@ -91,7 +92,7 @@
                     <strong>#FICAEMCASA</strong> - POR VOCÊ, POR MIM, POR ELES, PELO BEM DE TODOS NÓS.
                 </p>
             </div>
-        </div>
+        </div> -->
         <div class="container" style="padding-top: 2rem; margin-bottom: 20px;">
             @yield('content')
         </div>
