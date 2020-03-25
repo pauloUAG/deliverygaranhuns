@@ -272,7 +272,7 @@
             {{-- Rua | Número | Bairro --}}
             <div class="form-group row">
                 <div class="col-md-2">
-                    <label for="cep" class="col-form-label">CEP *</label>
+                    <label for="?" class="col-form-label">CEP *</label>
                     <input value="{{old('cep')}}" onblur="pesquisacep(this.value);" id="cep" type="text" required autocomplete="cep" name="cep" autofocus class="form-control field__input a-field__input" placeholder="CEP" size="10" maxlength="9" >
                     @error('cep')
                     <span class="invalid-feedback" role="alert">

@@ -17,9 +17,9 @@
                                 <div class="row">
                                     <div style="padding: 0.5em; margin-top: 0.5rem;" class="col-md-2">
                                         @if(isset($estabelecimento->imagemCapa) && $estabelecimento->imagemCapa != "" )
-                                            <img src="{{ asset('storage/imagens/' . $estabelecimento->imagemCapa) }}" alt="torre" width="65px;">
+                                            <img src="{{ asset('storage/imagens/' . $estabelecimento->imagemCapa) }}" width="65" height="65">
                                         @else
-                                            <img src="{{ asset('icones/sem_imagem.png') }}" alt="torre" width="65px;">
+                                            <img src="{{ asset('icones/sem_imagem.png') }}"  width="65">
                                         @endif
                                     </div>
                                     <div class="col-md-10">
@@ -48,9 +48,9 @@
                                             <div class="row">
                                                 <div class="col-md-3" style="height: 100px;">
                                                     @if(isset($estabelecimento->imagemCapa) && $estabelecimento->imagemCapa != "" )
-                                                        <img src="{{ asset('storage/imagens/' . $estabelecimento->imagemCapa) }}" alt="torre" width="120px;">
+                                                        <img src="{{ asset('storage/imagens/' . $estabelecimento->imagemCapa) }}"  width="120" height="120">
                                                     @else
-                                                        <img src="{{ asset('icones/sem_imagem.png') }}" alt="torre" width="65px;">
+                                                        <img src="{{ asset('icones/sem_imagem.png') }}" alt="torre" width="120px;">
                                                     @endif
                                                 </div>
                                                 <div class="col-md-9">

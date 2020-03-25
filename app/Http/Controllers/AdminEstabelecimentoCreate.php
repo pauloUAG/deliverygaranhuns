@@ -31,13 +31,15 @@ class AdminEstabelecimentoCreate extends Controller
 
 
             $ext = strtolower(request()->imagemCapa->getClientOriginalExtension());
-            if(!in_array($ext, array("jpg", "png")))
+            if(!in_array($ext, array("jpg", "png", "jpeg", "gif", "bmp")))
                 $validator->errors()->add("imagemcapa", "Formato de imagem inválido, utilize imagem jpg ou png");
             else {
                 $imagemCapa = 'c' . time() . '.' . $ext;
                 $thumbPath = storage_path('app/public/imagens/'.$imagemCapa);
+                Image::configure(array('driver' => 'imagick'));
                 $image = Image::make(request()->imagemCapa->path());
-                if($image->width() > $image->height()) {
+                $image->fit(120, 120)->save($thumbPath);
+                /*if($image->width() > $image->height()) {
                     $image->resize(120, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($thumbPath);
@@ -45,19 +47,20 @@ class AdminEstabelecimentoCreate extends Controller
                     $image->resize(null, 120, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($thumbPath);
-                }
+                }*/
             }
         }
 
         $imagemInterna = "";
         if($request->hasFile('imagemInterna') && $request->file('imagemInterna')->isValid()) {
             $ext = strtolower(request()->imagemInterna->getClientOriginalExtension());
-            if(!in_array($ext, array("jpg", "png")))
+            if(!in_array($ext, array("jpg", "png", "jpeg", "gif", "bmp")))
                 $validator->errors()->add("imageminterna", "Formato de imagem inválido, utilize imagem jpg ou png");
             else {
 
                 $imagemInterna = 'i' . time() . '.' . $ext;
                 $imagePath = storage_path('app/public/imagens/'.$imagemInterna);
+                Image::configure(array('driver' => 'imagick'));
                 Image::make(request()->imagemInterna->path())->resize(440, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->save($imagePath);
