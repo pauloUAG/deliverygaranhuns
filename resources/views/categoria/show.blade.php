@@ -67,8 +67,6 @@
                                                                 {{$estabelecimento->endereco->rua }}, {{$estabelecimento->endereco->numero }}, {{$estabelecimento->endereco->bairro }}
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
                                                                         @foreach($estabelecimento->telefones as $telefone)
                                                                             @if($telefone->zap)
                                                                                 <img src="{{asset('icones/Icon awesome-whatsapp.svg')}}" width="19px;">
@@ -76,8 +74,7 @@
                                                                                 @break
                                                                             @endif
                                                                         @endforeach
-                                                                    </div>
-                                                                </div>
+\
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <img src="{{asset('icones/Icon awesome-calendar-alt.svg')}}" width="18px;">
