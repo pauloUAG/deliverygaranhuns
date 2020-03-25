@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-md-12">
-        <form method="POST" enctype="multipart/form-data" action="{{ route('estabelecimento.save') }}">
+        <form id="formCadastro" method="POST" enctype="multipart/form-data" action="{{ route('estabelecimento.save') }}">
             @csrf
 
             <div class="row subtitulo">
@@ -107,19 +107,19 @@
                     <label class="col-form-label"><strong>Formas de Pagamento</strong></label>
                     <div >
                         <div class="form-check form-check-inline">
-                            <input @if(old('pagamentoDinheiro')) checked @endif  type="checkbox" class="form-check-input" id="pagamentoDinheiro" name="pagamentoDinheiro">
+                            <input id="dinheiro" @if(old('pagamentoDinheiro')) checked @endif  type="checkbox" class="form-check-input" id="pagamentoDinheiro" name="pagamentoDinheiro">
                             <label class="form-check-label" for="pagamentoDinheiro">Dinheiro</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input @if(old('pagamentoTransferencia')) checked @endif type="checkbox" class="form-check-input" id="pagamentoTransferencia" name="pagamentoTransferencia">
+                            <input id="transf" @if(old('pagamentoTransferencia')) checked @endif type="checkbox" class="form-check-input" id="pagamentoTransferencia" name="pagamentoTransferencia">
                             <label class="form-check-label" for="pagamentoTransferencia">Transferência</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input @if(old('pagamentoCredito'))  checked @endif type="checkbox" class="form-check-input" id="pagamentoCredito" name="pagamentoCredito">
+                            <input id="credito" @if(old('pagamentoCredito'))  checked @endif type="checkbox" class="form-check-input" id="pagamentoCredito" name="pagamentoCredito">
                             <label class="form-check-label" for="pagamentoCredito">Cartão de Crédito</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input @if(old('pagamentoDebito')) checked @endif type="checkbox" class="form-check-input" id="pagamentoDebito" name="pagamentoDebito">
+                            <input id="debito" @if(old('pagamentoDebito')) checked @endif type="checkbox" class="form-check-input" id="pagamentoDebito" name="pagamentoDebito">
                             <label class="form-check-label" for="pagamentoDebito">Cartão de Débito</label>
                         </div>
                     </div>
@@ -168,9 +168,23 @@
                                         <label class='col-form-label'>Telefone *</label>
                                         <input type='text' class='celular form-control' name='telefone[]' value="{{ old('telefone')[$i] }}" required autofocus>
                                     </div>
-                                    <div class='col-md-4'>
+                                    <!-- <div class='col-md-4'>
                                         <label class='col-form-label'>Operadora *</label>
                                         <input type='text' class='form-control' name='operadora[]' value="{{ old('operadora')[$i] }}" required autofocus>
+                                    </div> -->
+                                    <div class='col-md-4'>
+                                        <label class='col-form-label'>Operadora *</label>
+                                        <select class="form-control" name='operadora[]' required autofocus>
+                                            <option @if(old('operadora')[$i] == "Fixo") selected @endif value="Fixo">Fixo</option>
+                                            <option @if(old('operadora')[$i] == "Vivo") selected @endif value="Vivo">Vivo</option>
+                                            <option @if(old('operadora')[$i] == "Claro") selected @endif value="Claro">Claro</option>
+                                            <option @if(old('operadora')[$i] == "TIM") selected @endif value="TIM">TIM</option>
+                                            <option @if(old('operadora')[$i] == "Oi") selected @endif value="Oi">Oi</option>
+                                            <option @if(old('operadora')[$i] == "Nextel") selected @endif value="Nextel">Nextel</option>
+                                            <option @if(old('operadora')[$i] == "Algar") selected @endif value="Algar">Algar</option>
+                                            <option @if(old('operadora')[$i] == "Sercomtel") selected @endif value="Sercomtel">Sercomtel</option>
+                                            <option @if(old('operadora')[$i] == "MVNO’s (Porto Seguro, Datora e Terapar)") selected @endif value="MVNO’s (Porto Seguro, Datora e Terapar)">MVNO’s (Porto Seguro, Datora e Terapar)</option>
+                                        </select>
                                     </div>
                                     <div class='col-md-3' >
                                         <input type='hidden' name='zap[]' value='{{ old('zap')[$i]}}'><input type='checkbox' @if(old('zap')[$i]) checked @endif class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
@@ -189,9 +203,23 @@
                                     <label class='col-form-label'>Telefone *</label>
                                     <input type='text' class='celular form-control' name='telefone[]' required autofocus>
                                 </div>
-                                <div class='col-md-4'>
+                                <!-- <div class='col-md-4'>
                                     <label class='col-form-label'>Operadora *</label>
                                     <input type='text' class='form-control' name='operadora[]' required autofocus>
+                                </div> -->
+                                <div class='col-md-4'>
+                                    <label class='col-form-label'>Operadora *</label>
+                                    <select class="form-control" name="operadora[]" required autofocus>
+                                        <option value="Fixo">Fixo</option>
+                                        <option value="Vivo">Vivo</option>
+                                        <option value="Claro">Claro</option>
+                                        <option value="TIM">TIM</option>
+                                        <option value="Oi">Oi</option>
+                                        <option value="Nextel">Nextel</option>
+                                        <option value="Algar">Algar</option>
+                                        <option value="Sercomtel">Sercomtel</option>
+                                        <option value="MVNO’s (Porto Seguro, Datora e Terapar)">MVNO’s (Porto Seguro, Datora e Terapar)</option>
+                                    </select>
                                 </div>
                                 <div class='col-md-3' >
                                     <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; ' style="margin-left:5px">
@@ -291,7 +319,7 @@
                     <a class="btn btn-secondary botao-form" href="{{route('inicio')}}" style="width:100%">Cancelar Cadastro</a>
                 </div>
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary botao-form" style="width:100%">
+                    <button type="submit" onclick="event.preventDefault(); checkFormaDePagamento();" class="btn btn-primary botao-form" style="width:100%">
                         Concluir Cadastro
                     </button>
                 </div>
@@ -315,6 +343,7 @@
             $('.celular').mask(SPMaskBehavior, spOptions);
 
         });
+
         function limpa_formulário_cep() {
             //Limpa valores do formulário de cep.
             document.getElementById('rua').value=("");
@@ -382,18 +411,15 @@
             }
         };
 
-
         function adicionarTelefone() {
             linha = montarLinhaInput();
             $('#telefones').append(linha);
         }
 
-
         function deletar(obj){
             obj.closest('.row').remove();
             return false;
         }
-
 
         function montarLinhaInput(){
 
@@ -404,7 +430,17 @@
                 "                            </div>\n" +
                 "                            <div class='col-md-4'>\n" +
                 "                                <label class='col-form-label'>Operadora</label>\n" +
-                "                                <input type='text' class='form-control' name='operadora[]' required autofocus>\n" +
+                "                                <select class='form-control' name='operadora[]' required autofocus>\n" +
+                "                                  <option value='Fixo'>Fixo</option>"+
+                "                                  <option value='Vivo'>Vivo</option>"+
+                "                                  <option value='Claro'>Claro</option>"+
+                "                                  <option value='TIM'>TIM</option>"+
+                "                                  <option value='Oi'>Oi</option>"+
+                "                                  <option value='Nextel'>Nextel</option>"+
+                "                                  <option value='Algar'>Algar</option>"+
+                "                                  <option value='Sercomtel'>Sercomtel</option>"+
+                "                                  <option value='MVNO’s (Porto Seguro, Datora e Terapar)'>MVNO’s (Porto Seguro, Datora e Terapar)</option>"+
+                "                                </select>"+
                 "                            </div>\n" +
                 "                            <div class='col-md-3' >\n" +
                 "                                <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; ' style="+"margin-left:5px"+">\n" +
@@ -416,9 +452,29 @@
                 "                        </div>";
         }
 
+        //checar se existe forma antes de submit o form
+        function checkFormaDePagamento(){
+          var flag = false;
+          if(document.getElementById("dinheiro").checked == true){
+            flag = true;
+          }
+          if(document.getElementById("transf").checked == true){
+            flag = true;
+          }
+          if(document.getElementById("credito").checked == true){
+            flag = true;
+          }
+          if(document.getElementById("debito").checked == true){
+            flag = true;
+          }
+          if(flag){
+            document.getElementById("formCadastro").submit();
+          }
+          else{
+            alert("Necessário pelo menos uma forma de pagamento");
+          }
 
-
-
+        }
     </script>
 
 
