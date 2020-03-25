@@ -305,8 +305,8 @@
                     <input value="{{old('bairro')}}" id="bairro" type="text" class="form-control @error('bairro') is-invalid @enderror" name="bairro" >
                 </div>
                 <div class="col-md-4">
-                    <label for="bairro" class="col-form-label">Cidade</label>
-                    <input readonly type="text" class="form-control" name="cidade" id="cidade" value="{{ old('cidade') }}" />
+                    <label for="bairro" class="col-form-label">Cidade *</label>
+                    <input readonly type="text" class="form-control" name="cidade" id="cidade" required value="{{ old('cidade') }}" />
                 </div>
                 <div class="col-md-4">
                     <label for="bairro" class="col-form-label">UF</label>

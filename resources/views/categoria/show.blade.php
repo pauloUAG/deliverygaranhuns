@@ -72,7 +72,7 @@
                                                                         @foreach($estabelecimento->telefones as $telefone)
                                                                             @if($telefone->zap)
                                                                                 <img src="{{asset('icones/Icon awesome-whatsapp.svg')}}" width="19px;">
-                                                                                <label>(81)99172-3212</label>
+                                                                                <label>$telefone->numero</label>
                                                                                 @break
                                                                             @endif
                                                                         @endforeach
