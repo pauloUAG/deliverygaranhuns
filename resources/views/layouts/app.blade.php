@@ -40,7 +40,7 @@
 
                             <div class="col-sm-8" style="">
                                 <div class="input-group mb-3">
-                                  <input type="text" class="form-control" placeholder="Digite o nome do estabelecimento ou categoria" aria-label="Recipient's username" aria-describedby="basic-addon2" style="height: 40px; border-color: #f0f0f0; border-radius: 6px;">
+                                  <input type="text" minlength="3" required class="form-control" placeholder="Digite o nome do estabelecimento ou categoria" aria-label="Recipient's username" aria-describedby="basic-addon2" name="pesquisa" id="pesquisa" style="height: 40px; border-color: #f0f0f0; border-radius: 6px;">
                                   <div class="input-group-append" style="margin-left: 5px; ">
                                     <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoPesquisar" style="border-radius: 6px;">
                                         <img src="{{asset('icones/procurar.svg')}}" width="20px">

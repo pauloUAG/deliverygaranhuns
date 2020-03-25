@@ -26,6 +26,7 @@ class CategoriaShowController extends Controller
         //$estabelecimentos = \App\Estabelecimento::whereIn("iser_id", $usuarios)->get();
 
         $estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->orWhereIn("user_id", $usuarios)->where('status', 'Aprovado')->get();
+
         return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos,
                                                    'modalidades' => $modalidades]);
     }
