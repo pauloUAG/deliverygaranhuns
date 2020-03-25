@@ -96,9 +96,10 @@
             @yield('content')
         </div>
 
-        <div class="styleRodape">
+        {{-- footer --}}
+        <div class="styleRodape" >
             <div class="container" >
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-sm-2" align="center">
                         <div class="row justify-content-center">
                             <div class="col-sm-12 styleRodape_Imagem_ufape">
@@ -109,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2" align="center">
+                    <div class="col-sm-3" align="center">
                         <div class="row justify-content-center">
                             <div class="col-sm-12 styleRodape_Imagem_lmts">
                                 <a target="_blank" href="http://lmts.uag.ufrpe.br/"><img src="{{ asset('/icones/lmts_logo.png') }}" alt="Logo" width="125px;" /></a>
@@ -143,7 +144,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12 styleRodape_container">
-                                    <div class="row">
+                                    <div class="row justify-content-center">
 
                                         <div class="col">
                                             <img src="{{ asset('icones/facebook_logo.svg') }}" alt="Logo" width="20px;" />
@@ -171,9 +172,9 @@
                                         <div class="col-sm-6" style="padding-bottom: 1rem; padding-left: 10px;">
                                            <a href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/pe?codUf=18" target="_blank"> <img src="{{ asset('/icones/sebrae.jpg') }}" alt="Logo" width="90px;" /></a>
                                         </div>
-                                        <div class="col-sm-6">
+                                        {{-- <div class="col-sm-6">
                                             <a href="http://www.cndl.org.br/unidades/cdls/?estado=PE" target="_blank"><img src="{{ asset('/icones/cdl_logo.png')}}" alt="Logo" width="120px;" /></a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
