@@ -74,7 +74,7 @@
                                                                                 @break
                                                                             @endif
                                                                         @endforeach
-\
+
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <img src="{{asset('icones/Icon awesome-calendar-alt.svg')}}" width="18px;">
