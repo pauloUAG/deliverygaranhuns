@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $modalidades = \App\Modalidade::all();
+    $modalidades = \App\Modalidade::where('nome', '<>', 'null')->orderBy('nome', 'asc')->get();
     return view('welcome')->with(['modalidades' => $modalidades]);
 })->name("inicio");
 
@@ -26,7 +26,7 @@ Route::get("/estabelecimento/confirma", function () {
 
 
 Route::get("/categorias/list", "CategoriaListController@all")->name("categoria.list");
-Route::get("/categorias/show/{id}", "CategoriaShowController@show")->name("categoria.show");
+Route::get("/categorias/show/{pagina}/{id}", "CategoriaShowController@show")->name("categoria.show");
 Route::post("/estabelecimentos/busca", "CategoriaShowController@search")->name("estabelecimento.busca");
 
 // Pendentes e julgar pendentes

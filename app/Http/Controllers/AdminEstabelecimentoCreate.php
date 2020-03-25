@@ -11,7 +11,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 class AdminEstabelecimentoCreate extends Controller
 {
     public function prepare() {
-        $modalidades = \App\Modalidade::all();
+        $modalidades = \App\Modalidade::where('nome', '<>', 'null')->orderBy('nome', 'asc')->get();
         return view("estabelecimento.create")->with([
             "modalidades" => $modalidades,
         ]);
@@ -78,7 +78,7 @@ class AdminEstabelecimentoCreate extends Controller
         $user = \App\User::create($dadosUsuario);
 
         $dadosEstabelecimento = $request->only(["descricao", "site", "pagamentoDinheiro", "pagamentoTransferencia",
-            "pagamentoCredito", "pagamentoDebito", "instagram", "twitter", "facebook", "modalidade_id"]);
+            "pagamentoCredito", "pagamentoDebito", "instagram", "twitter", "facebook", "modalidade_id", "horarioFuncionamento"]);
 
         $dadosEstabelecimento['imagemCapa'] = $imagemCapa;
         $dadosEstabelecimento['imagemInterna'] = $imagemInterna;

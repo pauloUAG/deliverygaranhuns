@@ -2,16 +2,19 @@
     <?php
     $total = count($modalidades);
     $slides = intdiv($total, 5);
+    if($total % 5 == 0)
+        $slides = $slides - 1;
     ?>
     @for($s=0; $s <= $slides; $s++)
-        <div class="mySlides">
+    {{-- {{$s}} --}}
+    <div class="mySlides" id="{{$s}}">
             <div class="col-md-12">
                 <div class="container">
                     <div class="row justify-content-center">
                         @for($i=0; $i < 5 && ($s * 5 + $i) < $total;$i++)
                             <?php $modalidade = $modalidades[$s * 5 + $i]; ?>
                             <div class="styleCategoria_conteiner_button">
-                                <a href="{{ route('categoria.show', ['id' => $modalidade->id]) }}" class="btn styleCategoria_button " style="display: block; line-height: 110px; @if(isset($modalidadeS) && $modalidadeS == $modalidade->id ) border: 3px solid red; @endif">
+                            <a href="{{ route('categoria.show', ['pagina'=>$s,'id' => $modalidade->id]) }}" class="btn styleCategoria_button " style="display: block; line-height: 110px; @if(isset($modalidadeS) && $modalidadeS == $modalidade->id )border: 3px solid red; @endif">
                                         <span style="line-height: normal; display: inline-block; vertical-align: middle;">
                                         <div class="container" >
                                             <div class="row justify-content-center">
@@ -41,7 +44,9 @@
 
 
 <script>
-    var slideIndex = 1;
+    var pag = {{ $pagina ?? 0}}
+    // console.log(pag);
+    var slideIndex = pag+1;
     showDivs(slideIndex);
 
     function plusDivs(n) {

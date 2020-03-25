@@ -4,28 +4,28 @@
     @include('layouts.slideCategoria')
 
     <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 0rem;">
-        <label>Resultado</label>
+        <label>{{$estabelecimentos->count()}} Resultado(s)</label>
     </div>
+
     <div class="container">
         <div class="row" style="padding-bottom: 3rem;">
             <div class="col-md-12 " >
                 <div class="row" style="margin:1px;">
                    @foreach($estabelecimentos as $estabelecimento)
-
                         <button class="btn styleCategoriaButton" style="width: 318px;" data-toggle="modal" data-target="#modal{{$estabelecimento->id}}">
                             <div class="container">
                                 <div class="row">
-                                    <div style="padding: 0.5em; margin-top: 0.5rem;">
+                                    <div style="padding: 0.5em; margin-top: 0.5rem;" class="col-md-2">
                                         @if(isset($estabelecimento->imagemCapa) && $estabelecimento->imagemCapa != "" )
                                             <img src="{{ asset('storage/imagens/' . $estabelecimento->imagemCapa) }}" alt="torre" width="65px;">
                                         @else
                                             <img src="{{ asset('icones/sem_imagem.png') }}" alt="torre" width="65px;">
                                         @endif
                                     </div>
-                                    <div>
+                                    <div class="col-md-10">
                                         <div class="form-group styleCategoriaButton_container">
                                             <div class="styleCategoriaButton_titulo">{{ $estabelecimento->user->name }}</div>
-                                            <div class="styleCategoriaButton_subtitulo">{{ $estabelecimento->endereco->rua }}, {{ $estabelecimento->endereco->bairro }}</div>
+                                            <div class="styleCategoriaButton_subtitulo">{{ mb_strimwidth($estabelecimento->endereco->rua . ", " . $estabelecimento->endereco->bairro, 0, 24, '...' ) }}</div>
                                             <div class="styleCategoriaButton_subtitulo">{{ $estabelecimento->telefones[0]->numero }}</div>
                                         </div>
                                     </div>
@@ -84,11 +84,7 @@
                                                                 <label>Horário de funcionamento</label>
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <img src="{{asset('icones/Icon awesome-calendar-alt.svg')}}" width="18px;">
-                                                                <label>Horário de funcionamento</label>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                Seg a Sex das 8:00h às 18:00h / Sab das 08:00h às 14:00h
+                                                                {{$estabelecimento->horarioFuncionamento}}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -100,19 +96,10 @@
                                                 <div class="col-md-12">
                                                     <label style="color: #2f306f; font-weight: bold;">Descrição:</label>
                                                     <div style="margin-left: 0.5rem;">
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">{{$estabelecimento->descricao}}</textarea>
+                                                        <p>{{$estabelecimento->descricao}}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <hr style="background-color: #2f306f; "> -->
-                                            @if(null!==$estabelecimento->imagemInterna && $estabelecimento->imagemInterna!="")
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label style="color: #2f306f; font-weight: bold;">Produtos:</label>
-                                                    <img src="{{asset('storage/imagens/' . $estabelecimento->imagemInterna)}}" width="440px" >
-                                                </div>
-                                            </div>
-                                            @endif
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label style="color: #2f306f; font-weight: bold;">Contatos:</label>
@@ -127,24 +114,64 @@
                                                             </thead>
                                                             <tbody>
                                                             @foreach($estabelecimento->telefones as $telefone)
-                                                            <tr>
-                                                                @if($telefone->zap)
-                                                                    <th scope="row"><img src="{{asset('icones/Icon awesome-whatsapp.svg')}}" width="19px;"></th>
-                                                                @else
-                                                                    <th scope="row"></th>
-                                                                @endif
+                                                                <tr>
+                                                                    @if($telefone->zap)
+                                                                        <th scope="row"><img src="{{asset('icones/Icon awesome-whatsapp.svg')}}" width="19px;"></th>
+                                                                    @else
+                                                                        <th scope="row"></th>
+                                                                    @endif
 
-                                                                <td>{{ $telefone->numero }}</td>
-                                                                <td>{{ $telefone->operadora }}</td>
-                                                            </tr>
-                                                                @endforeach
+                                                                    <td>{{ $telefone->numero }}</td>
+                                                                    <td>{{ $telefone->operadora }}</td>
+                                                                </tr>
+                                                            @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <label style="color: #2f306f; padding-top: 1rem; font-weight: bold;">Redes Sociais:</label>
+                                            <!-- <hr style="background-color: #2f306f; "> -->
+                                            @if(null!==$estabelecimento->imagemInterna && $estabelecimento->imagemInterna!="")
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label style="color: #2f306f; font-weight: bold;">Produtos:</label>
+                                                    <img src="{{asset('storage/imagens/' . $estabelecimento->imagemInterna)}}" width="440px" >
+                                                </div>
+                                            </div>
+                                            @endif
+
                                             <div class="col-md-12">
+                                                <label style="color: #2f306f; padding-top: 1rem; font-weight: bold;">Formas de Pagamento:</label>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        @if($estabelecimento->pagamentoDinheiro)
+                                                            <img src="{{asset('icones/dinheiro_azul.png')}}" >
+                                                        @else
+                                                            <img src="{{asset('icones/dinheiro_cinza.png')}}" >
+                                                        @endif
+                                                        @if($estabelecimento->pagamentoTransferencia)
+                                                            <img src="{{asset('icones/transferencia_azul.png')}}" >
+                                                        @else
+                                                            <img src="{{asset('icones/transferencia_cinza.png')}}" >
+                                                        @endif
+                                                        @if($estabelecimento->pagamentoDebito)
+                                                            <img src="{{asset('icones/debito_azul.png')}}" >
+                                                        @else
+                                                            <img src="{{asset('icones/debito_cinza.png')}}" >
+                                                        @endif
+                                                        @if($estabelecimento->pagamentoCredito)
+                                                            <img src="{{asset('icones/credito_azul.png')}}" >
+                                                        @else
+                                                            <img src="{{asset('icones/credito_cinza.png')}}" >
+                                                        @endif
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-12">
+                                                <label style="color: #2f306f; padding-top: 1rem; font-weight: bold;">Redes Sociais:</label>
                                                 <div class="row">
                                                     @if(null!==$estabelecimento->instagram && $estabelecimento->instagram != "")
                                                     <div class="col-md-12">

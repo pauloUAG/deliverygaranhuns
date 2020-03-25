@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 
 class CategoriaShowController extends Controller
 {
-    public function show($id) {
+    public function show($pagina,$id) {
+        // dd($pagina);
         $estabelecimentos = \App\Estabelecimento::where([["modalidade_id", $id],['status', 'Aprovado']])->get();
-        $modalidades = \App\Modalidade::all();
+        $modalidades = \App\Modalidade::where('nome', '<>', 'null')->orderBy('nome', 'asc')->get();
         return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos,
                                                   'modalidades' => $modalidades,
-                                                  'modalidadeS' => $id  ]);
+                                                  'modalidadeS' => $id,
+                                                  'pagina'      => $pagina ]);
 
     }
 
     public function search(Request $request) {
-        $modalidades = \App\Modalidade::all();
+        $modalidades = \App\Modalidade::where('nome', '<>', 'null')->orderBy('nome', 'asc')->get();
         $term = $request->pesquisa;
         $categorias = \App\Modalidade::where('nome', 'ilike', '%' . $term. '%')->select('id')->get();
         $usuarios = \App\User::where([['name', 'ilike', '%' . $term. '%'],['tipo', 'ESTABELECIMENTO']])->select('id')->get();

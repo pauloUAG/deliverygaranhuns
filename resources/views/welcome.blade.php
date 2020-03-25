@@ -1,22 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12">
             <h3>Categorias</h3>
         </div>
-    </div>
-
-    @include('layouts.slideCategoria')
+    </div> -->
 
 
 
+
+<!--
     <div class="row" style="margin-top:20px">
         <div class="col-sm-12">
             <h3>Recomendações</h3>
         </div>
-    </div>
-    <div class="row justify-content-center">
+    </div> -->
+    <div class="row justify-content-center" style="margin-top: -15px;">
         <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 2rem;">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="background-color: gray;">
                 <div class="carousel-inner">
@@ -29,16 +29,21 @@
                     <div class="carousel-item">
                         <img src="{{asset('slides/aviso_3.png')}}" class="d-block w-100" alt="Terceiro Slide">
                     </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('slides/aviso_4.png')}}" class="d-block w-100" alt="Terceiro Slide">
+                    </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="left: -60px">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Anterior</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="right: -60px">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Próximo</span>
                 </a>
             </div>
         </div>
     </div>
+
+    @include('layouts.slideCategoria')
 @endsection

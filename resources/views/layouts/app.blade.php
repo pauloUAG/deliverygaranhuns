@@ -73,7 +73,7 @@
         <!--x barra menu x-->
         <!-- conteudo -->
         <!-- avisos -->
-        <div class="styleConteudo_aviso" align="center" >
+        <div class="styleConteudo_aviso" align="center" style="padding-top: 0px; height: 50px;">
             <div class="container" >
                 <div class="row justify-content-center">
                     <img src="{{ asset('/icones/alerta_logo.svg') }}" width="40px;" class="svg" />
@@ -94,24 +94,24 @@
                     <div class="col-sm-2" align="center">
                         <div class="row justify-content-center">
                             <div class="col-sm-12 styleRodape_Imagem_ufape">
-                                <img src="{{ asset('/icones/ufape_logo.png') }}" alt="Logo" width="40px;" />
+                                <a href="http://ww3.uag.ufrpe.br/" target="_blank"><img src="{{ asset('/icones/ufape_logo.png') }}" alt="Logo" width="40px;" /></a>
                             </div>
                             <div class="col-sm-12 styleRodape_Texto">
-                                <label>Universidade Federal do Agreste de Pernambuco</label>
+                                <a href="http://ww3.uag.ufrpe.br/" target="_blank"><label>Universidade Federal do Agreste de Pernambuco</label></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-2" align="center">
                         <div class="row justify-content-center">
                             <div class="col-sm-12 styleRodape_Imagem_lmts">
-                                <img src="{{ asset('/icones/lmts_logo.png') }}" alt="Logo" width="125px;" />
+                                <a target="_blank" href="http://lmts.uag.ufrpe.br/"><img src="{{ asset('/icones/lmts_logo.png') }}" alt="Logo" width="125px;" /></a>
                             </div>
                             <div class="col-sm-12 styleRodape_Texto">
-                                <label>Laboratório Multidisciplinar de Tecnologias Sociais</label>
+                                <a target="_blank" href="http://lmts.uag.ufrpe.br/"><label>Laboratório Multidisciplinar de Tecnologias Sociais</label></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2" align="center">
+                    <!--<div class="col-sm-2" align="center">
                         <div class="row justify-content-center" >
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Mapa do site</div>
@@ -121,16 +121,16 @@
                                 <div class="col-sm-12 styleRodape_Texto_Conteudo_MapaDoSite">Projetos</div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="col-sm-3" align="center">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center" style="height: 170px;">
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Contato</div>
                                 <div class="col-sm-12 styleRodape_container">
                                     <div class="row">
                                         <div class="col">
                                             <img src="{{ asset('icones/instagram_logo.svg') }}" alt="Logo" width="20px;" />
-                                            <a class="styleRodape_Texto_Contato" style="color: white;">@deliverygaranhuns</a>
+                                            <a href="https://www.instagram.com/lmts_ufape/" target="_blank" class="styleRodape_Texto_Contato" style="color: white;">@lmts_ufape</a>
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@
 
                                         <div class="col">
                                             <img src="{{ asset('icones/facebook_logo.svg') }}" alt="Logo" width="20px;" />
-                                            <a class="styleRodape_Texto_Contato" style="color: white;">@deliverygaranhuns</a>
+                                            <a href="https://www.facebook.com/LMTSUFAPE/" target="_blank" class="styleRodape_Texto_Contato" style="color: white;">@LMTSUFAPE</a>
                                         </div>
                                     </div>
                                 </div>
@@ -147,15 +147,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <img src="{{ asset('/icones/@_logo.svg') }}" alt="Logo" width="20px;" />
-                                            <a class="styleRodape_Texto_Contato" style="color: white;">deliverygaranhuns@ufrpe.br</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 styleRodape_container">
-                                    <div class="row">
-                                        <div class="col">
-                                            <img src="{{ asset('/icones/instagram_logo.svg') }}" alt="Logo" width="20px;" />
-                                            <a class="styleRodape_Texto_Contato" style="color: white;">@deliverygaranhuns</a>
+                                            <span>lmts@ufrpe.br</span>
                                         </div>
                                     </div>
                                 </div>
@@ -163,16 +155,16 @@
                         </div>
                     </div>
                     <div class="col-sm-2 " align="center">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center" style="height: 170px;">
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Apoio</div>
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-sm-6" style="padding-bottom: 1rem; padding-left: 10px;">
-                                            <img src="{{ asset('/icones/prefeitura_logo.png') }}" alt="Logo" width="90px;" />
+                                           <a href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/pe?codUf=18" target="_blank"> <img src="{{ asset('/icones/sebrae.jpg') }}" alt="Logo" width="90px;" /></a>
                                         </div>
                                         <div class="col-sm-6">
-                                            <img src="{{ asset('/icones/cdl_logo.png')}}" alt="Logo" width="120px;" />
+                                            <a href="http://www.cndl.org.br/unidades/cdls/?estado=PE" target="_blank"><img src="{{ asset('/icones/cdl_logo.png')}}" alt="Logo" width="120px;" /></a>
                                         </div>
                                     </div>
                                 </div>
