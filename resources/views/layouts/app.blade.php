@@ -73,7 +73,7 @@
         <!--x barra menu x-->
         <!-- conteudo -->
         <!-- avisos -->
-        <div class="styleConteudo_aviso" align="center" style="padding-top: 0px; height: 50px;">
+        {{-- <div class="styleConteudo_aviso" align="center" style="padding-top: 0px;">
             <div class="container" >
                 <div class="row justify-content-center">
                     <img src="{{ asset('/icones/alerta_logo.svg') }}" width="40px;" class="svg" />
@@ -82,8 +82,16 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+        <div class="row justify-content-center styleConteudo_aviso" align="center">
 
+            <div class="col-sm-6">
+                <img src="{{ asset('/icones/alerta_logo.svg') }}" class="svg" />
+                <p class="styleConteudo_mensagem">
+                    <strong>#FICAEMCASA</strong> - POR VOCÊ, POR MIM, POR ELES, PELO BEM DE TODOS NÓS.
+                </p>
+            </div>
+        </div>
         <div class="container" style="padding-top: 2rem; margin-bottom: 20px;">
             @yield('content')
         </div>
@@ -154,7 +162,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2 " align="center">
+                    <div class="col-sm-2 " align="center" id="apoio">
                         <div class="row justify-content-center" style="height: 170px;">
                             <div class="styleRodape_linha_left">
                                 <div class="col-sm-12 styleRodape_Texto_Titulo">Apoio</div>

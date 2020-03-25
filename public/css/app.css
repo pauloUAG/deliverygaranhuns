@@ -10931,23 +10931,6 @@ body {
 
 /*-- AVISO --*/
 
-.styleConteudo_aviso {
-  background-color: #f9e154;
-  width: 100%;
-  height: 65px;
-}
-
-.svg {
-  -webkit-filter: invert(0.5) sepia(1) saturate(5);
-          filter: invert(0.5) sepia(1) saturate(5);
-  /*fill:red;*/
-}
-
-.styleConteudo_mensagem {
-  padding-top: 1.2rem;
-  padding-left: 0.5rem;
-}
-
 /*--x AVISO x--*/
 
 /*-- CONTEUDO DO SITE --*/
