@@ -330,6 +330,35 @@
 @endsection
 @section('javascript')
     <script type="text/javascript" >
+        function mascara(o,f){
+            v_obj=o
+            v_fun=f
+            setTimeout("execmascara()",1)
+        }
+        function execmascara(){
+            v_obj.value=v_fun(v_obj.value)
+        }
+        function telefone(v){
+            l1 = v.length;
+            if(l1 > 15)
+                v = v.substring(0,15);
+
+            v=v.replace(/\D/g,"")
+            l2 = v.length;
+
+            if(l2 < 3 && l2 > 0)
+                v='(' + v;
+            else
+                v=v.replace(/^(\d\d)(\d)/g,"($1) $2");
+
+            if(l2==11)
+                v=v.replace(/(\d{5})(\d)/,"$1-$2");
+            else
+                v=v.replace(/(\d{4})(\d)/,"$1-$2");
+
+            return v;
+        }
+
         $(document).ready(function($){
             $('#cep').mask('00000-000');
             var SPMaskBehavior = function (val) {
@@ -426,7 +455,7 @@
             return "<div class='row align-items-end' >\n" +
                 "                            <div class='col-md-4'>\n" +
                 "                                <label class='col-form-label'>Telefone</label>\n" +
-                "                                <input type='text' class='celular form-control' name='telefone[]' required autofocus>\n" +
+                "                                <input onKeyDown='mascara(this, telefone)' type='text' class='celular form-control' name='telefone[]' required autofocus>\n" +
                 "                            </div>\n" +
                 "                            <div class='col-md-4'>\n" +
                 "                                <label class='col-form-label'>Operadora</label>\n" +
