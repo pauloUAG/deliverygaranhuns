@@ -3,12 +3,15 @@
 @section('content')
     <div class="container ">
         <div class="row titulo col-md-12">
-            <h1>Confirmação de Cadastro</h1>
+            <h1><strong>Confirmação de Cadastro</strong></h1>
         </div>
         <div class="row subtitulo">
             <div class="col-sm-12">
-                <p>Seus dados foram recebidos com sucesso e em breve aparecerão na nossa listagem.</p>
-                <p><a href="{{route("inicio")}}">Clique aqui</a> para voltar à página inicial</p>
+                <p>A solicitação de cadastro de seu estabelecimento ou atividade foi realizado com sucesso!
+
+Seus dados encontra-se em avaliação, e em poucos minutos, já constarão no site.
+    </p>
+                <p><a class="btn btn-primary botao-form" style="width: 10%;" href="{{route("inicio")}}">Clique aqui</a> para voltar à página inicial</p>
             </div>
         </div>
 

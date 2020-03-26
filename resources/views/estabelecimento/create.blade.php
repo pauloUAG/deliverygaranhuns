@@ -319,7 +319,7 @@
                     <a class="btn btn-secondary botao-form" href="{{route('inicio')}}" style="width:100%">Cancelar Cadastro</a>
                 </div>
                 <div class="col-md-6">
-                    <button type="submit" onclick="event.preventDefault(); checkFormaDePagamento();" class="btn btn-primary botao-form" style="width:100%">
+                    <button type="submit" class="btn btn-primary botao-form" style="width:100%">
                         Concluir Cadastro
                     </button>
                 </div>
