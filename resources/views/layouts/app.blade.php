@@ -33,7 +33,21 @@
                         <a href="{{route('inicio')}}"class="styleMenuPrincipal_titulo" style="color: black; ">
                             <img src="{{asset('icones/encontreecompre_logo.svg')}}" width="170px"></a>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-3">
+                        <form action="{{route('alterar.municipio')}}" method="POST">
+                            @csrf
+                            <select name="cidade"  onchange="this.form.submit()">
+                                @foreach($cidades as $cidade)
+                                    @if(Session::get('cidade') == $cidade->nome)
+                                        <option selected value="{{$cidade->nome}}">{{$cidade->nome}}</option>
+                                    @else
+                                        <option  value="{{$cidade->nome}}">{{$cidade->nome}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
                         <form method="post" action="{{route('estabelecimento.busca')}}">
                             @csrf
                         <div class="form-group row" style="margin-bottom: 0px;">

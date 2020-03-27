@@ -26,6 +26,7 @@
                                         <div class="form-group styleCategoriaButton_container">
                                             <div class="styleCategoriaButton_titulo">{{ $estabelecimento->user->name }}</div>
                                             <div class="styleCategoriaButton_subtitulo">{{ mb_strimwidth($estabelecimento->endereco->rua . ", " . $estabelecimento->endereco->bairro, 0, 24, '...' ) }}</div>
+                                            <div class="styleCategoriaButton_subtitulo">{{$estabelecimento->endereco->cidade}}-{{$estabelecimento->endereco->uf}}</div>
                                             <div class="styleCategoriaButton_subtitulo">{{ $estabelecimento->telefones[0]->numero }}</div>
                                         </div>
                                     </div>
@@ -64,7 +65,7 @@
                                                                 <output ><strong>Endereço</strong></output>
                                                             </div>
                                                             <div class="col-md-12">
-                                                                {{$estabelecimento->endereco->rua }}, {{$estabelecimento->endereco->numero }}, {{$estabelecimento->endereco->bairro }}
+                                                                {{$estabelecimento->endereco->rua }}, {{$estabelecimento->endereco->numero }}, {{$estabelecimento->endereco->bairro }},{{$estabelecimento->endereco->cidade}}-{{$estabelecimento->endereco->uf}}
                                                             </div>
                                                             <div class="col-md-12">
                                                                         @foreach($estabelecimento->telefones as $telefone)

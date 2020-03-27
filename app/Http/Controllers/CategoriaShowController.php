@@ -3,32 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CategoriaShowController extends Controller
 {
     public function show($pagina,$id) {
         // dd($pagina);
-        $estabelecimentos = \App\Estabelecimento::where([["modalidade_id", $id],['status', 'Aprovado']])->get();
-        $modalidades = \App\Modalidade::where('nome', '<>', 'null')->orderBy('nome', 'asc')->get();
+        $estabelecimentos = \App\Estabelecimento::
+            where([["modalidade_id", $id],['status', 'Aprovado']])->
+            join('enderecos', function ($join) {
+                $join->on('enderecos.id', '=', 'estabelecimentos.endereco_id')
+                    ->where('cidade', 'ilike',   Session::get('cidade') );
+            })
+            ->get();
+
         return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos,
-                                                  'modalidades' => $modalidades,
                                                   'modalidadeS' => $id,
                                                   'pagina'      => $pagina ]);
-
     }
 
     public function search(Request $request) {
-        $modalidades = \App\Modalidade::where('nome', '<>', 'null')->orderBy('nome', 'asc')->get();
         $term = $request->pesquisa;
-        $categorias = \App\Modalidade::where('nome', 'ilike', '%' . $term. '%')->select('id')->get();
-        $usuarios = \App\User::where([['name', 'ilike', '%' . $term. '%'],['tipo', 'ESTABELECIMENTO']])->select('id')->get();
+        $categorias = \App\Modalidade::whereRaw('unaccent(nome) ilike unaccent(\'%' . $term. '%\')')->select('id')->get();
+        $usuarios = \App\User::whereRaw('unaccent(name) ilike unaccent(\'%' . $term. '%\') AND tipo like \'ESTABELECIMENTO\'')->select('id')->get();
         //$estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->get();
         //$estabelecimentos = \App\Estabelecimento::whereIn("iser_id", $usuarios)->get();
 
-        $estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->orWhereIn("user_id", $usuarios)->where('status', 'Aprovado')->get();
-
-        return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos,
-                                                   'modalidades' => $modalidades]);
+        $c = $request->session()->get('cidade');
+       // DB::enableQueryLog();
+        $estabelecimentos = \App\Estabelecimento::
+            whereIn("modalidade_id", $categorias)
+            ->orWhereIn("user_id", $usuarios)
+            ->where('status', 'Aprovado')
+            ->join('enderecos', function ($join) {
+                $join->on('enderecos.id', '=', 'estabelecimentos.endereco_id')
+                ->where('cidade', 'ilike', Session::get('cidade'));
+            })
+            ->get();
+        //dd(DB::getQueryLog());
+        return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos]);
     }
 }
 

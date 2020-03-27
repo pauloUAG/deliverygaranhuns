@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="8c5d1a68-f827-424f-98e1-5bca576541e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/estabelecimento/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estabelecimento/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminEstabelecimentoCreate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminEstabelecimentoCreate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoriaListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoriaListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoriaShowController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoriaShowController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/categoria/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/categoria/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/estabelecimento/confirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estabelecimento/confirm.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,6 +176,7 @@
       <workItem from="1585052855569" duration="20802000" />
       <workItem from="1585140274006" duration="2242000" />
       <workItem from="1585169908809" duration="5670000" />
+      <workItem from="1585319468727" duration="19826000" />
     </task>
     <servers />
   </component>
@@ -176,10 +184,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="373" y="103" width="530" height="481" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1584824512851">
+    <state x="373" y="103" width="530" height="481" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1585323566783">
       <screen x="0" y="0" width="1280" height="687" />
     </state>
-    <state x="373" y="103" width="530" height="481" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.687@0.0.1280.687" timestamp="1584824512851" />
+    <state x="373" y="103" width="530" height="481" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.687@0.0.1280.687" timestamp="1585323566783" />
     <state x="301" y="150" key="run.anything.popup" timestamp="1585000901360">
       <screen x="0" y="0" width="1280" height="687" />
     </state>
