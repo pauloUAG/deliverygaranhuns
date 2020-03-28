@@ -34,6 +34,7 @@ class CategoriaShowController extends Controller
        // DB::enableQueryLog();
         $estabelecimentos = \App\Estabelecimento::
             whereIn("modalidade_id", $categorias)
+            ->where('status', 'Aprovado')
             ->orWhereIn("user_id", $usuarios)
             ->where('status', 'Aprovado')
             ->join('enderecos', function ($join) {

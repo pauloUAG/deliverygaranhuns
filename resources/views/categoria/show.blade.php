@@ -27,7 +27,7 @@
                                             <div class="styleCategoriaButton_titulo">{{ $estabelecimento->user->name }}</div>
                                             <div class="styleCategoriaButton_subtitulo">{{ mb_strimwidth($estabelecimento->endereco->rua . ", " . $estabelecimento->endereco->bairro, 0, 24, '...' ) }}</div>
                                             <div class="styleCategoriaButton_subtitulo">{{$estabelecimento->endereco->cidade}}-{{$estabelecimento->endereco->uf}}</div>
-                                            <div class="styleCategoriaButton_subtitulo">{{ $estabelecimento->telefones[0]->numero }}</div>
+                                            <div class="styleCategoriaButton_subtitulo">@if($estabelecimento->telefones->count() > 0){{ $estabelecimento->telefones[0]->numero }}@endif</div>
                                         </div>
                                     </div>
                                 </div>
