@@ -10,6 +10,8 @@ class CategoriaShowController extends Controller
 {
     public function show($pagina,$id) {
         // dd($pagina);
+        if(!Session::has('cidade'))
+            Session::put('cidade', 'Garanhuns');
         $estabelecimentos = \App\Estabelecimento::
             where([["modalidade_id", $id],['status', 'Aprovado']])->
             join('enderecos', function ($join) {
@@ -32,6 +34,8 @@ class CategoriaShowController extends Controller
 
         $c = $request->session()->get('cidade');
        // DB::enableQueryLog();
+        if(!Session::has('cidade'))
+            Session::put('cidade', 'Garanhuns');
         $estabelecimentos = \App\Estabelecimento::
             whereIn("modalidade_id", $categorias)
             ->where('status', 'Aprovado')
