@@ -29,28 +29,38 @@
         <nav class="styleMenuPrincipal">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-sm-3" style="padding-bottom: 10px; text-align: center;">
-                        <a href="{{route('inicio')}}"class="styleMenuPrincipal_titulo" style="color: black; ">
-                            <img src="{{asset('icones/encontreecompre_logo.svg')}}" width="170px"></a>
+                    <!-- logo/cidade -->
+                    <div class="col-sm-4" style="padding: 5px; margin-bottom: -20px;">
+                        <div class="row justify-content-center">
+                            <div class="col styleMenuPrincipal_container_logo">
+                                <a href="{{route('inicio')}}"class="styleMenuPrincipal_titulo" style="color: black; ">
+                                <img id="styleMenuPrincipal_imagem_logo" src="{{asset('icones/encontreecompre_logo.svg')}}" width="170px"></a>
+                            </div>
+                            <div class="col">
+                                <div class="styleMenuPrincipal_container_select">
+                                    <form action="{{route('alterar.municipio')}}" method="POST">
+                                        @csrf
+                                        <select class="custom-select" name="cidade"  onchange="this.form.submit()" id="styleMenuPrincipal_select">
+                                            @foreach($cidades as $cidade)
+                                                @if(Session::get('cidade') == $cidade->nome)
+                                                    <option selected value="{{$cidade->nome}}">{{$cidade->nome}}</option>
+                                                @else
+                                                    <option  value="{{$cidade->nome}}">{{$cidade->nome}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </form>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-3">
-                        <form action="{{route('alterar.municipio')}}" method="POST">
-                            @csrf
-                            <select name="cidade"  onchange="this.form.submit()">
-                                @foreach($cidades as $cidade)
-                                    @if(Session::get('cidade') == $cidade->nome)
-                                        <option selected value="{{$cidade->nome}}">{{$cidade->nome}}</option>
-                                    @else
-                                        <option  value="{{$cidade->nome}}">{{$cidade->nome}}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        </form>
-                    </div>
-                    <div class="col-sm-6">
+                    <!--x logo/cidade x-->
+
+                    <div class="col-sm-8">
+                    <!-- pesquisar -->
                         <form method="post" action="{{route('estabelecimento.busca')}}">
                             @csrf
-                        <div class="form-group row" style="margin-bottom: 0px;">
+                        <div class="form-group row" style="margin-top: 23px; margin-bottom: 1px;">
 
                             <div class="col-sm-8" style="">
                                 <div class="input-group mb-3">
@@ -58,12 +68,14 @@
                                   <div class="input-group-append" style="margin-left: 5px; ">
                                     <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoPesquisar" style="border-radius: 6px;">
                                         <img src="{{asset('icones/procurar.svg')}}" width="20px">
-                                        <a style="color: #1f56fc; font-family: arial; font-size: 15px;">Pesquisar</a>
+                                        <!-- <a style="color: #1f56fc; font-family: arial; font-size: 15px;">Pesquisar</a> -->
                                     </button>
                                   </div>
                                 </div>
                             </div>
                             </form>
+                    <!--x pesquisar x-->
+                    <!-- cadastre-se -->
                             <div class="col-sm-4" >
                                 @guest
                                 <form method="get" action="{{route('estabelecimento.create')}}">
@@ -79,8 +91,10 @@
                                     </form>
                                 @endauth
                             </div>
+                    <!--x cadastre-se x-->
                         </div>
                     </div>
+                    <!-- <div class="col-sm-2" style="background-color: green;">logo/cidade</div> -->
                 </div>
             </div>
         </nav>
