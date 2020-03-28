@@ -4,7 +4,7 @@
     @include('layouts.slideCategoria')
 
     <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 0rem;">
-        <label>{{$estabelecimentos->count()}} Resultado(s)</label>
+        <label>{{count($estabelecimentos)}} Resultado(s)</label>
     </div>
 
     <div class="container">

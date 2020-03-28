@@ -10,15 +10,22 @@ class CategoriaShowController extends Controller
 {
     public function show($pagina,$id) {
         // dd($pagina);
-        if(!Session::has('cidade'))
-            Session::put('cidade', 'Garanhuns');
-        $estabelecimentos = \App\Estabelecimento::
+        $cidade = (Session::has('cidade'))?Session::get('cidade'):'Garanhuns';
+        $lista = \App\Estabelecimento::where([["modalidade_id", $id],['status', 'Aprovado']])->get();
+        $estabelecimentos = array();
+        foreach($lista as $estabelecimento) {
+            if($estabelecimento->endereco->cidade == $cidade) {
+                $estabelecimentos[] = $estabelecimento;
+            }
+        }
+
+        /*$estabelecimentos = \App\Estabelecimento::
             where([["modalidade_id", $id],['status', 'Aprovado']])->
             join('enderecos', function ($join) {
                 $join->on('enderecos.id', '=', 'estabelecimentos.endereco_id')
                     ->where('cidade', 'ilike',   Session::get('cidade') );
             })
-            ->get();
+            ->get();*/
 
         return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos,
                                                   'modalidadeS' => $id,
@@ -32,11 +39,26 @@ class CategoriaShowController extends Controller
         //$estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->get();
         //$estabelecimentos = \App\Estabelecimento::whereIn("iser_id", $usuarios)->get();
 
-        $c = $request->session()->get('cidade');
+        $cidade = (Session::has('cidade'))?Session::get('cidade'):'Garanhuns';
+
+        $lista = \App\Estabelecimento::
+            whereIn("modalidade_id", $categorias)
+            ->where('status', 'Aprovado')
+            ->orWhereIn("user_id", $usuarios)
+            ->where('status', 'Aprovado')->get();
+
+        $estabelecimentos = array();
+        foreach($lista as $estabelecimento) {
+            if($estabelecimento->endereco->cidade == $cidade) {
+                $estabelecimentos[] = $estabelecimento;
+            }
+        }
+
+
        // DB::enableQueryLog();
-        if(!Session::has('cidade'))
-            Session::put('cidade', 'Garanhuns');
-        $estabelecimentos = \App\Estabelecimento::
+        //if(!Session::has('cidade'))
+        //    Session::put('cidade', 'Garanhuns');
+        /*$estabelecimentos = \App\Estabelecimento::
             whereIn("modalidade_id", $categorias)
             ->where('status', 'Aprovado')
             ->orWhereIn("user_id", $usuarios)
@@ -45,7 +67,7 @@ class CategoriaShowController extends Controller
                 $join->on('enderecos.id', '=', 'estabelecimentos.endereco_id')
                 ->where('cidade', 'ilike', Session::get('cidade'));
             })
-            ->get();
+            ->get();*/
         //dd(DB::getQueryLog());
         return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos]);
     }
