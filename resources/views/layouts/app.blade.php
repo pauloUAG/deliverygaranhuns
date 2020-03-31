@@ -76,20 +76,60 @@
                             </form>
                     <!--x pesquisar x-->
                     <!-- cadastre-se -->
-                            <div class="col-sm-4" >
-                                @guest
-                                <form method="get" action="{{route('estabelecimento.create')}}">
-                                    <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Cadastre-se</button>
-                                </form>
-                                @endguest
-                                @auth
-                                    <form action="{{route('logout')}}" method="post">
-                                        @csrf
-                                        <button class="btn btn-danger styleMenuPrincipal_button" type="submit">
-                                          Sair
-                                        </button>
-                                    </form>
-                                @endauth
+                            <div class="col-sm-4">
+                                <div class="row ">
+                                    <div class="col-8">
+                                        @guest
+                                        <form method="get" action="{{route('estabelecimento.create')}}">
+                                            <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Cadastre-se</button>
+                                        </form>
+                                        @endguest
+                                        @auth
+                                            <form action="{{route('logout')}}" method="post">
+                                                @csrf
+                                                <button class="btn btn-danger styleMenuPrincipal_button" type="submit">
+                                                  Sair
+                                                </button>
+                                            </form>
+                                        @endauth
+                                    </div>
+                                    <div class="col-4">
+                                        <a class="btn" id="styleMenuPrincipal_login_botao" onclick="logar()">Login</a>
+                                    </div>
+                                    <!-- Login -->
+                                    <div class="col card card-body styleMenuPrincipal_container_login" id="divLogar" style="display:none">
+                                        <div class="row justify-content-center" style="text-align: center;">
+                                            <div class="col-sm-12" style="text-align: right;">
+                                                <img src="{{asset('icones/fechar_logo.svg')}}" width="15px" onclick="logar()" style="cursor:pointer;"></a>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <img id="styleMenuPrincipal_imagem_logo" src="{{asset('icones/encontreecompre_logo.svg')}}" width="150px"></a>
+                                            </div>
+                                            <div class="col-sm-12" style="margin-top: 10px;">
+                                                <label>Login</label>
+                                            </div>
+                                            <div class="col-sm-12" style="text-align: left;">
+                                                <label>E-mail</label>
+                                                <input type="email" class="form-control styleMenuPrincipal_login_input" id="divLogar_email" name="email">
+                                            </div>
+                                            <div class="col-sm-12" style="text-align: left; margin-top: 5px;">
+                                                <label>Senha</label>
+                                                <input type="password" class="form-control styleMenuPrincipal_login_input" id="divLogar_senha" name="senha">
+                                            </div>
+                                            <div class="col-sm-12" style="margin-left: 40px; text-align: left; margin-top: 5px;">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Contínuar conectado</label>
+                                            </div>
+                                            <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                <button type="button" class="btn styleMenuPrincipal_button_logar">Login</button>
+                                            </div>
+                                            <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                <a href="" style="color: #1492e6; font-size: 12px;">Não consegue acessar sua conta?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--x Login x-->
+                                </div>
                             </div>
                     <!--x cadastre-se x-->
                         </div>
@@ -225,5 +265,19 @@
         @yield('javascript')
     @else
     @endif
+    <script type="text/javascript">
+        /*
+        * Função criada para abrir/fechar a div logar
+        */
+        function logar(){
+            if(document.getElementById("divLogar").style.display == 'none'){
+                document.getElementById("divLogar").style.display = 'block';
+                document.getElementById("divLogar_email").value = "";
+                document.getElementById("divLogar_senha").value = "";
+            }else{
+                document.getElementById("divLogar").style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
