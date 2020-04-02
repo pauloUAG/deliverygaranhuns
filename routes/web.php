@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name("inicio");
 
+Route::get('/home', "HomeController@index")->name("home");
+
 Route::get("/estabelecimento/cadastro", "AdminEstabelecimentoCreate@prepare")->name("estabelecimento.create");
 Route::post("/estabelecimento/cadastro", "AdminEstabelecimentoCreate@save")->name("estabelecimento.save");
 Route::get("/estabelecimento/confirma", function () {
@@ -34,11 +36,12 @@ Route::get('/admin/municipios/remove/{id}', "AdminMunicipioController@remove")->
 
 // Pendentes e julgar pendentes
 Route::middleware('can:autorizarCadastro,App\Estabelecimento')->group(function () {
-
-    Route::get("/home", "AdminEstabelecimentoCreate@pending")->name("estabelecimento.pending");
+    Route::get("/admin/home/", "AdminEstabelecimentoCreate@pending")->name("estabelecimento.pending");
     Route::get("/admin/estabelecimento/pending/details", "AdminEstabelecimentoCreate@pendingDetails")->name("estabelecimento.pending.details");
     Route::post("/admin/estabelecimento/pending/judge", "AdminEstabelecimentoCreate@pendingJudge")->name("estabelecimento.pending.judge");
 });
-
+//editar estabelecimento
+Route::get("/estabelecimento/editar", "EstabelecimentoController@edit")->name("estabelecimento.edit");
+Route::post("/estabelecimento/editar", "EstabelecimentoController@store")->name("estabelecimento.edit");
 
 Auth::routes();

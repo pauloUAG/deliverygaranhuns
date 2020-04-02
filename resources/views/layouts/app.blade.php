@@ -50,7 +50,7 @@
                                             @endforeach
                                         </select>
                                     </form>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                             @csrf
                         <div class="form-group row" style="margin-top: 23px; margin-bottom: 1px;">
 
-                            <div class="col-sm-8" style="">
+                            <div class="col-sm-7" style="">
                                 <div class="input-group mb-3">
                                   <input type="text" minlength="3" required class="form-control" placeholder="Digite o nome do estabelecimento ou categoria" aria-label="Recipient's username" aria-describedby="basic-addon2" name="pesquisa" id="pesquisa" style="height: 40px; border-color: #f0f0f0; border-radius: 6px;">
                                   <div class="input-group-append" style="margin-left: 5px; ">
@@ -76,10 +76,31 @@
                             </form>
                     <!--x pesquisar x-->
                     <!-- cadastre-se -->
-                            <div class="col-sm-4" >
+                            <div class="col-sm-3" >
                                 @guest
                                 <form method="get" action="{{route('estabelecimento.create')}}">
                                     <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Cadastre-se</button>
+                                </form>
+                                @endguest
+                                @auth
+                                  @can('autorizarCadastro',App\Estabelecimento::class)
+                                    <form method="get" action="{{route('estabelecimento.pending')}}">
+                                        <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Pendentes</button>
+                                    </form>
+                                  @endcan
+                                  @cannot('autorizarCadastro',App\Estabelecimento::class)
+                                    <form method="get" action="{{route('estabelecimento.edit')}}">
+                                        <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Perfil</button>
+                                    </form>
+                                  @endcan
+                                @endauth
+                            </div>
+                    <!--x cadastre-se x-->
+                    <!-- entrar -->
+                            <div class="col-sm-2" >
+                                @guest
+                                <form method="get" action="{{route('login')}}">
+                                    <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Entrar</button>
                                 </form>
                                 @endguest
                                 @auth
@@ -91,7 +112,7 @@
                                     </form>
                                 @endauth
                             </div>
-                    <!--x cadastre-se x-->
+                    <!--x entrar x-->
                         </div>
                     </div>
                     <!-- <div class="col-sm-2" style="background-color: green;">logo/cidade</div> -->
