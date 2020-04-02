@@ -50,7 +50,7 @@
                                             @endforeach
                                         </select>
                                     </form>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                             @csrf
                         <div class="form-group row" style="margin-top: 23px; margin-bottom: 1px;">
 
-                            <div class="col-sm-8" style="">
+                            <div class="col-sm-7" style="">
                                 <div class="input-group mb-3">
                                   <input type="text" minlength="3" required class="form-control" placeholder="Digite o nome do estabelecimento ou categoria" aria-label="Recipient's username" aria-describedby="basic-addon2" name="pesquisa" id="pesquisa" style="height: 40px; border-color: #f0f0f0; border-radius: 6px;">
                                   <div class="input-group-append" style="margin-left: 5px; ">
@@ -85,53 +85,70 @@
                                         </form>
                                         @endguest
                                         @auth
-                                            <form action="{{route('logout')}}" method="post">
-                                                @csrf
-                                                <button class="btn btn-danger styleMenuPrincipal_button" type="submit">
-                                                  Sair
-                                                </button>
+                                          @can('autorizarCadastro',App\Estabelecimento::class)
+                                            <form method="get" action="{{route('estabelecimento.pending')}}">
+                                                <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Pendentes</button>
                                             </form>
-                                        @endauth
+                                          @endcan
+                                          @cannot('autorizarCadastro',App\Estabelecimento::class)
+                                            <form method="get" action="{{route('estabelecimento.edit')}}">
+                                                <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Perfil</button>
+                                            </form>
+                                          @endcan
+                                        @endauth                                        
                                     </div>
-                                    <div class="col-4">
-                                        <a class="btn" id="styleMenuPrincipal_login_botao" onclick="logar()">Login</a>
-                                    </div>
-                                    <!-- Login -->
-                                    <div class="col card card-body styleMenuPrincipal_container_login" id="divLogar" style="display:none">
-                                        <div class="row justify-content-center" style="text-align: center;">
-                                            <div class="col-sm-12" style="text-align: right;">
-                                                <img src="{{asset('icones/fechar_logo.svg')}}" width="15px" onclick="logar()" style="cursor:pointer;"></a>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <img id="styleMenuPrincipal_imagem_logo" src="{{asset('icones/encontreecompre_logo.svg')}}" width="150px"></a>
-                                            </div>
-                                            <div class="col-sm-12" style="margin-top: 10px;">
-                                                <label>Login</label>
-                                            </div>
-                                            <div class="col-sm-12" style="text-align: left;">
-                                                <label>E-mail</label>
-                                                <input type="email" class="form-control styleMenuPrincipal_login_input" id="divLogar_email" name="email">
-                                            </div>
-                                            <div class="col-sm-12" style="text-align: left; margin-top: 5px;">
-                                                <label>Senha</label>
-                                                <input type="password" class="form-control styleMenuPrincipal_login_input" id="divLogar_senha" name="senha">
-                                            </div>
-                                            <div class="col-sm-12" style="margin-left: 40px; text-align: left; margin-top: 5px;">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label" for="exampleCheck1">Contínuar conectado</label>
-                                            </div>
-                                            <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
-                                                <button type="button" class="btn styleMenuPrincipal_button_logar">Login</button>
-                                            </div>
-                                            <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
-                                                <a href="" style="color: #1492e6; font-size: 12px;">Não consegue acessar sua conta?</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @guest
+                                      <form action="{{route('login')}}" method="post">
+                                        @csrf
+                                      <div class="col-4">
+                                          <a class="btn" id="styleMenuPrincipal_login_botao" onclick="logar()">Login</a>
+                                      </div>
+                                      <!-- Login -->
+                                      <div class="col card card-body styleMenuPrincipal_container_login" id="divLogar" style="display:none">
+                                          <div class="row justify-content-center" style="text-align: center;">
+                                              <div class="col-sm-12" style="text-align: right;">
+                                                  <img src="{{asset('icones/fechar_logo.svg')}}" width="15px" onclick="logar()" style="cursor:pointer;"></a>
+                                              </div>
+                                              <div class="col-sm-12">
+                                                  <img id="styleMenuPrincipal_imagem_logo" src="{{asset('icones/encontreecompre_logo.svg')}}" width="150px"></a>
+                                              </div>
+                                              <div class="col-sm-12" style="margin-top: 10px;">
+                                                  <label>Entrar</label>
+                                              </div>
+                                              <div class="col-sm-12" style="text-align: left;">
+                                                  <label>E-mail</label>
+                                                  <input type="email" class="form-control styleMenuPrincipal_login_input" id="divLogar_email" name="email">
+                                              </div>
+                                              <div class="col-sm-12" style="text-align: left; margin-top: 5px;">
+                                                  <label>Senha</label>
+                                                  <input type="password" class="form-control styleMenuPrincipal_login_input" id="divLogar_senha" name="senha">
+                                              </div>
+                                              <div class="col-sm-12" style="margin-left: 40px; text-align: left; margin-top: 5px;">
+                                                  <input type="checkbox" name="remember" class="form-check-input" id="exampleCheck1">
+                                                  <label class="form-check-label" for="exampleCheck1">Contínuar conectado</label>
+                                              </div>
+                                              <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                  <button type="submit" class="btn styleMenuPrincipal_button_logar">Entrar</button>
+                                              </div>
+                                              <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
+                                                  <a href="{{ route('password.request') }}" style="color: #1492e6; font-size: 12px;">Não consegue acessar sua conta?</a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </form>
+                                    @endguest
+                                    @auth
+                                      <form action="{{route('logout')}}" method="post">
+                                        @csrf
+                                        <button class="btn btn-danger styleMenuPrincipal_button" type="submit">
+                                          Sair
+                                        </button>
+                                      </form>
+                                    @endauth
                                     <!--x Login x-->
                                 </div>
                             </div>
-                    <!--x cadastre-se x-->
+                    <!--x entrar x-->
                         </div>
                     </div>
                     <!-- <div class="col-sm-2" style="background-color: green;">logo/cidade</div> -->
