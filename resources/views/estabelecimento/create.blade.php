@@ -81,7 +81,7 @@
             <div class="form-group row">
                 <div class="col-md-12">
                     <label for="descricao" class="col-form-label">Descrição *</label>
-                    <textarea id="descricao" class="form-control @error('descricao') is-invalid @enderror" name="descricao" required autocomplete="name" autofocus>{{ old('descricao') }}</textarea>
+                    <textarea data-ls-module="charCounter" maxlength="255" id="descricao" class="form-control @error('descricao') is-invalid @enderror" name="descricao" required autocomplete="name" autofocus>{{ old('descricao') }}</textarea>
 
                     @error('descricao')
                     <span class="invalid-feedback" role="alert">
