@@ -93,6 +93,49 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
   padding-top: 10px;
 }
 
+/*-- LOGIN --*/
+.styleMenuPrincipal_container_login{
+  background-color: white;
+  margin-top: 42px; 
+  height: 380px; 
+  position:absolute; 
+  z-index: 2; 
+  border-color: white;
+    -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+}
+#styleMenuPrincipal_login_botao{
+  background-color: white; 
+  height: 40px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: arial;
+  font-weight: bold;
+  border-color: #1492e6;
+  color: #1492e6;
+}
+#styleMenuPrincipal_login_botao:hover{
+  background-color: #1492e6;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: arial;
+  font-weight: bold;
+  border-color: #1492e6;
+  color: white;
+}
+.styleMenuPrincipal_login_input{
+  border-color: #f0f0f0;
+}
+.styleMenuPrincipal_button_logar{
+  width: 100%; 
+  background-color: #1492e6; 
+  color: white;
+}
+
+/*--x LOGIN x--*/
+
 /*--x MENU x--*/
 
 /*-- CONTEUDO --*/
