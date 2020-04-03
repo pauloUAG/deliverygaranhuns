@@ -159,11 +159,21 @@
                           <div class='row align-items-end' >
                               <div class='col-md-4'>
                                   <label class='col-form-label'>Telefone</label>
-                                  <input   type='text' class='form-control' name='telefone[]' value="{{ $key->numero }}" >
+                                  <input onKeyDown='mascara(this, telefone)'   type='text' class='form-control' name='telefone[]' value="{{ $key->numero }}" >
                               </div>
                               <div class='col-md-4'>
                                   <label class='col-form-label'>Operadora</label>
-                                  <input   type='text' class='form-control' name='operadora[]' value="{{ $key->operadora }}" required autofocus>
+                                  <select class='form-control' name='operadora[]' required autofocus>
+                                    <option @if($key->operadora == 'Fixo') selected @endif value='Fixo'>Fixo</option>
+                                    <option @if($key->operadora == 'Vivo') selected @endif value='Vivo'>Vivo</option>
+                                    <option @if($key->operadora == 'Claro') selected @endif value='Claro'>Claro</option>
+                                    <option @if($key->operadora == 'TIM') selected @endif value='TIM'>TIM</option>
+                                    <option @if($key->operadora == 'Oi') selected @endif value='Oi'>Oi</option>
+                                    <option @if($key->operadora == 'Nextel') selected @endif value='Nextel'>Nextel</option>
+                                    <option @if($key->operadora == 'Algar') selected @endif value='Algar'>Algar</option>
+                                    <option @if($key->operadora == 'Sercomtel') selected @endif value='Sercomtel'>Sercomtel</option>
+                                    <option @if($key->operadora == 'MVNO’s (Porto Seguro, Datora e Terapar)') selected @endif value='MVNO’s (Porto Seguro, Datora e Terapar)'>MVNO’s (Porto Seguro, Datora e Terapar)</option>
+                                  </select>
                               </div>
                               <div class='col-md-3' >
                                   <input   type='checkbox' @if($key->zap) checked @endif class='form-check-input' name='zap[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
@@ -188,7 +198,7 @@
             <div class="form-group row">
                 <div class="col-md-2">
                     <label for="cep" class="col-form-label">CEP *</label>
-                    <input name="cep"  value="{{$estabelecimento->endereco->cep}}" id="cep" type="text" class="form-control field__input a-field__input" placeholder="CEP" size="10" maxlength="9" >
+                    <input name="cep" onblur="pesquisacep(this.value);" value="{{$estabelecimento->endereco->cep}}" id="cep" type="text" class="form-control field__input a-field__input" placeholder="CEP" size="10" maxlength="9" >
                     @error('cep')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -244,180 +254,180 @@
 </div>
 @endsection
 @section('javascript')
-    <script type="text/javascript" >
-        function mascara(o,f){
-            v_obj=o
-            v_fun=f
-            setTimeout("execmascara()",1)
-        }
-        function execmascara(){
-            v_obj.value=v_fun(v_obj.value)
-        }
-        function telefone(v){
-            l1 = v.length;
-            if(l1 > 15)
-                v = v.substring(0,15);
+  <script type="text/javascript" >
+      function mascara(o,f){
+          v_obj=o
+          v_fun=f
+          setTimeout("execmascara()",1)
+      }
+      function execmascara(){
+          v_obj.value=v_fun(v_obj.value)
+      }
+      function telefone(v){
+          l1 = v.length;
+          if(l1 > 15)
+              v = v.substring(0,15);
 
-            v=v.replace(/\D/g,"")
-            l2 = v.length;
+          v=v.replace(/\D/g,"")
+          l2 = v.length;
 
-            if(l2 < 3 && l2 > 0)
-                v='(' + v;
-            else
-                v=v.replace(/^(\d\d)(\d)/g,"($1) $2");
+          if(l2 < 3 && l2 > 0)
+              v='(' + v;
+          else
+              v=v.replace(/^(\d\d)(\d)/g,"($1) $2");
 
-            if(l2==11)
-                v=v.replace(/(\d{5})(\d)/,"$1-$2");
-            else
-                v=v.replace(/(\d{4})(\d)/,"$1-$2");
+          if(l2==11)
+              v=v.replace(/(\d{5})(\d)/,"$1-$2");
+          else
+              v=v.replace(/(\d{4})(\d)/,"$1-$2");
 
-            return v;
-        }
+          return v;
+      }
 
-        $(document).ready(function($){
-            $('#cep').mask('00000-000');
-            var SPMaskBehavior = function (val) {
-                    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-                },
-                spOptions = {
-                    onKeyPress: function(val, e, field, options) {
-                        field.mask(SPMaskBehavior.apply({}, arguments), options);
-                    }
-                };
-            $('.celular').mask(SPMaskBehavior, spOptions);
+      $(document).ready(function($){
+          $('#cep').mask('00000-000');
+          var SPMaskBehavior = function (val) {
+                  return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+              },
+              spOptions = {
+                  onKeyPress: function(val, e, field, options) {
+                      field.mask(SPMaskBehavior.apply({}, arguments), options);
+                  }
+              };
+          $('.celular').mask(SPMaskBehavior, spOptions);
 
-        });
+      });
 
-        function limpa_formulário_cep() {
-            //Limpa valores do formulário de cep.
-            document.getElementById('rua').value=("");
-            document.getElementById('bairro').value=("");
-            document.getElementById('cidade').value=("");
-            document.getElementById('uf').value=("");
-        }
+      function limpa_formulário_cep() {
+          //Limpa valores do formulário de cep.
+          document.getElementById('rua').value=("");
+          document.getElementById('bairro').value=("");
+          document.getElementById('cidade').value=("");
+          document.getElementById('uf').value=("");
+      }
 
-        function meu_callback(conteudo) {
-            if (!("erro" in conteudo)) {
-                //Atualiza os campos com os valores.
-                document.getElementById('rua').value=(conteudo.logradouro);
-                document.getElementById('bairro').value=(conteudo.bairro);
-                document.getElementById('cidade').value=(conteudo.localidade);
-                document.getElementById('uf').value=(conteudo.uf);
+      function meu_callback(conteudo) {
+          if (!("erro" in conteudo)) {
+              //Atualiza os campos com os valores.
+              document.getElementById('rua').value=(conteudo.logradouro);
+              document.getElementById('bairro').value=(conteudo.bairro);
+              document.getElementById('cidade').value=(conteudo.localidade);
+              document.getElementById('uf').value=(conteudo.uf);
 
-            } //end if.
-            else {
-                //CEP não Encontrado.
-                limpa_formulário_cep();
-                alert("CEP não encontrado.");
-            }
-        }
-
-        function pesquisacep(valor) {
-
-            //Nova variável "cep" somente com dígitos.
-            var cep = valor.replace(/\D/g, '');
-
-            //Verifica se campo cep possui valor informado.
-            if (cep != "") {
-
-                //Expressão regular para validar o CEP.
-                var validacep = /^[0-9]{8}$/;
-
-                //Valida o formato do CEP.
-                if(validacep.test(cep)) {
-
-                    //Preenche os campos com "..." enquanto consulta webservice.
-                    document.getElementById('rua').value="...";
-                    document.getElementById('bairro').value="...";
-                    document.getElementById('cidade').value="...";
-                    document.getElementById('uf').value="...";
-
-
-                    //Cria um elemento javascript.
-                    var script = document.createElement('script');
-
-                    //Sincroniza com o callback.
-                    script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-
-                    //Insere script no documento e carrega o conteúdo.
-                    document.body.appendChild(script);
-
-                } //end if.
-                else {
-                    //cep é inválido.
-                    limpa_formulário_cep();
-                    alert("Formato de CEP inválido.");
-                }
-            } //end if.
-            else {
-                //cep sem valor, limpa formulário.
-                limpa_formulário_cep();
-            }
-        };
-
-        function adicionarTelefone() {
-            linha = montarLinhaInput();
-            $('#telefones').append(linha);
-        }
-
-        function deletar(obj){
-            obj.closest('.row').remove();
-            return false;
-        }
-
-        function montarLinhaInput(){
-
-            return "<div class='row align-items-end' >\n" +
-                "                            <div class='col-md-4'>\n" +
-                "                                <label class='col-form-label'>Telefone</label>\n" +
-                "                                <input onKeyDown='mascara(this, telefone)' type='text' class='celular form-control' name='telefone[]' required autofocus>\n" +
-                "                            </div>\n" +
-                "                            <div class='col-md-4'>\n" +
-                "                                <label class='col-form-label'>Operadora</label>\n" +
-                "                                <select class='form-control' name='operadora[]' required autofocus>\n" +
-                "                                  <option value='Fixo'>Fixo</option>"+
-                "                                  <option value='Vivo'>Vivo</option>"+
-                "                                  <option value='Claro'>Claro</option>"+
-                "                                  <option value='TIM'>TIM</option>"+
-                "                                  <option value='Oi'>Oi</option>"+
-                "                                  <option value='Nextel'>Nextel</option>"+
-                "                                  <option value='Algar'>Algar</option>"+
-                "                                  <option value='Sercomtel'>Sercomtel</option>"+
-                "                                  <option value='MVNO’s (Porto Seguro, Datora e Terapar)'>MVNO’s (Porto Seguro, Datora e Terapar)</option>"+
-                "                                </select>"+
-                "                            </div>\n" +
-                "                            <div class='col-md-3' >\n" +
-                "                                <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; ' style="+"margin-left:5px"+">\n" +
-                "                                <label class='form-check-label' style="+"margin-left:25px"+">Whatsapp</label>\n" +
-                "                            </div>\n" +
-                "                            <div class='col-md-1'>\n" +
-                "                                <input type='button' class='btn btn-danger' value='X' onclick='deletar(this)' />\n" +
-                "                            </div>\n" +
-                "                        </div>";
-        }
-
-        //checar se existe forma antes de submit o form
-        function checkFormaDePagamento(){
-          var flag = false;
-          if(document.getElementById("dinheiro").checked == true){
-            flag = true;
+          } //end if.
+          else {
+              //CEP não Encontrado.
+              limpa_formulário_cep();
+              alert("CEP não encontrado.");
           }
-          if(document.getElementById("transf").checked == true){
-            flag = true;
-          }
-          if(document.getElementById("credito").checked == true){
-            flag = true;
-          }
-          if(document.getElementById("debito").checked == true){
-            flag = true;
-          }
-          if(flag){
-            document.getElementById("formCadastro").submit();
-          }
-          else{
-            alert("Necessário pelo menos uma forma de pagamento");
-          }
+      }
 
+      function pesquisacep(valor) {
+
+          //Nova variável "cep" somente com dígitos.
+          var cep = valor.replace(/\D/g, '');
+
+          //Verifica se campo cep possui valor informado.
+          if (cep != "") {
+
+              //Expressão regular para validar o CEP.
+              var validacep = /^[0-9]{8}$/;
+
+              //Valida o formato do CEP.
+              if(validacep.test(cep)) {
+
+                  //Preenche os campos com "..." enquanto consulta webservice.
+                  document.getElementById('rua').value="...";
+                  document.getElementById('bairro').value="...";
+                  document.getElementById('cidade').value="...";
+                  document.getElementById('uf').value="...";
+
+
+                  //Cria um elemento javascript.
+                  var script = document.createElement('script');
+
+                  //Sincroniza com o callback.
+                  script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                  //Insere script no documento e carrega o conteúdo.
+                  document.body.appendChild(script);
+
+              } //end if.
+              else {
+                  //cep é inválido.
+                  limpa_formulário_cep();
+                  alert("Formato de CEP inválido.");
+              }
+          } //end if.
+          else {
+              //cep sem valor, limpa formulário.
+              limpa_formulário_cep();
+          }
+      };
+
+      function adicionarTelefone() {
+          linha = montarLinhaInput();
+          $('#telefones').append(linha);
+      }
+
+      function deletar(obj){
+          obj.closest('.row').remove();
+          return false;
+      }
+
+      function montarLinhaInput(){
+
+          return "<div class='row align-items-end' >\n" +
+              "                            <div class='col-md-4'>\n" +
+              "                                <label class='col-form-label'>Telefone</label>\n" +
+              "                                <input onKeyDown='mascara(this, telefone)' type='text' class='celular form-control' name='telefone[]' required autofocus>\n" +
+              "                            </div>\n" +
+              "                            <div class='col-md-4'>\n" +
+              "                                <label class='col-form-label'>Operadora</label>\n" +
+              "                                <select class='form-control' name='operadora[]' required autofocus>\n" +
+              "                                  <option value='Fixo'>Fixo</option>"+
+              "                                  <option value='Vivo'>Vivo</option>"+
+              "                                  <option value='Claro'>Claro</option>"+
+              "                                  <option value='TIM'>TIM</option>"+
+              "                                  <option value='Oi'>Oi</option>"+
+              "                                  <option value='Nextel'>Nextel</option>"+
+              "                                  <option value='Algar'>Algar</option>"+
+              "                                  <option value='Sercomtel'>Sercomtel</option>"+
+              "                                  <option value='MVNO’s (Porto Seguro, Datora e Terapar)'>MVNO’s (Porto Seguro, Datora e Terapar)</option>"+
+              "                                </select>"+
+              "                            </div>\n" +
+              "                            <div class='col-md-3' >\n" +
+              "                                <input type='hidden' name='zap[]'  value='0'><input type='checkbox' class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; ' style="+"margin-left:5px"+">\n" +
+              "                                <label class='form-check-label' style="+"margin-left:25px"+">Whatsapp</label>\n" +
+              "                            </div>\n" +
+              "                            <div class='col-md-1'>\n" +
+              "                                <input type='button' class='btn btn-danger' value='X' onclick='deletar(this)' />\n" +
+              "                            </div>\n" +
+              "                        </div>";
+      }
+
+      //checar se existe forma antes de submit o form
+      function checkFormaDePagamento(){
+        var flag = false;
+        if(document.getElementById("dinheiro").checked == true){
+          flag = true;
         }
-    </script>
+        if(document.getElementById("transf").checked == true){
+          flag = true;
+        }
+        if(document.getElementById("credito").checked == true){
+          flag = true;
+        }
+        if(document.getElementById("debito").checked == true){
+          flag = true;
+        }
+        if(flag){
+          document.getElementById("formCadastro").submit();
+        }
+        else{
+          alert("Necessário pelo menos uma forma de pagamento");
+        }
+
+    }
+</script>
 @endsection
