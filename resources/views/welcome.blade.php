@@ -35,6 +35,12 @@
                     <div class="carousel-item">
                         <img src="{{asset('slides/aviso_5.jpg')}}" class="d-block w-100" alt="Terceiro Slide" >
                     </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('slides/aviso_6.png')}}" class="d-block w-100" alt="Terceiro Slide" >
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('slides/aviso_7.png')}}" class="d-block w-100" alt="Terceiro Slide" >
+                    </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="left: -60px">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
