@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class AdminMunicipioController extends Controller
 {
@@ -35,5 +38,48 @@ class AdminMunicipioController extends Controller
             return redirect(route("admin.municipios"))->withErrors(['message' => "Nã nã nã "]);
         }
 
+    }
+
+    //Metodo para listagem de estabelecimentos por cidade do Admin
+    
+    public function listEst($id) {
+        $admin = \App\User::find($id);
+        // $usuarios = \App\User::whereRaw('tipo like \'ADMIN\'')->select('id')->get();
+        
+        //$estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->get();
+        //$estabelecimentos = \App\Estabelecimento::whereIn("iser_id", $usuarios)->get();
+
+        // $cidade = (Session::has('cidade'))?Session::get('cidade'):'Garanhuns';
+        
+        $lista = \App\Estabelecimento::
+            where('status', 'Pendente')->get();
+        
+        $estabelecimentos = array();
+        foreach($lista as $estabelecimento) {
+            if($estabelecimento->endereco->cidade == $cidade) {
+                $estabelecimentos[] = $estabelecimento;
+            }
+        }
+        return dd($estabelecimentos);
+        // return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos]);
+    }
+
+    public function AdminCreate(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if(count($validator->errors()) > 0){
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        $dadosUsuarioAdmin = $request->only(["name", "email", "cidade_id"]);
+        $dadosUsuarioAdmin['password'] = Hash::make($request['password']);
+        $user = \App\AdminCidade::create($dadosUsuarioAdmin);
+
+        return $user;
     }
 }
