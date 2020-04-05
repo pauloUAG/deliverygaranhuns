@@ -43,9 +43,8 @@ class AdminMunicipioController extends Controller
     //Metodo para listagem de estabelecimentos por cidade do Admin
     
     public function listEst($id) {
-        $admin = \App\User::find($id);
+        $admin = \App\AdminCidade::find($id);
         // $usuarios = \App\User::whereRaw('tipo like \'ADMIN\'')->select('id')->get();
-        
         //$estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->get();
         //$estabelecimentos = \App\Estabelecimento::whereIn("iser_id", $usuarios)->get();
 
@@ -56,13 +55,15 @@ class AdminMunicipioController extends Controller
         
         $estabelecimentos = array();
         foreach($lista as $estabelecimento) {
-            if($estabelecimento->endereco->cidade == $cidade) {
+            if($estabelecimento->endereco->cidade == $admin->cidade->nome) {
                 $estabelecimentos[] = $estabelecimento;
             }
         }
         return dd($estabelecimentos);
         // return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos]);
     }
+
+    //Metodo para criar o usuário AdminCidade
 
     public function AdminCreate(Request $request) {
 
