@@ -17,6 +17,28 @@ class AdminEstabelecimentoCreate extends Controller
         ]);
     }
 
+    //Metodo para criar o usuário AdminCidade
+    public function saveAdminCidade(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if(count($validator->errors()) > 0){
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        $dadosUsuario = $request->only(["name", "email"]);
+        $dadosUsuario['password'] = Hash::make($request['password']);
+        $dadosUsuario['tipo'] = "ADMINCIDADE";
+        $user = \App\User::create($dadosUsuario);
+
+        return $user;
+        // session()->flash('success', 'Estabelecimento cadastrado com sucesso');
+        // return redirect()->route('estabelecimento.confirma');
+    }
+
     public function save(Request $request) {
 
         $validator = Validator::make($request->all(), [

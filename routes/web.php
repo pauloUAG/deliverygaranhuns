@@ -30,7 +30,7 @@ Route::get("/categorias/list", "CategoriaListController@all")->name("categoria.l
 Route::get("/categorias/show/{pagina}/{id}", "CategoriaShowController@show")->name("categoria.show");
 Route::post("/estabelecimentos/busca", "CategoriaShowController@search")->name("estabelecimento.busca");
 
-Route::post("/admin/estabelecimentos/", "AdminMunicipioController@AdminCreate")->name("admin.adminCreate");
+Route::post("/admin/estabelecimentos/", "AdminEstabelecimentoCreate@saveAdminCidade")->name("admin.adminCreate");
 Route::get("/admin/estabelecimentos/{id}", "AdminMunicipioController@listEst")->name("estabelecimento.listUser");
 Route::get('/admin/municipios', "AdminMunicipioController@index")->name("admin.municipios");
 Route::post('/admin/municipios/create', "AdminMunicipioController@create")->name("admin.municipios.create");
