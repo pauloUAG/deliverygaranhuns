@@ -96,7 +96,7 @@
                                                     <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Perfil</button>
                                                 </form>
                                             @else
-                                                <form method="get" action="{{route('/admin/estabelecimentos/{id}', auth()->user()->id)}}">
+                                                <form method="get" action="{{route('estabelecimento.listUser', auth()->user()->id)}}">
                                                     <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Pendentes</button>
                                                 </form>
                                             @endif

@@ -59,7 +59,7 @@ class AdminMunicipioController extends Controller
                 $estabelecimentos[] = $estabelecimento;
             }
         }
-        return dd($estabelecimentos);
-        // return view("categoria.show")->with(['estabelecimentos' => $estabelecimentos]);
+        // return dd($estabelecimentos);
+        return view("estabelecimento.pending")->with(['estabelecimentos' => $estabelecimentos]);
     }
 }

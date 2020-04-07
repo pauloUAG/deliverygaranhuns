@@ -32,6 +32,7 @@ class AdminEstabelecimentoCreate extends Controller
         $dadosUsuario = $request->only(["name", "email"]);
         $dadosUsuario['password'] = Hash::make($request['password']);
         $dadosUsuario['tipo'] = "ADMINCIDADE";
+        $dadosUsuario['cidade_id'] = "2";
         $user = \App\User::create($dadosUsuario);
 
         return $user;
@@ -167,6 +168,28 @@ class AdminEstabelecimentoCreate extends Controller
 
           session()->flash('success', 'Estabelecimento reprovado com sucesso');
           return redirect()->route('estabelecimento.pending');
+        }
+    }
+
+    public function pendingAdminJudge(Request $request){
+        $validator = Validator::make($request->all(), [
+            'estabelecimentoId' => 'required|integer',
+            'decisao'           => 'required|string'
+        ]);
+        $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
+        if($request->decisao == 'true'){
+          $estabelecimento->status = "Aprovado";
+          $estabelecimento->save();
+
+          session()->flash('success', 'Estabelecimento aprovado com sucesso');
+          return redirect()->route('estabelecimentoAdmin.pending');
+        }
+        else{
+          $estabelecimento->status = "Reprovado";
+          $estabelecimento->save();
+
+          session()->flash('success', 'Estabelecimento reprovado com sucesso');
+          return redirect()->route('estabelecimentoAdmin.pending');
         }
     }
 }
