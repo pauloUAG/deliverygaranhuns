@@ -2,12 +2,15 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class AdminCidade extends Model
+class AdminCidade extends Authenticatable
 {
     use Notifiable;
+
+    protected $guard = "admin_cidade";
 
     protected $table = "admin_cidade";
 

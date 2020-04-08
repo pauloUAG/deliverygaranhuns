@@ -42,6 +42,11 @@ Route::middleware('can:autorizarCadastro,App\Estabelecimento')->group(function (
     Route::get("/admin/estabelecimento/pending/details", "AdminEstabelecimentoCreate@pendingDetails")->name("estabelecimento.pending.details");
     Route::post("/admin/estabelecimento/pending/judge", "AdminEstabelecimentoCreate@pendingJudge")->name("estabelecimento.pending.judge");
 });
+
+Route::get("/admin/dashboard/", "AdministradorController@index")->name("admin.dashboard");
+Route::get("/admin/login", "Auth\AdminLoginController@index")->name("admin.login");
+Route::post("/admin/login", "Auth\AdminLoginController@login")->name("admin.login.submit");
+
 //editar estabelecimento
 Route::get("/estabelecimento/editar", "EstabelecimentoController@edit")->name("estabelecimento.edit");
 Route::post("/estabelecimento/editar", "EstabelecimentoController@store")->name("estabelecimento.edit");

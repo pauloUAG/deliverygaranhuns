@@ -79,30 +79,10 @@
                             <div class="col-sm-4">
                                 <div class="row ">
                                     <div class="col-sm-8">
-                                        @guest
-                                        <form method="get" action="{{route('estabelecimento.create')}}">
-                                            <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Cadastre-se</button>
-                                        </form>
-                                        @endguest
                                         @auth
-                                            @if(auth()->user()->tipo == 'ESTABELECIMENTO' || auth()->user()->tipo == 'ADMIN')
-                                                @can('autorizarCadastro',App\Estabelecimento::class)
-                                                    <form method="get" action="{{route('estabelecimento.pending')}}">
-                                                        <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Pendentes</button>
-                                                    </form>
-                                                @endcan
-                                                @cannot('autorizarCadastro',App\Estabelecimento::class)
-                                                    <form method="get" action="{{route('estabelecimento.edit')}}">
-                                                        <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Perfil</button>
-                                                    </form>
-                                                @endcan
-                                            @else
-                                                @can(App\Estabelecimento::class)
-                                                <form method="get" action="{{route('estabelecimento.listUser')}}">
-                                                    <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Pendentes</button>
-                                                </form>
-                                                @endcan
-                                            @endif
+                                            <form method="get" action="{{route('estabelecimento.pending')}}">
+                                                <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Pendentes</button>
+                                            </form>
                                         @endauth
                                     </div>
                                     @guest

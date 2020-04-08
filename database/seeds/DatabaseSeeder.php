@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BairroSeeder::class);
         $this->call(ModalidadeSeeder::class);
         $this->call(AdministradorSeeder::class);
+        $this->call(AdministradorMunicipioSeeder::class);
 
     }
 }

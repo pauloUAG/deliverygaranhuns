@@ -41,6 +41,11 @@ return [
             'provider' => 'users',
         ],
 
+        'admin_cidade' => [
+            'driver' => 'session',
+            'provider' => 'admin_cidade',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -71,6 +76,11 @@ return [
             'model' => App\User::class,
         ],
 
+        'admin_cidade' => [
+            'driver' => 'eloquent',
+            'model' => App\AdminCidade::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -95,6 +105,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admin_cidade' => [
+            'provider' => 'admin_cidade',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
