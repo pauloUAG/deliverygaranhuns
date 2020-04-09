@@ -36,6 +36,7 @@ Route::get("/admin/estabelecimentoAdmin/pending/details", "AdminEstabelecimentoC
 Route::post("/admin/estabelecimentoAdmin/pending/judge", "AdminEstabelecimentoCreate@pendingAdminJudge")->name("estabelecimentoAdmin.pending.judge");
 Route::get("/admin/estabelecimentoAdmin/", "AdminEstabelecimentoCreate@pending")->name("estabelecimentoAdmin.pending"); //AQUI
 Route::get("/admin/estabelecimentos/{id}", "AdminMunicipioController@listEst")->name("estabelecimento.listUser");
+Route::get("/admin/cadastro/", "AdminMunicipioController@prepareAdmin")->name("cadastro.adminCidade");
 
 Route::get('/admin/municipios', "AdminMunicipioController@index")->name("admin.municipios");
 Route::post('/admin/municipios/create', "AdminMunicipioController@create")->name("admin.municipios.create");

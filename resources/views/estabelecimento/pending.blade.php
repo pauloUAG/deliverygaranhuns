@@ -4,6 +4,9 @@
     <div class="row">
         <div class="col-md-12">
             <label>Estabelecimentos pendentes</label>
+            @if(auth()->user()->tipo == "ADMIN")
+              <td><a href="{{route('cadastro.adminCidade')}}">Cadastrar Administrador</a>
+            @endif
         </div>
         <div class="col-md-12">
           @if(session()->has('success'))
