@@ -32,10 +32,14 @@ class AdminEstabelecimentoCreate extends Controller
         $dadosUsuario = $request->only(["name", "email"]);
         $dadosUsuario['password'] = Hash::make($request['password']);
         $dadosUsuario['tipo'] = "ADMINCIDADE";
-        $dadosUsuario['cidade_id'] = "2";
         $user = \App\User::create($dadosUsuario);
 
-        return $user;
+        $dadosAdmin = $request->only(["cidade_id"]);
+        $dadosAdmin['user_id'] = $user->id;
+        $dadosAdmin['cidade_id'] = "2";
+        $admin = \App\Admin::create($dadosAdmin);
+
+        return $admin;
         // session()->flash('success', 'Estabelecimento cadastrado com sucesso');
         // return redirect()->route('estabelecimento.confirma');
     }
@@ -182,14 +186,14 @@ class AdminEstabelecimentoCreate extends Controller
           $estabelecimento->save();
 
           session()->flash('success', 'Estabelecimento aprovado com sucesso');
-          return redirect()->route('estabelecimentoAdmin.pending');
+          return redirect()->route('estabelecimento.listUser', $request->id);
         }
         else{
           $estabelecimento->status = "Reprovado";
           $estabelecimento->save();
 
           session()->flash('success', 'Estabelecimento reprovado com sucesso');
-          return redirect()->route('estabelecimentoAdmin.pending');
+          return redirect()->route('estabelecimento.listUser', $request->id);
         }
     }
 }

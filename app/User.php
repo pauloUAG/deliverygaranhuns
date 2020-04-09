@@ -13,7 +13,7 @@ class User extends Authenticatable
     protected $table = "users";
 
     protected $fillable = [
-        'name', 'email', 'password', 'tipo', 'cidade_id',
+        'name', 'email', 'password', 'tipo',
     ];
 
     protected $hidden = [
@@ -23,9 +23,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function cidade() {
-        return $this->belongsTo("\App\Cidade");
-    }
-
+    
 }

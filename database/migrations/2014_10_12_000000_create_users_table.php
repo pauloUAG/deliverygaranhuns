@@ -21,10 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string("tipo");
             $table->rememberToken();
-
-            $table->bigInteger("cidade_id")->nullable();
-            $table->foreign("cidade_id")->references("id")->on("cidades");
-
             $table->timestamps();
         });
     }
