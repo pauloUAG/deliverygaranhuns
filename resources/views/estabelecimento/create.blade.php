@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-md-12">
-        <form id="formCadastro" method="POST" enctype="multipart/form-data" action="{{ route('admin.adminCreate') }}">
+        <form id="formCadastro" method="POST" enctype="multipart/form-data" action="{{ route('estabelecimento.save') }}">
             @csrf
 
             <div class="row subtitulo">

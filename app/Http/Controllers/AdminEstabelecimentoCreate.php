@@ -36,12 +36,11 @@ class AdminEstabelecimentoCreate extends Controller
 
         $dadosAdmin = $request->only(["cidade_id"]);
         $dadosAdmin['user_id'] = $user->id;
-        $dadosAdmin['cidade_id'] = "2";
         $admin = \App\Admin::create($dadosAdmin);
 
-        return $admin;
-        // session()->flash('success', 'Estabelecimento cadastrado com sucesso');
-        // return redirect()->route('estabelecimento.confirma');
+        // return $admin;
+        session()->flash('success', 'Cadastrado!');
+        return redirect()->route('cadastro.adminCidade');
     }
 
     public function save(Request $request) {

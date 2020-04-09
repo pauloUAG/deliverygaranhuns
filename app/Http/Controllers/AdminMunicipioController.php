@@ -60,4 +60,11 @@ class AdminMunicipioController extends Controller
         // return dd($estabelecimentos);
         return view("estabelecimento.pending")->with(['estabelecimentos' => $estabelecimentos]);
     }
+
+    public function prepareAdmin() {
+        $cidades = \App\Cidade::where('nome', '<>', 'null')->orderByRaw('unaccent(nome) asc')->get();
+        return view("admin.cadastroAdmin")->with([
+            "cidades" => $cidades,
+        ]);
+    }
 }
