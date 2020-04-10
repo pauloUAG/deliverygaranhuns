@@ -4,6 +4,18 @@
     <div class="row">
         <div class="col-md-12">
             <label>Estabelecimentos pendentes</label>
+            @if(auth()->user()->tipo == "ADMIN")
+              <td><a href="{{route('cadastro.adminCidade')}}">Cadastrar Administrador</a>
+            @endif
+        </div>
+        <div class="col-md-12">
+          @if(session()->has('success'))
+            <div class="row">
+              <div class="alert alert-success">
+                {{session()->get('success')}}
+              </div>
+            </div>
+          @endif
         </div>
         <div class="col-md-12">
             <div class="container">
@@ -21,7 +33,11 @@
                       <tr>
                         <th scope="row">{{$estabelecimento->id}}</th>
                         <td>{{$estabelecimento->user->name}}</td>
-                        <td><a href="{{route('estabelecimento.pending.details', ['estabelecimentoId' => $estabelecimento->id])}}">Detalhes</a>
+                        @if(auth()->user()->tipo == 'ADMIN')
+                          <td><a href="{{route('estabelecimento.pending.details', ['estabelecimentoId' => $estabelecimento->id])}}">Detalhes</a>
+                        @else
+                          <td><a href="{{route('estabelecimentoAdmin.pending.details', ['estabelecimentoId' => $estabelecimento->id])}}">Detalhes</a>
+                        @endif  
                       </tr>
                     @endforeach
                     </tbody>

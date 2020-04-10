@@ -233,23 +233,41 @@
 
             </div>
             <div class="form-group row mb-0" style="margin: 20px 0 20px 0">
-                <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'false']) }}">
-                  @csrf
-                <div class="col-md-12" style="padding-left:0">
-                      <button type="submit" class="btn btn-secondary botao-form" style="width:100%">
-                          Reprovar Cadastro
-                      </button>
-                </div>
-                </form>
-                <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'true']) }}">
-                  @csrf
-                  <div class="col-md-12" style="padding-right:0">
-                      <button type="submit" class="btn btn-primary botao-form" style="width:100%">
-                          Aprovar Cadastro
-                      </button>
-                  </div>
-                </form>
-
+                @if(auth()->user()->tipo == 'ADMIN')
+                    <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'false']) }}">
+                        @csrf
+                        <div class="col-md-12" style="padding-left:0">
+                            <button type="submit" class="btn btn-secondary botao-form" style="width:100%">
+                                Reprovar Cadastro
+                            </button>
+                        </div>
+                        </form>
+                        <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'true']) }}">
+                        @csrf
+                        <div class="col-md-12" style="padding-right:0">
+                            <button type="submit" class="btn btn-primary botao-form" style="width:100%">
+                                Aprovar Cadastro
+                            </button>
+                        </div>
+                    </form>
+                @else
+                    <form method="POST" action="{{ route('estabelecimentoAdmin.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'false', 'id' => auth()->user()->id]) }}">
+                        @csrf
+                        <div class="col-md-12" style="padding-left:0">
+                            <button type="submit" class="btn btn-secondary botao-form" style="width:100%">
+                                Reprovar Cadastro
+                            </button>
+                        </div>
+                        </form>
+                        <form method="POST" action="{{ route('estabelecimentoAdmin.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'true', 'id' => auth()->user()->id]) }}">
+                        @csrf
+                        <div class="col-md-12" style="padding-right:0">
+                            <button type="submit" class="btn btn-primary botao-form" style="width:100%">
+                                Aprovar Cadastro
+                            </button>
+                        </div>
+                    </form>
+                @endif
             </div>
         </form>
     </div>

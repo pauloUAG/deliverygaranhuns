@@ -91,9 +91,15 @@
                                             </form>
                                           @endcan
                                           @cannot('autorizarCadastro',App\Estabelecimento::class)
-                                            <form method="get" action="{{route('estabelecimento.edit')}}">
-                                                <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Perfil</button>
-                                            </form>
+                                            @if(auth()->user()->tipo == 'ESTABELECIMENTO')
+                                                <form method="get" action="{{route('estabelecimento.edit')}}">
+                                                    <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Perfil</button>
+                                                </form>
+                                            @else
+                                                <form method="get" action="{{route('estabelecimento.listUser', auth()->user()->id)}}">
+                                                    <button type="submit" class="btn btn-sm styleMenuPrincipalBotaoCadastrar">Pendentes</button>
+                                                </form>
+                                            @endif
                                           @endcan
                                         @endauth
                                     </div>

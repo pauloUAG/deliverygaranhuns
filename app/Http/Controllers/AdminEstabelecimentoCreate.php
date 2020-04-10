@@ -17,6 +17,32 @@ class AdminEstabelecimentoCreate extends Controller
         ]);
     }
 
+    //Metodo para criar o usuário AdminCidade
+    public function saveAdminCidade(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        if(count($validator->errors()) > 0){
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        $dadosUsuario = $request->only(["name", "email"]);
+        $dadosUsuario['password'] = Hash::make($request['password']);
+        $dadosUsuario['tipo'] = "ADMINCIDADE";
+        $user = \App\User::create($dadosUsuario);
+
+        $dadosAdmin = $request->only(["cidade_id"]);
+        $dadosAdmin['user_id'] = $user->id;
+        $admin = \App\Admin::create($dadosAdmin);
+
+        // return $admin;
+        session()->flash('success', 'Cadastrado!');
+        return redirect()->route('cadastro.adminCidade');
+    }
+
     public function save(Request $request) {
 
         $validator = Validator::make($request->all(), [
@@ -145,6 +171,28 @@ class AdminEstabelecimentoCreate extends Controller
 
           session()->flash('success', 'Estabelecimento reprovado com sucesso');
           return redirect()->route('estabelecimento.pending');
+        }
+    }
+
+    public function pendingAdminJudge(Request $request){
+        $validator = Validator::make($request->all(), [
+            'estabelecimentoId' => 'required|integer',
+            'decisao'           => 'required|string'
+        ]);
+        $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
+        if($request->decisao == 'true'){
+          $estabelecimento->status = "Aprovado";
+          $estabelecimento->save();
+
+          session()->flash('success', 'Estabelecimento aprovado com sucesso');
+          return redirect()->route('estabelecimento.listUser', $request->id);
+        }
+        else{
+          $estabelecimento->status = "Reprovado";
+          $estabelecimento->save();
+
+          session()->flash('success', 'Estabelecimento reprovado com sucesso');
+          return redirect()->route('estabelecimento.listUser', $request->id);
         }
     }
 }

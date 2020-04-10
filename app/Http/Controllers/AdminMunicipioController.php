@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class AdminMunicipioController extends Controller
 {
@@ -35,5 +38,33 @@ class AdminMunicipioController extends Controller
             return redirect(route("admin.municipios"))->withErrors(['message' => "Nã nã nã "]);
         }
 
+    }
+
+    //Metodo para listagem de estabelecimentos por cidade do Admin
+    
+    public function listEst($id) {
+        // $user = \App\User::find($id);
+        //$estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->get();
+        //$estabelecimentos = \App\Estabelecimento::whereIn("iser_id", $usuarios)->get();
+        $admin = \App\Admin::where('user_id', $id)->get();
+        // $cidade = (Session::has('cidade'))?Session::get('cidade'):'Garanhuns';
+        $lista = \App\Estabelecimento::
+            where('status', 'Pendente')->get();
+        
+        $estabelecimentos = array();
+        foreach($lista as $estabelecimento) {
+            if($estabelecimento->endereco->cidade == $admin[0]->cidade->nome) {
+                $estabelecimentos[] = $estabelecimento;
+            }
+        }
+        // return dd($estabelecimentos);
+        return view("estabelecimento.pending")->with(['estabelecimentos' => $estabelecimentos]);
+    }
+
+    public function prepareAdmin() {
+        $cidades = \App\Cidade::where('nome', '<>', 'null')->orderByRaw('unaccent(nome) asc')->get();
+        return view("admin.cadastroAdmin")->with([
+            "cidades" => $cidades,
+        ]);
     }
 }
