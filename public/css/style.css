@@ -34,107 +34,155 @@ body {
 
 .styleMenuPrincipal {
   background-color: #ffffff;
-  /*padding-top: 13px;*/
   -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 -moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
 .styleMenuPrincipal_container_logo{
-  margin-left: 25px; 
-  padding: 0px; 
-  text-align: right; 
-  margin-top: 11px;
+  text-align: center;
 }
 .styleMenuPrincipal_container_select{
-  padding-right: 15px; 
-  padding-top: 10px; 
-  padding-left: 3px;
+  height: 38px;
 }
-#styleMenuPrincipal_select{
-  margin-top: 12px; 
-  border-color: #f0f0f0; 
-  border-radius: 6px;
-  color: #f0f0f0;
+#styleMenuPrincipal_container_BotaoPesquisar{
+  width: 100%; background-color: #1492e6; border-color: white; border-radius: 6px; border-width: 1.5px;
+  -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
-.styleMenuPrincipal_titulo {
-  font-size: 23px;
+#styleMenuPrincipal_container_BotaoPesquisar:hover{
+  background-color: #1ca4ff; 
+  border-color: white;
+  -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
-.styleMenuPrincipalBotaoPesquisar{
-  background-color: white; 
-  height: 40px;
-  border-color: #f0f0f0;
-}
-.styleMenuPrincipalBotaoPesquisar:hover{
-  background-color: #fffafa; 
-  height: 40px;
-  border-color: #f0f0f0;
+#styleMenuPrincipal_botao{
+  color: white;
 }
 .styleMenuPrincipalBotaoCadastrar{
-  background-color: red;
+  background-color: white; width: 100%;
    margin-bottom: 10px;
-    height: 40px;
-     font-size: 16px;
+    height: 36px;
+     font-size: 13px;
       color: white;
        font-weight: bold;
         float: right;
           border-radius: 6px;
            width: 100%;
             font-family: arial;
-}
-
-.styleMenuPrincipal_input {
-  width: 100%;
-  margin: 2px;
-  font-style: italic;
-}
-
-.styleMenuPrincipal_button {
-  background-color: red;
-  padding-top: 10px;
-}
-
-/*-- LOGIN --*/
-.styleMenuPrincipal_container_login{
-  background-color: white;
-  margin-top: 42px; 
-  height: 380px; 
-  position:absolute; 
-  z-index: 2; 
-  border-color: white;
-    -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+            -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 -moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
-#styleMenuPrincipal_login_botao{
+.styleMenuPrincipalBotaoCadastrar:hover{
+  background-color: white; width: 100%;
+   margin-bottom: 10px;
+     font-size: 13px;
+      color: white;
+       font-weight: bold;
+        float: right;
+          border-radius: 6px;
+           width: 100%;
+            font-family: arial;
+            border-color: #75c8ff;
+            -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+}
+.styleMenuPrincipal_input_cidade{
+  padding-right: 0px;
+}
+.styleMenuPrincipal_input_pesquisar{
+  padding-left: 3px; padding-right: 0px;
+}
+.styleMenuPrincipal_botao_pesquisar{
+  padding-left: 3px; padding-right: 0px;
+}
+.styleMenuPrincipal_login_container{
+  padding-top: 7px;
+}
+#styleMenuPrincipal_login_texto{
+  color: #1492e6; display: block;
+}
+#styleMenuPrincipal_login_texto_aux{
+  color: #1492e6; display: none;
+}
+#styleMenuPrincipal_sair{
   background-color: white; 
-  height: 40px;
+  border-color: white; 
+  color: #1492e6; 
+  height: 36px;
+  width: 100%; 
+  margin-bottom: 5px;
   border-radius: 6px;
-  font-size: 16px;
   font-family: arial;
   font-weight: bold;
-  border-color: #1492e6;
-  color: #1492e6;
+  font-size: 13px;
+  -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
-#styleMenuPrincipal_login_botao:hover{
-  background-color: #1492e6;
-  height: 40px;
+#styleMenuPrincipal_sair:hover{
+  background-color: white; 
+  border-color: white; 
+  color: #1492e6; 
+  height: 36px;
+  width: 100%; 
+  margin-bottom: 5px;
   border-radius: 6px;
-  font-size: 16px;
   font-family: arial;
   font-weight: bold;
-  border-color: #1492e6;
-  color: white;
+  font-size: 13px;
+  border-color: #75c8ff;
+  -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
-.styleMenuPrincipal_login_input{
-  border-color: #f0f0f0;
+.styleMenuPrincipal_container_login{
+  z-index: 2;
+  position: absolute;
+  webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+-moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
 .styleMenuPrincipal_button_logar{
-  width: 100%; 
-  background-color: #1492e6; 
+  background-color: #1492e6;
+  color: white;
+  width: 100%;
+}
+.styleMenuPrincipal_button_logar:hover{
+  background-color: #1ca4ff;
+  color: white;
+  width: 100%;
+}
+.styleMenuPrincipal_button_cadastro{
+  background-color: #6c63ff;
+  width: 100%;
+  color: white;
+}
+.styleMenuPrincipal_button_cadastro:hover{
+  background-color: #8c85fe;
+  width: 100%;
+  color: white;
+}
+.styleMenuPrincipal_menuInferior{
+  display: block;
+}
+.styleMenuPrincipal_botaoInferior{
+  background-color: #1492e6;
+  border-color: #1492e6;
+  font-family: arial;
+  font-weight: bold;
+}
+.styleMenuPrincipal_botaoInferior:hover{
+  background-color: #1492e6;
+  border-color: white;
+  font-family: arial;
+  font-weight: bold;
   color: white;
 }
 
-/*--x LOGIN x--*/
 
 /*--x MENU x--*/
 
@@ -241,26 +289,20 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 /*--x CONTEUDO x--*/
 
 /*-- RODAPE --*/
-#styleRodape_Container_Rodape_1{
-  display: block;
-}
-#styleRodape_Container_Rodape_2{
-  display: none;
-}
 
 .styleRodape {
   background-color: #2f306f;
 }
 
 .styleRodape_Imagem_ufape {
-  padding-top: 4.5rem;
+  padding-top: 1.5rem;
   padding-bottom: 1rem;
   text-align: center;
 }
 
 .styleRodape_Imagem_lmts {
-  padding-top: 5.7rem;
-  padding-bottom: 0.7rem;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
   text-align: center;
 }
 
@@ -268,24 +310,45 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
   font-size: 13px;
   color: white;
   text-align: center;
-  font-weight: bold;
-  font-family: arial;
 }
 
 .styleRodape_Texto_Titulo {
-  padding-top: 30px; 
-  padding-bottom: 1px;  
-  font-family: arial; 
-  font-weight: bold; 
-  color: white; 
-  font-size: 16px
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: white;
 }
 
-.styleRodape_Imagem_Apoio{
-  -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
--moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
+.styleRodape_Texto_Conteudo_MapaDoSite {
+  color: white;
+  font-size: 13px;
+  padding-top: 0.4rem;
 }
+
+.styleRodape_container {
+  padding-bottom: 0.1rem;
+  text-align: left;
+}
+
+.styleRodape_Texto_Contato {
+  font-size: 14px;
+}
+
+.styleRodape_linha_left {
+  border-left: solid;
+  color: white;
+  margin-top: 0.5rem;
+  padding-bottom: 1rem;
+  margin-left: 0.5rem;
+  height: 100%;
+}
+
+.styleRodape_linha_top {
+  border-top: solid;
+  color: white;
+  margin: 0.5rem;
+}
+
+
 
 /*--x RODAPE x--*/
 @media screen and (max-width: 576px){
@@ -312,44 +375,58 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
   #apoio{
     display: none;
   }
-  .styleRodape_Container{
-    text-align: center;
-    margin-left: 0px;
-    margin: 0px;
-  }
-  .styleRodape_Imagem_lmts {
-  padding-top: 1.5rem;
-  padding-bottom: 0.7rem;
-  text-align: center;
-  }
-  .styleRodape_Container_Apoio{
-    text-align: center; 
-  }
 
 }
-/*Resolucao especifica para o IPAD */
-@media screen and (max-width: 768px) and (min-width: 575px){
-  #styleMenuPrincipal_imagem_logo{
-    width:100px;
-  }
-}
 
-
-@media screen and (max-width: 991px) and (min-width: 576px){
-  #styleRodape_Container_Rodape_1{
+@media screen and (max-width: 1200px) and (min-width: 992px){
+  #styleMenuPrincipal_botao{
     display: none;
+    color: red;
   }
-  #styleRodape_Container_Rodape_2{
+}
+
+@media screen and (max-width: 1200px) and (min-width: 768px){
+  #styleMenuPrincipal_login_texto{
+      display: none;
+  }
+  #styleMenuPrincipal_login_texto_aux{
     display: block;
   }
-    .styleRodape_Imagem_ufape {
-    padding-top: 0.5rem;
-    padding-bottom: 1rem;
-    text-align: center;
+}
+/*campo pesquisar e login*/
+@media screen and (max-width: 767px) and (min-width: 333px){
+/*input - cidade*/
+.styleMenuPrincipal_input_cidade{
+  padding-right: 15px;
+  padding-bottom: 2px;
+}
+  /*input - pesquisar*/
+.styleMenuPrincipal_input_pesquisar{
+  padding-left: 15px; padding-right: 15px;
+}
+/*botao pesquisar*/
+.styleMenuPrincipal_botao_pesquisar{
+  padding-left: 15px; padding-right: 15px;
+}
+/*container - botao login*/
+.styleMenuPrincipal_login_container{
+  padding-right: 15px;
+}
+/*menu inferior*/
+.styleMenuPrincipal_menuInferior{
+  display: block;
+}
+.styleMenuPrincipal_botaoInferior{
+  padding-right: 15px;
+}
+}
+
+@media screen and (max-width: 991px) and (min-width: 576px){
+  #styleMenuPrincipal_botao{
+    display: none;
+    color: red;
   }
-  .styleRodape_Imagem_lmts {
-    padding-top: 1.7rem;
-    padding-bottom: 0.7rem;
-    text-align: center;
+  #styleMenuPrincipal_logo{
+    width: 119px;
   }
 }
