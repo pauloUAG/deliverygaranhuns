@@ -1,3 +1,78 @@
+:root{
+  --color-primary: #1492e6;
+  --color-btn-index: #6c63ffff;
+  --color-btn-index-hover: #0b00e6;
+}
+/* ----------------- Index -------------------*/
+.layout_index{
+  margin: 50px 0 50px 0;
+  color: var(--color-primary);
+}
+.layout_index .title{
+  font-size: 50px;
+  font-weight: bold;
+}
+.layout_index .paragraph{
+  font-size: 25px;
+  text-align: justify;
+}
+.layout_index .image{
+  width: 100%;
+}
+#img-right{
+  display: none;
+}
+
+.btn-index{
+  margin-top: 40px;
+  background-color: var(--color-btn-index);
+  color: white;
+  font-weight: bold;
+
+
+  -webkit-box-shadow: -14px -14px 0px 0px #ccc;
+  -moz-box-shadow: -14px -14px 0px 0px #ccc;
+  box-shadow: -14px -14px 0px 0px #ccc;
+
+  transition: 0.5s;
+}
+
+.btn-index:hover{
+  background-color: var(--color-btn-index-hover);
+  color: #ccc;
+  -webkit-box-shadow: 0px 0px 0px 0px #ccc;
+  -moz-box-shadow: 0px 0px 0px 0px #ccc;
+  box-shadow: 0px 0px 0px 0px #ccc;
+
+  transition: 0.5s;
+}
+
+#card-contato{
+  background-color: #eee;
+  border: none;
+  border-radius: 2rem;
+}
+#card-contato input{
+  border: 1px solid var(--color-primary);
+}
+#card-contato textarea{
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+}
+@media screen and (max-width:576px){
+  #img-left{
+    display: none;
+  }
+  #img-right{
+    display: block;
+  }
+  .btn-index{
+    margin-bottom:40px;
+  }
+}
+
+/* ---------------- End Index --------------- */
+
 .subtitulo {
   margin-top: 20px;
   font-size: 25px;
