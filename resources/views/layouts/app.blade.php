@@ -285,7 +285,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-12 styleRodape_Texto_Titulo">Apoio</div>
-                            <div class="row" style="text-align: center; width: 100%; margin-left: 6px; margin-bottom:5px; background-color: pink;">
+                            <div class="row" style="text-align: center; width: 100%; margin-left: 6px; margin-bottom:5px;">
                                 <div class="col-sm-3 styleRodape_Apoio_div" style="margin-top: 2px; margin-bottom: 2px;">
                                     <a href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/pe?codUf=18" target="_blank"> <img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/sebrae_mini_logo.png') }}" alt="Logo" width="90px;" /></a>
                                 </div>
