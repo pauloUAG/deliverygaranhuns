@@ -183,15 +183,15 @@
 
         {{-- footer --}}
         <div style="background-color: #1492e6;">
-
-            <div class="container">
+            <!-- rodape 1 -->
+            <div class="container" id="styleRodape_Container_Rodape_1">
                 <div class="row justify-content-center">
                 <div class="col-sm-5">
                     <div class="row">
                         <div class="col-sm-6">
                              <div class="row justify-content-center">
                                 <div class="col-sm-12 styleRodape_Imagem_ufape">
-                                    <a href="http://ww3.uag.ufrpe.br/" target="_blank"><img src="{{ asset('/icones/ufape_logo2.png') }}" alt="Logo" width="40px;" /></a>
+                                    <a href="http://ww3.uag.ufrpe.br/" target="_blank"><img src="{{ asset('/icones/ufape_logo2.png') }}" alt="Logo" width="30px;" /></a>
                                 </div>
                                 <div class="col-sm-12 styleRodape_Texto">
                                     <a href="http://ww3.uag.ufrpe.br/" target="_blank"><label>Universidade Federal do Agreste de Pernambuco</label></a>
@@ -213,38 +213,101 @@
                 <div class="col-sm-2">
                     <div class="row container styleRodape_Container">
                         <div class="col-md-12 styleRodape_Texto_Titulo">Mapa do site</div>
-                        <div class="col-md-12"  style="padding-bottom: 18px; font-family: arial; font-size: 15px; color: white;">
+                        <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">
                             <a href="{{route('inicio')}}" style="color: white;">Home</a>
                         </div>
-                        <div class="col-md-12"  style="padding-bottom: 18px; font-family: arial; font-size: 15px; color: white;">A plataforma</div>
-                        <div class="col-md-12"  style="padding-bottom: 18px; font-family: arial; font-size: 15px; color: white;">Apoio/Patrocínio</div>
-                        <div class="col-md-12"  style="padding-bottom: 10px; font-family: arial; font-size: 15px; color: white;">Cadastre-se</div>
+                        <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">A plataforma</div>
+                        <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">Apoio/Patrocínio</div>
+                        <div class="col-md-12"  style="font-family: arial; font-size: 15px; color: white;">Cadastre-se</div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="row styleRodape_Container">
-                        <div class="col-sm-12 styleRodape_Texto_Titulo" style="margin-left: 6px;">Apoio</div>
-                        <div class="col-sm-3" style="margin: 7px;">
+                <div class="col-sm-5">
+                    <div class="row justify-content-center styleRodape_Container_Apoio">
+                        <div class="col-sm-12 styleRodape_Texto_Titulo" style="margin-left: 6px; margin-bottom:5px;">Apoio</div>
+                        <div class="col-sm-3 styleRodape_Apoio_div" style="margin-top: 2px; margin-bottom: 2px;">
                             <a href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/pe?codUf=18" target="_blank"> <img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/sebrae_mini_logo.png') }}" alt="Logo" width="90px;" /></a>
                         </div>
-                        <div class="col-sm-3" style="margin: 7px;">
+                        <div class="col-sm-3"  style="margin-top: 2px; margin-bottom: 2px;">
                             <a href="http://www.pe.senac.br/unidades/garanhuns/" target="_blank"><img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/senac_mini_logo.png')}}" alt="Logo" width="90px;"/></a>
                         </div>
-                        <div class="col-sm-3" style="margin: 7px;">
+                        <div class="col-sm-3"  style="margin-top: 2px; margin-bottom: 2px;">
                             <a href="https://pt-br.facebook.com/cdlgus" target="_blank"><img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/cdl_mini_logo.png')}}" alt="Logo" width="90px;" /></a>
                         </div>
-                        <div class="col-sm-3" style="margin: 7px;">
+                        <div class="col-sm-3"  style="margin-top: 2px; margin-bottom: 2px;">
                             <a href="http://bcc.uag.ufrpe.br/~portal/" target="_blank"><img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/bcc_mini_logo.png')}}" alt="Logo" width="90px;" /></a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row justify-content-center styleRodape_container styleRodape_linha_top">
+                </div>
+                <div class="row justify-content-center styleRodape_container styleRodape_linha_top">
                     <div class="btg-group" style="padding: 5px;">
                         <img src="{{ asset('/icones/local_logo.svg') }}" alt="Logo" width="15px;" />
                         <a href="https://www.google.com/maps/place/UFAPE+-+Universidade+Federal+do+Agreste+de+Pernambuco/@-8.9067588,-36.4943075,15z/data=!4m5!3m4!1s0x0:0x9e8a2fd11fab3580!8m2!3d-8.9067588!4d-36.4943075" target="_blank" class="styleRodape_Texto" style="padding: 0.5rem; color: white; font-weight: normal;">Avenida Bom Pastor. s/nº Bairro Boa Vista - CEP 55292-270 - Garanhuns - PE</a>
                     </div>
                 </div>
+            </div>
+            <!-- rodape 2 -->
+            <div class="container" id="styleRodape_Container_Rodape_2">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 styleRodape_Texto_Titulo">Mapa do site</div>
+                            <div class="col-sm-12">
+                                <div class="row justify-content-left">
+                                    <div class="col-sm-3" style="font-family: arial; font-size: 15px; color: white;">A plataforma</div>
+                                    <div class="col-sm-3" style="font-family: arial; font-size: 15px; color: white;">Apoio/Patrocínio</div>
+                                    <div class="col-sm-3" style="font-family: arial; font-size: 15px; color: white;">Cadastre-se</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12 styleRodape_Texto_Titulo">Realização</div>
+                            <div class="col-sm-6">
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-12 styleRodape_Imagem_ufape">
+                                        <a href="http://ww3.uag.ufrpe.br/" target="_blank"><img src="{{ asset('/icones/ufape_logo2.png') }}" alt="Logo" width="30px;" /></a>
+                                    </div>
+                                    <div class="col-sm-12 styleRodape_Texto">
+                                        <a href="http://ww3.uag.ufrpe.br/" target="_blank"><label>Universidade Federal do Agreste de Pernambuco</label></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-12 styleRodape_Imagem_lmts">
+                                        <a target="_blank" href="http://lmts.uag.ufrpe.br/"><img src="{{ asset('/icones/lmts_logo.png') }}" alt="Logo" width="125px;" /></a>
+                                    </div>
+                                    <div class="col-sm-12 styleRodape_Texto" style="padding-top: 4px;">
+                                        <a target="_blank" href="http://lmts.uag.ufrpe.br/"><label>Laboratório Multidisciplinar de Tecnologias Sociais</label></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 styleRodape_Texto_Titulo">Apoio</div>
+                            <div class="row" style="text-align: center; width: 100%; margin-left: 6px; margin-bottom:5px; background-color: pink;">
+                                <div class="col-sm-3 styleRodape_Apoio_div" style="margin-top: 2px; margin-bottom: 2px;">
+                                    <a href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/pe?codUf=18" target="_blank"> <img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/sebrae_mini_logo.png') }}" alt="Logo" width="90px;" /></a>
+                                </div>
+                                <div class="col-sm-3"  style="margin-top: 2px; margin-bottom: 2px;">
+                                    <a href="http://www.pe.senac.br/unidades/garanhuns/" target="_blank"><img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/senac_mini_logo.png')}}" alt="Logo" width="90px;"/></a>
+                                </div>
+                                <div class="col-sm-3"  style="margin-top: 2px; margin-bottom: 2px;">
+                                    <a href="https://pt-br.facebook.com/cdlgus" target="_blank"><img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/cdl_mini_logo.png')}}" alt="Logo" width="90px;" /></a>
+                                </div>
+                                <div class="col-sm-3"  style="margin-top: 2px; margin-bottom: 2px;">
+                                    <a href="http://bcc.uag.ufrpe.br/~portal/" target="_blank"><img class="styleRodape_Imagem_Apoio" src="{{ asset('/icones/bcc_mini_logo.png')}}" alt="Logo" width="90px;" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row justify-content-center styleRodape_container styleRodape_linha_top">
+                        <div class="btg-group" style="padding: 5px;">
+                            <img src="{{ asset('/icones/local_logo.svg') }}" alt="Logo" width="15px;" />
+                            <a href="https://www.google.com/maps/place/UFAPE+-+Universidade+Federal+do+Agreste+de+Pernambuco/@-8.9067588,-36.4943075,15z/data=!4m5!3m4!1s0x0:0x9e8a2fd11fab3580!8m2!3d-8.9067588!4d-36.4943075" target="_blank" class="styleRodape_Texto" style="padding: 0.5rem; color: white; font-weight: normal;">Avenida Bom Pastor. s/nº Bairro Boa Vista - CEP 55292-270 - Garanhuns - PE</a>
+                        </div>
+                    </div>
             </div>
 
             <!-- <div class="row justify-content-center">
