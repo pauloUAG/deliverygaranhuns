@@ -85,6 +85,7 @@ class AdminMunicipioController extends Controller
         $dadosCidade = $request->only(['nome', 'uf']);
         $cidade = \App\Cidade::create($dadosCidade);
 
-        return $cidade; 
+        session()->flash('success', 'Cadastrado');
+        return redirect()->route('cadastro.PaginaCidade');
     }
 }
