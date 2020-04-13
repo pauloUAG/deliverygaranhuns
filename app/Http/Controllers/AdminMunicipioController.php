@@ -67,4 +67,25 @@ class AdminMunicipioController extends Controller
             "cidades" => $cidades,
         ]);
     }
+
+    public function cadastroPaginaCidade() {
+        return view("admin.cadastroCidade");
+    }
+
+    public function cadastrarCidade(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'nome' => 'required|string|max:255',
+            'uf' => 'required|string|max:2',
+        ]);
+
+        if(count($validator->errors()) > 0){
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        $dadosCidade = $request->only(['nome', 'uf']);
+        $cidade = \App\Cidade::create($dadosCidade);
+
+        session()->flash('success', 'Cadastrado');
+        return redirect()->route('cadastro.PaginaCidade');
+    }
 }

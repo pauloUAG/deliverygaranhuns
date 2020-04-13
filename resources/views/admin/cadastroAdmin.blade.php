@@ -45,7 +45,7 @@
                                 <select class="browser-default custom-select" id="cidade_id" required name="cidade_id">
                                     <option value="" disable="" selected="" hidden="">-- Selecionar a Cidade --</option>
                                     @foreach($cidades as $cidade)
-                                        <option value="{{ $cidade->id }}" @if($cidade->id == old('cidade_id')) selected @endif>{{ $cidade->nome }}</option>
+                                        <option value="{{ $cidade->id }}" @if($cidade->id == old('cidade_id')) selected @endif> {{ $cidade->nome }} - {{ $cidade->uf }} </option>
                                     @endforeach
                                 </select>
                             </div>
