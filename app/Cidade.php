@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cidade extends Model
 {
-    protected $fillable = ["nome"];
+    protected $fillable = ["nome","uf"];
 }

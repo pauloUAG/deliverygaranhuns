@@ -6,6 +6,7 @@
             <label>Estabelecimentos pendentes</label>
             @if(auth()->user()->tipo == "ADMIN")
               <td><a href="{{route('cadastro.adminCidade')}}">Cadastrar Administrador</a>
+              <td><a href="{{route('cadastro.PaginaCidade')}}">Cadastrar Cidades</a>
             @endif
         </div>
         <div class="col-md-12">
