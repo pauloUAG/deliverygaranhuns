@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Storage;
 
 class AdminMunicipioController extends Controller
 {
@@ -132,6 +133,14 @@ class AdminMunicipioController extends Controller
     }
 
     public function carrosselApagar($id) {
-        dd($id);
+
+        $imagem = \App\Carrossel::find($id);
+        if(isset($imagem)) {
+            $nome_da_imagem = $imagem->imagem;
+            Storage::disk('public')->delete($nome_da_imagem);
+            $imagem->delete(); 
+        }
+        session()->flash('success', 'Imagem apagada!');
+        return redirect()->route('carrossel.pagina');
     }
 }

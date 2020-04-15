@@ -44,7 +44,7 @@ Route::get("/admin/cadastro/cidade", "AdminMunicipioController@cadastroPaginaCid
 Route::post("/admin/cadastro/cidade", "AdminMunicipioController@cadastrarCidade")->name("cadastro.cidade");
 Route::get("/admin/carrossel", "AdminMunicipioController@carrosselPagina")->name("carrossel.pagina");
 Route::post("/admin/carrossel", "AdminMunicipioController@carrossel")->name("carrossel.imagens");
-Route::get("/admin/carrossel/imagens", "AdminMunicipioController@carrosselApagar")->name("carrossel.apagar");
+Route::delete("/admin/carrossel/imagens/{id}", "AdminMunicipioController@carrosselApagar")->name("carrossel.apagar");
 
 Route::get('/admin/municipios', "AdminMunicipioController@index")->name("admin.municipios");
 Route::post('/admin/municipios/create', "AdminMunicipioController@create")->name("admin.municipios.create");

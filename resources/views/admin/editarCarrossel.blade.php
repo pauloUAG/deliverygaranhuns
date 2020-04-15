@@ -58,7 +58,9 @@
                 @else
                   Sem imagem
                 @endif
-                <form method="get" action="{{route('carrossel.apagar', ["id" => $imagem[$i]->id])}}">
+                <form method="POST" action="{{route('carrossel.apagar', $imagem[$i]->id)}}">
+                    @csrf
+                    @method('DELETE')
                     <button type="submit" class="btn btn-danger">Apagar Imagem</button>
                 </form>
         
