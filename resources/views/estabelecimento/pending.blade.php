@@ -7,6 +7,7 @@
             @if(auth()->user()->tipo == "ADMIN")
               <td><a href="{{route('cadastro.adminCidade')}}">Cadastrar Administrador</a>
               <td><a href="{{route('cadastro.PaginaCidade')}}">Cadastrar Cidades</a>
+              <td><a href="{{route('carrossel.pagina')}}">Editar Carrossel</a>
             @endif
         </div>
         <div class="col-md-12">
