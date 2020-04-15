@@ -27,27 +27,22 @@
         <div class="col-md-12" style="padding-top: 2rem;padding-bottom: 2rem;">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="background-color: gray;">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="{{asset('slides/aviso_1.png')}}" class="d-block w-100"  alt="Primeiro Slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('slides/aviso_2.png')}}" class="d-block w-100"  alt="Segundo Slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('slides/aviso_3.png')}}" class="d-block w-100" alt="Terceiro Slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('slides/aviso_4.png')}}" class="d-block w-100" alt="Terceiro Slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('slides/aviso_5.jpg')}}" class="d-block w-100" alt="Terceiro Slide" >
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('slides/aviso_6.png')}}" class="d-block w-100" alt="Terceiro Slide" >
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{asset('slides/aviso_7.png')}}" class="d-block w-100" alt="Terceiro Slide" >
-                    </div>
+                    @if(count($imagem) > 0)
+                        <div class="carousel-item active">
+                            <img src="{{asset('storage/imagens/' . $imagem[0]->imagem)}}" class="d-block w-100"  alt="Primeiro Slide">
+                        </div>
+                        @for($i = 1 ; $i < count($imagem) ; $i++)
+                            @if(isset($imagem[$i]->imagem) && $imagem[$i]->imagem!="")
+                                <div class="carousel-item">
+                                    <img src="{{asset('storage/imagens/' . $imagem[$i]->imagem)}}" class="d-block w-100"  alt="Primeiro Slide">
+                                </div>
+                            @endif
+                        @endfor
+                    @else
+                        <div class="carousel-item active">
+                            <img src="{{asset('slides/aviso_5.jpg')}}" class="d-block w-100" alt="Terceiro Slide" >
+                        </div>  
+                    @endif
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="left: -60px">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

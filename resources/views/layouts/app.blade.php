@@ -261,7 +261,7 @@
                           </div>
                         <!--x menu inferior - adm de um estabelecimento x-->
                         @else
-                        <!-- menu inferior - ????? -->
+                        <!-- menu inferior - Admin de cidade -->
                           <div class="col-md-12 styleMenuPrincipal_menuInferior">
                             <div class="row justify-content-center" style="padding-bottom: 5px; padding-top: 5px;">
                                 <div class="col-sm-2">

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $imagens = \App\Carrossel::all();
+    return view('welcome')->with(["imagem" => $imagens]);
 })->name("inicio");
 
 Route::get('/home', "HomeController@index")->name("home");
@@ -39,6 +42,9 @@ Route::get("/admin/estabelecimentos/{id}", "AdminMunicipioController@listEst")->
 Route::get("/admin/cadastro/", "AdminMunicipioController@prepareAdmin")->name("cadastro.adminCidade");
 Route::get("/admin/cadastro/cidade", "AdminMunicipioController@cadastroPaginaCidade")->name("cadastro.PaginaCidade");
 Route::post("/admin/cadastro/cidade", "AdminMunicipioController@cadastrarCidade")->name("cadastro.cidade");
+Route::get("/admin/carrossel", "AdminMunicipioController@carrosselPagina")->name("carrossel.pagina");
+Route::post("/admin/carrossel", "AdminMunicipioController@carrossel")->name("carrossel.imagens");
+Route::delete("/admin/carrossel/imagens/{id}", "AdminMunicipioController@carrosselApagar")->name("carrossel.apagar");
 
 Route::get('/admin/municipios', "AdminMunicipioController@index")->name("admin.municipios");
 Route::post('/admin/municipios/create', "AdminMunicipioController@create")->name("admin.municipios.create");
