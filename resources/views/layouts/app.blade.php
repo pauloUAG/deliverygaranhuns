@@ -238,6 +238,21 @@
                                       <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Pendentes</button>
                                   </form>
                               </div>
+                              <div class="col-sm-3">
+                                <form method="get" action="{{route('cadastro.adminCidade')}}">
+                                     <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastrar Administrador</button>
+                                 </form>
+                             </div>
+                             <div class="col-sm-3">
+                                <form method="get" action="{{route('admin.municipios')}}">
+                                     <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastrar Cidades</button>
+                                 </form>
+                             </div>
+                             <div class="col-sm-3">
+                                <form method="get" action="{{route('carrossel.pagina')}}">
+                                     <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Carrossel</button>
+                                 </form>
+                             </div>
                           </div>
                         </div>
                         <!--x menu inferior - admin do sistema x-->
@@ -268,7 +283,7 @@
                                     <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Página Inicial</button>
                                 </div>
                                 <div>
-                                    <form method="get" action="{{route('estabelecimento.listUser', auth()->user()->id)}}">
+                                    <form method="get" action="{{route('estabelecimento.listUser')}}">
                                         <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior">Pendentes</button>
                                     </form>
                                 </div>

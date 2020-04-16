@@ -33,31 +33,34 @@ Route::get("/categorias/list", "CategoriaListController@all")->name("categoria.l
 Route::get("/categorias/show/{pagina}/{id}", "CategoriaShowController@show")->name("categoria.show");
 Route::post("/estabelecimentos/busca", "CategoriaShowController@search")->name("estabelecimento.busca");
 
-//Rotas para o admin de cidade
-Route::post("/admin/estabelecimentos/", "AdminEstabelecimentoCreate@saveAdminCidade")->name("admin.adminCreate");
-Route::get("/admin/estabelecimentoAdmin/pending/details", "AdminEstabelecimentoCreate@pendingDetails")->name("estabelecimentoAdmin.pending.details");
-Route::post("/admin/estabelecimentoAdmin/pending/judge", "AdminEstabelecimentoCreate@pendingAdminJudge")->name("estabelecimentoAdmin.pending.judge");
-Route::get("/admin/estabelecimentoAdmin/", "AdminEstabelecimentoCreate@pending")->name("estabelecimentoAdmin.pending"); //AQUI
-Route::get("/admin/estabelecimentos/{id}", "AdminMunicipioController@listEst")->name("estabelecimento.listUser");
-Route::get("/admin/cadastro/", "AdminMunicipioController@prepareAdmin")->name("cadastro.adminCidade");
-Route::get("/admin/cadastro/cidade", "AdminMunicipioController@cadastroPaginaCidade")->name("cadastro.PaginaCidade");
-Route::post("/admin/cadastro/cidade", "AdminMunicipioController@cadastrarCidade")->name("cadastro.cidade");
-Route::get("/admin/carrossel", "AdminMunicipioController@carrosselPagina")->name("carrossel.pagina");
-Route::post("/admin/carrossel", "AdminMunicipioController@carrossel")->name("carrossel.imagens");
-Route::delete("/admin/carrossel/imagens/{id}", "AdminMunicipioController@carrosselApagar")->name("carrossel.apagar");
+Route::middleware(['auth'])->group(function(){
+    
+    //Rotas para o admin de cidade
+    
+    Route::get("/admin/estabelecimentoAdmin/pending/details", "AdminEstabelecimentoCreate@pendingAdminDetails")->name("estabelecimentoAdmin.pending.details");
+    Route::post("/admin/estabelecimentoAdmin/pending/judge", "AdminEstabelecimentoCreate@pendingAdminJudge")->name("estabelecimentoAdmin.pending.judge");
+    Route::get("/admin/estabelecimentoAdmin/", "AdminEstabelecimentoCreate@pending")->name("estabelecimentoAdmin.pending");
+    Route::get("/admin/estabelecimentos/", "AdminMunicipioController@listEst")->name("estabelecimento.listUser");
 
-Route::get('/admin/municipios', "AdminMunicipioController@index")->name("admin.municipios");
-Route::post('/admin/municipios/create', "AdminMunicipioController@create")->name("admin.municipios.create");
-Route::get('/admin/municipios/remove/{id}', "AdminMunicipioController@remove")->name("admin.municipios.remove");
+    //editar estabelecimento
+    Route::get("/estabelecimento/editar", "EstabelecimentoController@edit")->name("estabelecimento.edit");
+    Route::post("/estabelecimento/editar", "EstabelecimentoController@store")->name("estabelecimento.edit");
+    
+});
 
 // Pendentes e julgar pendentes
 Route::middleware('can:autorizarCadastro,App\Estabelecimento')->group(function () {
     Route::get("/admin/home/", "AdminEstabelecimentoCreate@pending")->name("estabelecimento.pending");
     Route::get("/admin/estabelecimento/pending/details", "AdminEstabelecimentoCreate@pendingDetails")->name("estabelecimento.pending.details");
     Route::post("/admin/estabelecimento/pending/judge", "AdminEstabelecimentoCreate@pendingJudge")->name("estabelecimento.pending.judge");
+    Route::get('/admin/municipios', "AdminMunicipioController@index")->name("admin.municipios");
+    Route::post('/admin/municipios/create', "AdminMunicipioController@create")->name("admin.municipios.create");
+    Route::get('/admin/municipios/remove/{id}', "AdminMunicipioController@remove")->name("admin.municipios.remove");
+    Route::get("/admin/carrossel", "AdminMunicipioController@carrosselPagina")->name("carrossel.pagina");
+    Route::post("/admin/carrossel", "AdminMunicipioController@carrossel")->name("carrossel.imagens");
+    Route::delete("/admin/carrossel/imagens/{id}", "AdminMunicipioController@carrosselApagar")->name("carrossel.apagar");
+    Route::get("/admin/cadastro/", "AdminMunicipioController@prepareAdmin")->name("cadastro.adminCidade");
+    Route::post("/admin/estabelecimentos/", "AdminEstabelecimentoCreate@saveAdminCidade")->name("admin.adminCreate");
 });
-//editar estabelecimento
-Route::get("/estabelecimento/editar", "EstabelecimentoController@edit")->name("estabelecimento.edit");
-Route::post("/estabelecimento/editar", "EstabelecimentoController@store")->name("estabelecimento.edit");
 
 Auth::routes();

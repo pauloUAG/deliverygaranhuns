@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Storage;
+use Auth;
 
 class AdminMunicipioController extends Controller
 {
@@ -20,13 +21,14 @@ class AdminMunicipioController extends Controller
     public function create(Request $request) {
         $validator = Validator::make($request->all(), [
             'nome' => 'required|string|max:255|min:3|unique:cidades',
+            'uf' => 'required|string|max:2|min:2'
         ]);
 
         if(count($validator->errors()) > 0){
             return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
-        \App\Cidade::create($request->only(['nome']));
+        \App\Cidade::create($request->only(['nome','uf']));
         return redirect(route("admin.municipios"))->withSuccess(['message' => "Registro Cadastrado com sucesso"]);
 
     }
@@ -44,12 +46,12 @@ class AdminMunicipioController extends Controller
 
     //Metodo para listagem de estabelecimentos por cidade do Admin
     
-    public function listEst($id) {
+    public function listEst() {
         // $user = \App\User::find($id);
         //$estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->get();
         //$estabelecimentos = \App\Estabelecimento::whereIn("iser_id", $usuarios)->get();
-        $admin = \App\Admin::where('user_id', $id)->get();
-        // $cidade = (Session::has('cidade'))?Session::get('cidade'):'Garanhuns';
+        $admin = \App\Admin::where('user_id', Auth::user()->id)->get();
+
         $lista = \App\Estabelecimento::
             where('status', 'Pendente')->get();
         

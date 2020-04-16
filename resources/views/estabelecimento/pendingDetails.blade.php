@@ -251,7 +251,7 @@
                         </div>
                     </form>
                 @else
-                    <form method="POST" action="{{ route('estabelecimentoAdmin.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'false', 'id' => auth()->user()->id]) }}">
+                    <form method="POST" action="{{ route('estabelecimentoAdmin.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'false']) }}">
                         @csrf
                         <div class="col-md-12" style="padding-left:0">
                             <button type="submit" class="btn btn-secondary botao-form" style="width:100%">
@@ -259,7 +259,7 @@
                             </button>
                         </div>
                         </form>
-                        <form method="POST" action="{{ route('estabelecimentoAdmin.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'true', 'id' => auth()->user()->id]) }}">
+                        <form method="POST" action="{{ route('estabelecimentoAdmin.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'true']) }}">
                         @csrf
                         <div class="col-md-12" style="padding-right:0">
                             <button type="submit" class="btn btn-primary botao-form" style="width:100%">

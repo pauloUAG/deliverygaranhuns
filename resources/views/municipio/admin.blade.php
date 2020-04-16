@@ -62,6 +62,15 @@
                             </span>
                 @enderror
             </div>
+            <div class="col-md-8">
+                <label for="uf" class="col-form-label">UF</label>
+                <input class="form-control @error('uf') is-invalid @enderror" name="uf" value="{{ old('uf') }}" id="uf" required placeholder="Ex: AL - PE - RN ..."/>
+                @error('uf')
+                <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                @enderror
+            </div>
             <div class="col-md-4">
                 <label for="modalidade_id" class="col-form-label">&nbsp;</label>
                 <button type="submit" class="btn btn-primary" style="width:100%">

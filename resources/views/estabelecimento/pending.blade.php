@@ -5,9 +5,7 @@
         <div class="col-md-12">
             <label>Estabelecimentos pendentes</label>
             @if(auth()->user()->tipo == "ADMIN")
-              <td><a href="{{route('cadastro.adminCidade')}}">Cadastrar Administrador</a>
-              <td><a href="{{route('cadastro.PaginaCidade')}}">Cadastrar Cidades</a>
-              <td><a href="{{route('carrossel.pagina')}}">Editar Carrossel</a>
+              
             @endif
         </div>
         <div class="col-md-12">
@@ -25,7 +23,7 @@
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        {{-- <th scope="col">#</th> --}}
                         <th scope="col">Nome</th>
                         <th scope="col">Detalhes</th>
                       </tr>
@@ -33,12 +31,12 @@
                     <tbody>
                     @foreach($estabelecimentos as $estabelecimento)
                       <tr>
-                        <th scope="row">{{$estabelecimento->id}}</th>
+                        {{-- <th scope="row">{{$estabelecimento->id}}</th> --}}
                         <td>{{$estabelecimento->user->name}}</td>
                         @if(auth()->user()->tipo == 'ADMIN')
                           <td><a href="{{route('estabelecimento.pending.details', ['estabelecimentoId' => $estabelecimento->id])}}">Detalhes</a>
                         @else
-                          <td><a href="{{route('estabelecimentoAdmin.pending.details', ['estabelecimentoId' => $estabelecimento->id])}}">Detalhes</a>
+                          <td><a href="{{route('estabelecimentoAdmin.pending.details', ['estabelecimentoId' => Crypt::encrypt($estabelecimento->id)])}}">Detalhes</a>
                         @endif  
                       </tr>
                     @endforeach
