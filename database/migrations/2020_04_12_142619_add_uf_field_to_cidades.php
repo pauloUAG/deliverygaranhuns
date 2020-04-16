@@ -26,7 +26,7 @@ class AddUfFieldToCidades extends Migration
     public function down()
     {
         Schema::table('cidades', function (Blueprint $table) {
-            $table->dropColumn('uf');
+            // $table->dropColumn('uf');
         });
     }
 }
