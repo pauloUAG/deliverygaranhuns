@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManagerStatic as Image;
+use \Crypt;
 
 class AdminEstabelecimentoCreate extends Controller
 {
@@ -146,7 +147,19 @@ class AdminEstabelecimentoCreate extends Controller
         $validator = Validator::make($request->all(), [
             'estabelecimentoId' => 'required|integer',
         ]);
+        // $estabelecimentoId = Crypt::decrypt($request->estabelecimentoId);
         $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
+        return view("estabelecimento.pendingDetails")->with([
+            "estabelecimento" => $estabelecimento,
+        ]);
+    }
+
+    public function pendingAdminDetails(Request $request){
+        $validator = Validator::make($request->all(), [
+            'estabelecimentoId' => 'required|integer',
+        ]);
+        $estabelecimentoId = Crypt::decrypt($request->estabelecimentoId);
+        $estabelecimento = \App\Estabelecimento::find($estabelecimentoId);
         return view("estabelecimento.pendingDetails")->with([
             "estabelecimento" => $estabelecimento,
         ]);
@@ -179,20 +192,23 @@ class AdminEstabelecimentoCreate extends Controller
             'estabelecimentoId' => 'required|integer',
             'decisao'           => 'required|string'
         ]);
+        
+        // $estabelecimentoId = Crypt::decrypt($request->id);
+
         $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
         if($request->decisao == 'true'){
           $estabelecimento->status = "Aprovado";
           $estabelecimento->save();
 
           session()->flash('success', 'Estabelecimento aprovado com sucesso');
-          return redirect()->route('estabelecimento.listUser', $request->id);
+          return redirect()->route('estabelecimento.listUser');
         }
         else{
           $estabelecimento->status = "Reprovado";
           $estabelecimento->save();
 
           session()->flash('success', 'Estabelecimento reprovado com sucesso');
-          return redirect()->route('estabelecimento.listUser', $request->id);
+          return redirect()->route('estabelecimento.listUser');
         }
     }
 }

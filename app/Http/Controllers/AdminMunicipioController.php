@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Storage;
+use Auth;
 
 class AdminMunicipioController extends Controller
 {
@@ -18,13 +21,14 @@ class AdminMunicipioController extends Controller
     public function create(Request $request) {
         $validator = Validator::make($request->all(), [
             'nome' => 'required|string|max:255|min:3|unique:cidades',
+            'uf' => 'required|string|max:2|min:2'
         ]);
 
         if(count($validator->errors()) > 0){
             return redirect()->back()->withErrors($validator->errors())->withInput();
         }
 
-        \App\Cidade::create($request->only(['nome']));
+        \App\Cidade::create($request->only(['nome','uf']));
         return redirect(route("admin.municipios"))->withSuccess(['message' => "Registro Cadastrado com sucesso"]);
 
     }
@@ -42,12 +46,12 @@ class AdminMunicipioController extends Controller
 
     //Metodo para listagem de estabelecimentos por cidade do Admin
     
-    public function listEst($id) {
+    public function listEst() {
         // $user = \App\User::find($id);
         //$estabelecimentos = \App\Estabelecimento::whereIn("modalidade_id", $categorias)->get();
         //$estabelecimentos = \App\Estabelecimento::whereIn("iser_id", $usuarios)->get();
-        $admin = \App\Admin::where('user_id', $id)->get();
-        // $cidade = (Session::has('cidade'))?Session::get('cidade'):'Garanhuns';
+        $admin = \App\Admin::where('user_id', Auth::user()->id)->get();
+
         $lista = \App\Estabelecimento::
             where('status', 'Pendente')->get();
         
@@ -72,6 +76,47 @@ class AdminMunicipioController extends Controller
         return view("admin.cadastroCidade");
     }
 
+    public function carrosselPagina() {
+        $imagens = \App\Carrossel::all();
+        // dd($imagens);
+        return view("admin.editarCarrossel")->with(["imagem" => $imagens]);
+    }
+
+    public function carrossel(Request $request) {
+        
+        $imagem = "";
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()) {
+
+            $ext = strtolower(request()->imagem->getClientOriginalExtension());
+
+            if(!in_array($ext, array("jpg", "png", "jpeg", "gif", "bmp")))
+                $validator->errors()->add("imagemcapa", "Formato de imagem inválido, utilize imagem jpg ou png");
+            else {
+                $imagem = 'c' . time() . '.' . $ext;
+                $thumbPath = storage_path('app/public/imagens/'.$imagem);
+                Image::configure(array('driver' => 'imagick'));
+                $image = Image::make(request()->imagem->path());
+                $image->fit(960, 349)->save($thumbPath);
+                /*if($image->width() > $image->height()) {
+                    $image->resize(120, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($thumbPath);
+                } else {
+                    $image->resize(null, 120, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($thumbPath);
+                }*/
+            }
+        }
+
+        $dadosImagem['imagem'] = $imagem;
+
+        $carrossel = \App\Carrossel::create($dadosImagem);
+        
+        session()->flash('success', 'Imagem cadastrada!');
+        return redirect()->route('carrossel.pagina');
+    }
+
     public function cadastrarCidade(Request $request) {
         $validator = Validator::make($request->all(), [
             'nome' => 'required|string|max:255',
@@ -87,5 +132,17 @@ class AdminMunicipioController extends Controller
 
         session()->flash('success', 'Cadastrado');
         return redirect()->route('cadastro.PaginaCidade');
+    }
+
+    public function carrosselApagar($id) {
+
+        $imagem = \App\Carrossel::find($id);
+        if(isset($imagem)) {
+            $nome_da_imagem = $imagem->imagem;
+            Storage::disk('public')->delete($nome_da_imagem);
+            $imagem->delete(); 
+        }
+        session()->flash('success', 'Imagem apagada!');
+        return redirect()->route('carrossel.pagina');
     }
 }
