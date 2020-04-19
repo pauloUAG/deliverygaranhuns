@@ -463,40 +463,7 @@
             document.getElementById("divLogar_esqueciASenha").style.display = 'none';
         }
         //auto complete
-        var categoriasEstabelecimentos = [
-            'Açougue',
-            'Água',
-            'Artesanato',
-            'Bar',
-            'Borracharia',
-            'Bomboniere',
-            'Cabeleireiro',
-            'Cafeteria',
-            'Dedetização',
-            'Doceria',
-            'Gás',
-            'Jornal',
-            'Livraria',
-            'Mercadinho',
-            'Padaria',
-            'Papelaria',
-            'Peças Auto',
-            'Pizzaria',
-            'Quentinha',
-            'Restaurante',
-            'Sorveteria',
-            'Vestuário',
-            'Farmácias',
-            'Casa e Construção',
-            'Eletrônico',
-            'Lanchonete',
-            'Pet Shop'
-          ];
 
-        $( document ).ready(function() {
-          //colocar a cidade no parametro quando tiver cidade id
-          getCategoriasEstabelecimentosPorCidade(1);
-        });
         function getCategoriasEstabelecimentosPorCidade(cidadeId){
           $.ajaxSetup({
              headers: {
@@ -511,12 +478,11 @@
                 cidade: cidadeId
              },
              success: function(result){
-               categoriasEstabelecimentos = result
+               autocomplete(document.getElementById("pesquisa"), result);
+
              }
           });
         }
-
-
 
         function autocomplete(inp, arr) {
           /*the autocomplete function takes two arguments,
@@ -615,7 +581,11 @@
           });
         }
         //fim autocomplete
-        autocomplete(document.getElementById("pesquisa"), categoriasEstabelecimentos);
+        $( document ).ready(function() {
+          //colocar a cidade no parametro quando tiver cidade id
+          getCategoriasEstabelecimentosPorCidade(1);
+        });
+
 
 
     </script>
