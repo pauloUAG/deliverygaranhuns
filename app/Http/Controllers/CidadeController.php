@@ -11,4 +11,18 @@ class CidadeController extends Controller
         $request->session()->put('cidade', $municipio);
         return redirect(route("inicio"));
     }
+
+    public function getCategoriasEstabelecimentosPorCidade(Request $request){
+        $categorias = \App\Modalidade::all();
+        //colocar where cidade = cidade;
+        $estabelecimentos = \App\Estabelecimento::all();
+        $response = [];
+        foreach ($categorias as $key) {
+          array_push($response, $key->nome);
+        }
+        foreach ($estabelecimentos as $key) {
+          array_push($response, $key->user->name);
+        }
+        return response()->json($response, 200);
+    }
 }
