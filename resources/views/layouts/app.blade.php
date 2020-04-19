@@ -79,7 +79,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <!-- login -->
                             <div class="col-md-3 styleMenuPrincipal_login_container">
@@ -94,8 +94,8 @@
                                         @auth
                                         <form action="{{route('logout')}}" method="post">
                                           @csrf
-                                          <button class="btn" type="submit" id="styleMenuPrincipal_sair"> 
-                                            Sair 
+                                          <button class="btn" type="submit" id="styleMenuPrincipal_sair">
+                                            Sair
                                           </button>
                                         </form>
                                         @endauth
@@ -141,7 +141,7 @@
                                                               <button type="submit" class="btn styleMenuPrincipal_button_logar" onclick="enviar()">Entrar</button>
                                                           </div>
                                             </form>
-                                                   
+
                                                   <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
                                                       <!-- <a href="{{ route('password.request') }}" style="color: #1492e6; font-size: 12px;">Não consegue acessar sua conta?</a> -->
                                                       <a style="color: #1492e6; font-size: 12px; text-decoration: underline; cursor:pointer;" onclick="logar_esqueciASenha()">Não consegue acessar sua conta?</a>
@@ -205,10 +205,10 @@
                                   </form>
                               </div>
                               <div class="col-sm-2">
-                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">A Plataforma</button>
+                                  <a href="http://www.lmts.uag.ufrpe.br/br/content/encontre-compre" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">A Plataforma</a>
                               </div>
                               <div class="col-sm-2">
-                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">O Laboratório</button>
+                                  <a href="http://lmts.uag.ufrpe.br/br/content/apresenta%C3%A7%C3%A3o" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">O Laboratório</a>
                               </div>
                               <div class="col-sm-2">
                                   <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastre sua cidade</button>
@@ -217,7 +217,7 @@
                                   <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Apoio/Patrocínio</button>
                               </div>
                               <div class="col-sm-2">
-                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Contato</button>
+                                  <a href="#appRodape" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Contato</a>
                               </div>
                           </div>
                       </div>
@@ -315,7 +315,7 @@
         </div>
 
         {{-- footer --}}
-        <div class="styleRodape" >
+        <div class="styleRodape" id="appRodape">
             <div class="container" >
                 <div class="row justify-content-center">
                     <div class="col-sm-2" align="center">
@@ -452,7 +452,7 @@
             document.getElementById("divLogar_email2").value = "";
             document.getElementById("divLogar").style.display = 'none';
             document.getElementById("divLogar_esqueciASenha").style.display = 'block';
-            
+
         }
         function loginClose(){
             document.getElementById("divLogar_email").value = "";

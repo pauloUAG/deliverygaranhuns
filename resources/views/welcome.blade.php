@@ -82,12 +82,12 @@
             <img id="img-left" class="image" src="{{asset('icones/grafico_icone.svg')}}" alt="">
         </div>
         <div class="col-sm-6">
-            <h1 class="title">Aumente suas vendas</h1>
+            <h1 class="title">Aumente suas vendas ou prestação de serviço</h1>
             <p class="paragraph">
-                O Cadastro é completamente <strong>gratuito</strong> e passa
-                por uma rápida avaliação, em que são verificados
-                os dados cadastrados, e em seguida, liberado
-                para acesso ao público.
+                Disponibilizar informações sobre seu estabelecimento ou prestação de serviço
+                nesta plataforma ampliam as possibilidades de serem localizados em buscas
+                realizadas na internet ou de que consumidores, por meio de seu cadastro,
+                lhes contactem para a compra de produtos ou contratação de serviços.
             </p>
         </div>
 
@@ -132,7 +132,7 @@
                 para acesso ao público.
             </p>
             <div class="row justify-content-center">
-                <a href="#" class="btn btn-index btn-lg">
+                <a href="{{route('estabelecimento.create')}}" class="btn btn-index btn-lg">
                     Cadastre-se
                 </a>
             </div>
