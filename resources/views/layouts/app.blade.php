@@ -21,6 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/autocomplete.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
@@ -51,7 +52,7 @@
                                     <div class="col-md-3 styleMenuPrincipal_input_cidade">
                                         <form action="{{route('alterar.municipio')}}" method="POST">
                                         @csrf
-                                        <select class="custom-select styleMenuPrincipal_container_select" name="cidade"  onchange="this.form.submit()" style="color: #1492e6">
+                                        <select id="selectCidade" class="custom-select styleMenuPrincipal_container_select" name="cidade"  onchange="this.form.submit()" style="color: #1492e6">
                                             @foreach($cidades as $cidade)
                                                 @if(Session::get('cidade') == $cidade->nome)
                                                     <option selected value="{{$cidade->nome}}">{{$cidade->nome}}</option>
@@ -67,7 +68,7 @@
                                         @csrf
                                         <div class="row">
                                             <div class="col-sm-9 styleMenuPrincipal_input_pesquisar">
-                                                <input type="text" minlength="3" required class="form-control" placeholder="Digite o nome do estabelecimento ou categoria" aria-label="Recipient's username" aria-describedby="basic-addon2" name="pesquisa" id="pesquisa" style="width: 100%; height: 38px;">
+                                                <input type="text" minlength="3" required class="form-control autocomplete" placeholder="Digite o nome do estabelecimento ou categoria" aria-label="Recipient's username" aria-describedby="basic-addon2" name="pesquisa" id="pesquisa" style="width: 100%; height: 38px;">
                                             </div>
                                             <div class="col-sm-3 styleMenuPrincipal_botao_pesquisar">
                                                 <button type="submit" class="btn" id="styleMenuPrincipal_container_BotaoPesquisar">
@@ -79,7 +80,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <!-- login -->
                             <div class="col-md-3 styleMenuPrincipal_login_container">
@@ -94,8 +95,8 @@
                                         @auth
                                         <form action="{{route('logout')}}" method="post">
                                           @csrf
-                                          <button class="btn" type="submit" id="styleMenuPrincipal_sair"> 
-                                            Sair 
+                                          <button class="btn" type="submit" id="styleMenuPrincipal_sair">
+                                            Sair
                                           </button>
                                         </form>
                                         @endauth
@@ -141,7 +142,7 @@
                                                               <button type="submit" class="btn styleMenuPrincipal_button_logar" onclick="enviar()">Entrar</button>
                                                           </div>
                                             </form>
-                                                   
+
                                                   <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
                                                       <!-- <a href="{{ route('password.request') }}" style="color: #1492e6; font-size: 12px;">Não consegue acessar sua conta?</a> -->
                                                       <a style="color: #1492e6; font-size: 12px; text-decoration: underline; cursor:pointer;" onclick="logar_esqueciASenha()">Não consegue acessar sua conta?</a>
@@ -205,10 +206,10 @@
                                   </form>
                               </div>
                               <div class="col-sm-2">
-                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">A Plataforma</button>
+                                  <a href="http://www.lmts.uag.ufrpe.br/br/content/encontre-compre" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">A Plataforma</a>
                               </div>
                               <div class="col-sm-2">
-                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">O Laboratório</button>
+                                  <a href="http://lmts.uag.ufrpe.br/br/content/apresenta%C3%A7%C3%A3o" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">O Laboratório</a>
                               </div>
                               <div class="col-sm-2">
                                   <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastre sua cidade</button>
@@ -217,7 +218,7 @@
                                   <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Apoio/Patrocínio</button>
                               </div>
                               <div class="col-sm-2">
-                                  <button class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Contato</button>
+                                  <a href="#appRodape" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Contato</a>
                               </div>
                           </div>
                       </div>
@@ -315,7 +316,7 @@
         </div>
 
         {{-- footer --}}
-        <div class="styleRodape" >
+        <div class="styleRodape" id="appRodape">
             <div class="container" >
                 <div class="row justify-content-center">
                     <div class="col-sm-2" align="center">
@@ -452,7 +453,7 @@
             document.getElementById("divLogar_email2").value = "";
             document.getElementById("divLogar").style.display = 'none';
             document.getElementById("divLogar_esqueciASenha").style.display = 'block';
-            
+
         }
         function loginClose(){
             document.getElementById("divLogar_email").value = "";
@@ -461,6 +462,132 @@
             document.getElementById("divLogar").style.display = 'none';
             document.getElementById("divLogar_esqueciASenha").style.display = 'none';
         }
+        //auto complete
+
+        function getCategoriasEstabelecimentosPorCidade(cidadeNome){
+          $.ajaxSetup({
+             headers: {
+                 'Content-Type': 'application/json',
+                 'X-Requested-With': 'XMLHttpRequest'
+             }
+          });
+          jQuery.ajax({
+             url: "{{ route('categoriasEstabelecimentosAjax') }}",
+             method: 'get',
+             data: {
+                cidade: cidadeNome
+             },
+             success: function(result){
+               autocomplete(document.getElementById("pesquisa"), result);
+
+             }
+          });
+        }
+
+        function autocomplete(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+            var a, b, i, val = this.value;
+            /*close any already open lists of autocompleted values*/
+            closeAllLists();
+            if (!val) { return false;}
+            currentFocus = -1;
+            /*create a DIV element that will contain the items (values):*/
+            a = document.createElement("DIV");
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+            /*append the DIV element as a child of the autocomplete container:*/
+            this.parentNode.appendChild(a);
+            /*for each item in the array...*/
+            for (i = 0; i < arr.length; i++) {
+              /*check if the item starts with the same letters as the text field value:*/
+              if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                /*create a DIV element for each matching element:*/
+                b = document.createElement("DIV");
+                /*make the matching letters bold:*/
+                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(val.length);
+                /*insert a input field that will hold the current array item's value:*/
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                /*execute a function when someone clicks on the item value (DIV element):*/
+                b.addEventListener("click", function(e) {
+                  /*insert the value for the autocomplete text field:*/
+                  inp.value = this.getElementsByTagName("input")[0].value;
+                  /*close the list of autocompleted values,
+                  (or any other open lists of autocompleted values:*/
+                  closeAllLists();
+                });
+                a.appendChild(b);
+              }
+            }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+            var x = document.getElementById(this.id + "autocomplete-list");
+            if (x) x = x.getElementsByTagName("div");
+            if (e.keyCode == 40) {
+              /*If the arrow DOWN key is pressed,
+              increase the currentFocus variable:*/
+              currentFocus++;
+              /*and and make the current item more visible:*/
+              addActive(x);
+            } else if (e.keyCode == 38) { //up
+              /*If the arrow UP key is pressed,
+              decrease the currentFocus variable:*/
+              currentFocus--;
+              /*and and make the current item more visible:*/
+              addActive(x);
+            } else if (e.keyCode == 13) {
+              /*If the ENTER key is pressed, prevent the form from being submitted,*/
+              e.preventDefault();
+              if (currentFocus > -1) {
+                /*and simulate a click on the "active" item:*/
+                if (x) x[currentFocus].click();
+              }
+            }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+            closeAllLists(e.target);
+          });
+        }
+        //fim autocomplete
+        $( document ).ready(function() {
+          //colocar a cidade no parametro quando tiver cidade
+          getCategoriasEstabelecimentosPorCidade($('#selectCidade').val());
+        });
+
+
+
     </script>
 </body>
 </html>

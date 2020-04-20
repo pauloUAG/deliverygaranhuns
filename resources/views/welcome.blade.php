@@ -41,7 +41,7 @@
                     @else
                         <div class="carousel-item active">
                             <img src="{{asset('slides/aviso_5.jpg')}}" class="d-block w-100" alt="Terceiro Slide" >
-                        </div>  
+                        </div>
                     @endif
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="left: -60px">
@@ -65,7 +65,7 @@
             <h1 class="title">É Gratuito!</h1>
             <p class="paragraph">
                 O Cadastro é completamente <strong>gratuito</strong> e passa
-                por uma rápida avaliação, em que são verificados 
+                por uma rápida avaliação, em que são verificados
                 os dados cadastrados, e em seguida, liberado
                 para acesso ao público.
             </p>
@@ -82,12 +82,12 @@
             <img id="img-left" class="image" src="{{asset('icones/grafico_icone.svg')}}" alt="">
         </div>
         <div class="col-sm-6">
-            <h1 class="title">Aumente suas vendas</h1>
+            <h1 class="title">Aumente suas vendas ou prestação de serviço</h1>
             <p class="paragraph">
-                O Cadastro é completamente <strong>gratuito</strong> e passa
-                por uma rápida avaliação, em que são verificados 
-                os dados cadastrados, e em seguida, liberado
-                para acesso ao público.
+                Disponibilizar informações sobre seu estabelecimento ou prestação de serviço
+                nesta plataforma ampliam as possibilidades de serem localizados em buscas
+                realizadas na internet ou de que consumidores, por meio de seu cadastro,
+                lhes contactem para a compra de produtos ou contratação de serviços.
             </p>
         </div>
 
@@ -107,7 +107,7 @@
                 nossas redes sociais
             </p>
             <div class="row justify-content-center">
-                <a href="#" class="btn btn-index btn-lg">
+                <a href="{{route('categoria.list')}}" class="btn btn-index btn-lg">
                     Ver todas as Categorias
                 </a>
             </div>
@@ -127,12 +127,12 @@
             <h1 class="title">Que tal cadastrar o seu negócio?</h1>
             <p class="paragraph">
                 O Cadastro é completamente <strong>gratuito</strong> e passa
-                por uma rápida avaliação, em que são verificados 
+                por uma rápida avaliação, em que são verificados
                 os dados cadastrados, e em seguida, liberado
                 para acesso ao público.
             </p>
             <div class="row justify-content-center">
-                <a href="#" class="btn btn-index btn-lg">
+                <a href="{{route('estabelecimento.create')}}" class="btn btn-index btn-lg">
                     Cadastre-se
                 </a>
             </div>
@@ -141,7 +141,7 @@
         <div id="img-right" class="col-sm-4">
             <img class="image" src="{{asset('icones/cadastrar_negocio_icone.svg')}}" alt="">
         </div>
-        
+
     </div>
 
     {{-- Contato --}}
@@ -160,7 +160,7 @@
                 <div class="card-body">
                     <form action="">
                         @csrf
-        
+
                         <div class="row justify-content-center">
                             <div class="col-sm-12">
                                 <div class="form-group">
