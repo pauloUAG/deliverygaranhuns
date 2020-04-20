@@ -32,6 +32,7 @@ Route::post("/alterar/municipio", "CidadeController@set")->name("alterar.municip
 Route::get("/categorias/list", "CategoriaListController@all")->name("categoria.list");
 Route::get("/categorias/show/{pagina}/{id}", "CategoriaShowController@show")->name("categoria.show");
 Route::post("/estabelecimentos/busca", "CategoriaShowController@search")->name("estabelecimento.busca");
+Route::get("/termosprivacidade/", "AdminMunicipioController@termos")->name("termos.privacidade");
 
 Route::middleware(['auth'])->group(function(){
     
