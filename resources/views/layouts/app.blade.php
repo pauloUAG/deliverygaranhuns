@@ -464,7 +464,7 @@
         }
         //auto complete
 
-        function getCategoriasEstabelecimentosPorCidade(cidadeId){
+        function getCategoriasEstabelecimentosPorCidade(cidadeNome){
           $.ajaxSetup({
              headers: {
                  'Content-Type': 'application/json',
@@ -475,7 +475,7 @@
              url: "{{ route('categoriasEstabelecimentosAjax') }}",
              method: 'get',
              data: {
-                cidade: cidadeId
+                cidade: cidadeNome
              },
              success: function(result){
                autocomplete(document.getElementById("pesquisa"), result);
@@ -582,8 +582,8 @@
         }
         //fim autocomplete
         $( document ).ready(function() {
-          //colocar a cidade no parametro quando tiver cidade id
-          getCategoriasEstabelecimentosPorCidade(1);
+          //colocar a cidade no parametro quando tiver cidade
+          getCategoriasEstabelecimentosPorCidade($('#selectCidade').val());
         });
 
 

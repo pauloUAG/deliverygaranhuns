@@ -15,7 +15,8 @@ class CidadeController extends Controller
     public function getCategoriasEstabelecimentosPorCidade(Request $request){
         $categorias = \App\Modalidade::all();
         //colocar where cidade = cidade;
-        $estabelecimentos = \App\Estabelecimento::where('status', 'Aprovado')->get();
+        $enderecosId = \App\Endereco::where('cidade', $request->cidade)->select('id')->get();
+        $estabelecimentos = \App\Estabelecimento::whereIn('endereco_id', $enderecosId)->where('status', 'Aprovado')->get();
         $response = [];
         foreach ($categorias as $key) {
           array_push($response, $key->nome);
