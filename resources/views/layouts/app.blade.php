@@ -250,6 +250,11 @@
                                  </form>
                              </div>
                              <div class="col-sm-3">
+                                <form method="get" action="{{route('cadastrar.modalidades')}}">
+                                     <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastrar Modalidades</button>
+                                 </form>
+                             </div>
+                             <div class="col-sm-3">
                                 <form method="get" action="{{route('carrossel.pagina')}}">
                                      <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Carrossel</button>
                                  </form>

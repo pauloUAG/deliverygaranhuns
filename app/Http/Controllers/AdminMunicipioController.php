@@ -148,4 +148,46 @@ class AdminMunicipioController extends Controller
         session()->flash('success', 'Imagem apagada!');
         return redirect()->route('carrossel.pagina');
     }
+
+    public function createPage() {
+        return view('categoria.create');
+    }
+
+    public function createModalidade(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'nome' => 'required|string|max:30',
+            'icone' => 'required|mimes:png,svg,html'
+        ]);
+
+        $icone = "";
+        if($request->hasFile('icone') && $request->file('icone')->isValid()) {
+            
+            $ext = strtolower(request()->icone->getClientOriginalExtension());
+
+            if(!in_array($ext, array("png","svg","html","jpg", "jpeg", "gif", "bmp")))
+                $validator->errors()->add("icone", "Formato de imagem inválido, utilize apenas o formato .svg");
+            else {
+                $icone = 'c' . time() . '.' . $ext;
+                $thumbPath = public_path('icones/'.$icone);
+                $icon = Image::make(request()->icone->path());
+                $icon->save($thumbPath);
+                
+            }
+        }
+
+        $dadosModalidade['nome'] = $request->nome;
+        $dadosModalidade['icone'] = $icone;
+
+        $modalidade = \App\Modalidade::create($dadosModalidade);
+        
+        session()->flash('success', 'Categoria cadastrada!');
+
+        return redirect()->route('cadastrar.modalidades');
+
+    }
+
+    public function deleteModalidade() {
+        
+    }
 }
