@@ -69,36 +69,28 @@
         </div>
     </div>
     {{-- Trecho abaixo reutilizado --}}
-    <div class="row">
-        <div class="col-md-12 subtitulo">
-            <label>Modalidades Cadastradas </label>
-        </div>
-        <div class="col-md-12">
-            <div class="container">
-                <div class="row justify-content-left">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Ações</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($modalidades as $modalidade)
-                            <tr>
-                                <th scope="row">{{$modalidade->id}}</th>
-                                <td>{{$modalidade->nome}}</td>
-                                <td><a>Remover</a></td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+    <div class="row justify-content-center">
+        <?php $pagina=0; $contador=-1; ?>
+        @foreach($modalidades as $modalidade)
+            <?php $contador ++; $pagina=($contador%5==0&&$contador>0)?$pagina+1:$pagina; ?>
+            <div class="styleCategoria_button_padding">
+                <a class="btn styleCategoria_button" style="display: block; line-height: 110px;">
+                    <span style="line-height: normal; display: inline-block; vertical-align: middle;">
+                    <div class="container" >
+                        <div class="row justify-content-center">
+                            <div class="col-sm-12 styleCategoria_imagem">
+                                <img src="{{ asset('/icones/' . $modalidade->icone ) }}" alt="{{ $modalidade->nome }}" width="35px;">
+                            </div>
+                            <div class="col-sm-12">
+                                <label>{{ $modalidade->nome }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    </span>
+                </a>
             </div>
-        </div>
+        @endforeach
     </div>
-
 
 
 

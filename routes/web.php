@@ -64,7 +64,6 @@ Route::middleware('can:autorizarCadastro,App\Estabelecimento')->group(function (
     Route::post("/admin/estabelecimentos/", "AdminEstabelecimentoCreate@saveAdminCidade")->name("admin.adminCreate");
     Route::get("/admin/modalidades/", "AdminMunicipioController@createPage")->name("cadastrar.modalidades");
     Route::post("/admin/modalidades/", "AdminMunicipioController@createModalidade")->name("cadastrar.modalidades");
-    Route::delete("/admin/modalidades/", "AdminMunicipioController@deleteModalidade")->name("apagar.modalidades");
 });
 
 Auth::routes();

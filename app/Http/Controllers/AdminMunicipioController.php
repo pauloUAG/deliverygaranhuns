@@ -186,8 +186,5 @@ class AdminMunicipioController extends Controller
         return redirect()->route('cadastrar.modalidades');
 
     }
-
-    public function deleteModalidade() {
-        
-    }
+    
 }
