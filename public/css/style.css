@@ -374,7 +374,7 @@ width:40px; margin-top:8.5rem; right:0rem; display: block;
 /*-- RODAPE --*/
 
 .styleRodape {
-  background-color: #2f306f;
+  background-color: #1492e6;
 }
 
 .styleRodape_Imagem_ufape {
@@ -395,16 +395,17 @@ width:40px; margin-top:8.5rem; right:0rem; display: block;
   text-align: center;
 }
 
-.styleRodape_Texto_Titulo {
+#styleRodape_Texto_Titulo {
   padding-top: 1rem;
   padding-bottom: 1rem;
   color: white;
+  font-size: 17px;
 }
 
-.styleRodape_Texto_Conteudo_MapaDoSite {
+#styleRodape_Texto_Conteudo_MapaDoSite {
   color: white;
-  font-size: 13px;
-  padding-top: 0.4rem;
+  font-size: 15px;
+  padding-top: 0.2rem;
 }
 
 .styleRodape_container {
@@ -603,5 +604,9 @@ width: 400px;
   }
   #img-gratuito{
     width: 100%;
+  }
+  #styleRodape_Texto_Titulo{
+    margin-left: 0px;
+    text-align: center;
   }
 }
