@@ -53,6 +53,9 @@ class AdminEstabelecimentoCreate extends Controller
             'password' => 'required|string|min:8|confirmed',
             'cep' => 'required|min:8|max:9'
         ]);
+        if($request->termo == "on"){
+            $aceito = true;
+        }
 
         $imagemCapa = "";
         if($request->hasFile('imagemCapa') && $request->file('imagemCapa')->isValid()) {
@@ -106,6 +109,7 @@ class AdminEstabelecimentoCreate extends Controller
         $dadosUsuario = $request->only(["name", "email"]);
         $dadosUsuario['password'] = Hash::make($request['password']);
         $dadosUsuario['tipo'] = "ESTABELECIMENTO";
+        $dadosUsuario['termo'] = $aceito;
         $user = \App\User::create($dadosUsuario);
 
         $dadosEstabelecimento = $request->only(["descricao", "site", "pagamentoDinheiro", "pagamentoTransferencia",

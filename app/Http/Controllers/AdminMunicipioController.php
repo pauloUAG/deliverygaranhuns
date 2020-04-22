@@ -13,6 +13,9 @@ use Auth;
 
 class AdminMunicipioController extends Controller
 {
+    public function termos() {
+        return view("admin.termosprivacidade");
+    }
     public function index() {
         $municipios = \App\Cidade::all();
         return view('municipio.admin')->with(['municipios' => $municipios]);
