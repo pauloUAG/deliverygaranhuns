@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManagerStatic as Image;
 use \Crypt;
+// use \stdClass;
 
 class AdminEstabelecimentoCreate extends Controller
 {
@@ -192,16 +193,32 @@ class AdminEstabelecimentoCreate extends Controller
             'estabelecimentoId' => 'required|integer',
             'decisao'           => 'required|string'
         ]);
+
         
-        // $estabelecimentoId = Crypt::decrypt($request->id);
-
+        // Encontrar email e nome de dono do estabelecimento
+        //*******************************************************
+        $userfound = \App\User::where('id', $request->estabelecimentoFk)->get();
+        // ****************************************************** 
+        
         $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
-        if($request->decisao == 'true'){
-          $estabelecimento->status = "Aprovado";
-          $estabelecimento->save();
 
-          session()->flash('success', 'Estabelecimento aprovado com sucesso');
-          return redirect()->route('estabelecimento.listUser');
+        if($request->decisao == 'true'){
+
+            // Enviar e-mai de comprovação de cadastro
+            //************************************** */
+            
+            $user = new \stdClass();
+            $user->name = $userfound[0]->name;
+            $user->email = $userfound[0]->email;
+
+            \Illuminate\Support\Facades\Mail::send(new \App\Mail\SendMailUser($user));
+            // *************************************
+            
+            $estabelecimento->status = "Aprovado";
+            $estabelecimento->save();
+
+            session()->flash('success', 'Estabelecimento aprovado com sucesso');
+            return redirect()->route('estabelecimento.listUser');
         }
         else{
           $estabelecimento->status = "Reprovado";
