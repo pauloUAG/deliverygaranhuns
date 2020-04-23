@@ -42,7 +42,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post("/admin/estabelecimentoAdmin/pending/judge", "AdminEstabelecimentoCreate@pendingAdminJudge")->name("estabelecimentoAdmin.pending.judge");
     Route::get("/admin/estabelecimentoAdmin/", "AdminEstabelecimentoCreate@pending")->name("estabelecimentoAdmin.pending");
     Route::get("/admin/estabelecimentos/", "AdminMunicipioController@listEst")->name("estabelecimento.listUser");
-
+    Route::get("/admin/estabelecimentoAdmin/", "AdminMunicipioController@revisarAdmin")->name("estabelecimentoAdmin.revisar");
+    
     //editar estabelecimento
     Route::get("/estabelecimento/editar", "EstabelecimentoController@edit")->name("estabelecimento.edit");
     Route::post("/estabelecimento/editar", "EstabelecimentoController@store")->name("estabelecimento.edit");
@@ -64,6 +65,7 @@ Route::middleware('can:autorizarCadastro,App\Estabelecimento')->group(function (
     Route::post("/admin/estabelecimentos/", "AdminEstabelecimentoCreate@saveAdminCidade")->name("admin.adminCreate");
     Route::get("/admin/modalidades/", "AdminMunicipioController@createPage")->name("cadastrar.modalidades");
     Route::post("/admin/modalidades/", "AdminMunicipioController@createModalidade")->name("cadastrar.modalidades");
+    Route::get("/admin/estabelecimento/", "AdminMunicipioController@revisar")->name("estabelecimento.revisar");
 });
 
 Auth::routes();

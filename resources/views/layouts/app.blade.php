@@ -237,6 +237,11 @@
                                   </form>
                               </div>
                               <div class="col-sm-3">
+                                <form method="get" action="{{route('estabelecimento.revisar')}}">
+                                     <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Revisar</button>
+                                 </form>
+                             </div>
+                              <div class="col-sm-3">
                                 <form method="get" action="{{route('cadastro.adminCidade')}}">
                                      <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior" style="width: 100%">Cadastrar Administrador</button>
                                  </form>
@@ -290,6 +295,11 @@
                                         <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior">Pendentes</button>
                                     </form>
                                 </div>
+                                <div>
+                                  <form method="get" action="{{route('estabelecimentoAdmin.revisar')}}">
+                                      <button type="submit" class="btn btn-outline-light styleMenuPrincipal_botaoInferior">Revisar</button>
+                                  </form>
+                              </div>
                             </div>
                           </div>
                         @endif

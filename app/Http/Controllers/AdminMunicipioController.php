@@ -186,5 +186,33 @@ class AdminMunicipioController extends Controller
         return redirect()->route('cadastrar.modalidades');
 
     }
+
+    public function revisarAdmin() {
+        
+        $admin = \App\Admin::where('user_id', Auth::user()->id)->get();
+
+        $lista = \App\Estabelecimento::
+            where('status', 'Aprovado')
+            ->orWhere('status', 'Reprovado')->get();
+        
+        $estabelecimentos = array();
+        foreach($lista as $estabelecimento) {
+            if($estabelecimento->endereco->cidade == $admin[0]->cidade->nome) {
+                $estabelecimentos[] = $estabelecimento;
+            }
+        }
+        // return dd($estabelecimentos);
+        return view("estabelecimento.revisar")->with(['estabelecimentos' => $estabelecimentos]);
+    }
+
+    public function revisar() {
+        $estabelecimentos = \App\Estabelecimento::
+            where('status', 'Aprovado')
+            ->orWhere('status', 'Reprovado')->orderBy('created_at', 'desc')->get();
+        // return dd($estabelecimentos);
+        return view("estabelecimento.revisar")->with([
+            "estabelecimentos" => $estabelecimentos,
+        ]);
+    }
     
 }

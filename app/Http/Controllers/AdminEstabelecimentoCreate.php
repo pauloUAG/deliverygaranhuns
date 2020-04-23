@@ -206,30 +206,63 @@ class AdminEstabelecimentoCreate extends Controller
         
         $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
 
-        if($request->decisao == 'true'){
+        if($estabelecimento->status == "Pendente"){
 
-            // Enviar e-mai de comprovação de cadastro
-            //************************************** */
-            
-            $user = new \stdClass();
-            $user->name = $userfound[0]->name;
-            $user->email = $userfound[0]->email;
+            if($request->decisao == 'true'){
 
-            \Illuminate\Support\Facades\Mail::send(new \App\Mail\SendMailUser($user));
-            // *************************************
-            
-            $estabelecimento->status = "Aprovado";
-            $estabelecimento->save();
+                // Enviar e-mai de comprovação de cadastro
+                //************************************** */
+                
+                $user = new \stdClass();
+                $user->name = $userfound[0]->name;
+                $user->email = $userfound[0]->email;
+    
+                \Illuminate\Support\Facades\Mail::send(new \App\Mail\SendMailUser($user));
+                // *************************************
+                
+                $estabelecimento->status = "Aprovado";
+                $estabelecimento->save();
+    
+                session()->flash('success', 'Estabelecimento aprovado com sucesso');
+                return redirect()->route('estabelecimento.listUser');
+            }
+            else{
+              $estabelecimento->status = "Reprovado";
+              $estabelecimento->save();
+    
+              session()->flash('success', 'Estabelecimento reprovado com sucesso');
+              return redirect()->route('estabelecimento.listUser');
+            }
 
-            session()->flash('success', 'Estabelecimento aprovado com sucesso');
-            return redirect()->route('estabelecimento.listUser');
         }
-        else{
-          $estabelecimento->status = "Reprovado";
-          $estabelecimento->save();
 
-          session()->flash('success', 'Estabelecimento reprovado com sucesso');
-          return redirect()->route('estabelecimento.listUser');
-        }
+        elseif ($estabelecimento->status == "Aprovado" || $estabelecimento->status == "Reprovado") {
+            
+            if($request->decisao == 'true'){
+
+                // Enviar e-mai de comprovação de cadastro
+                //************************************** */
+                
+                $user = new \stdClass();
+                $user->name = $userfound[0]->name;
+                $user->email = $userfound[0]->email;
+    
+                \Illuminate\Support\Facades\Mail::send(new \App\Mail\SendMailUser($user));
+                // *************************************
+                
+                $estabelecimento->status = "Aprovado";
+                $estabelecimento->save();
+    
+                session()->flash('success', 'Estabelecimento aprovado com sucesso');
+                return redirect()->route('estabelecimentoAdmin.revisar');
+            }
+            else{
+              $estabelecimento->status = "Reprovado";
+              $estabelecimento->save();
+    
+              session()->flash('success', 'Estabelecimento reprovado com sucesso');
+              return redirect()->route('estabelecimentoAdmin.revisar');
+            }
+        }        
     }
 }
