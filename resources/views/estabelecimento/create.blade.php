@@ -316,79 +316,71 @@
             </div>
             <!-- Modal -->
             <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"><strong>Termos de Uso e Privacidade</strong></h5>
+                        <h3 class="modal-title" id="exampleModalLongTitle"><strong>Termos e condições gerais de uso do site</strong></h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
-                            TERMOS DE SERVIÇO
+                            <p align="justify">O <b>Encontre & Compre</b> é uma plataforma desenvolvida pela Universidade Federal do Agreste 
+                            de Pernambuco (UFAPE), por meio do Laboratório Multidisciplinar de Tecnologias Sociais (LMTS), 
+                            com intuito de facilitar as relações de comércio, profundamente afetadas pela pandemia 
+                            de Coronavírus, mas não se limita à vigência de seus efeitos. Os desenvolvedores, como entes 
+                            públicos, não praticam a exploração com fins lucrativos da plataforma e seu uso é inteiramente 
+                            gratuito, não havendo nenhum tipo de taxa ou cobrança relacionados ao seu uso.</p>
 
-                            ----
+                            <p align="justify">Ace  itar integralmente os termos e condições gerais de uso é condição fundamental 
+                            para qualquer pessoa que deseje utilizar os serviços do <b>Encontre & Compre</b>. O interessado 
+                            após realizar realizar o cadastro e ter aceito os termos e condições gerais de uso, 
+                            passa a ter acesso como usuário ao site.</p>
+
+                            <p align="justify">Os serviços objeto dos presentes Termos e condições gerais consistem em (i) prover espaços 
+                            no site para que os usuários anunciem seus produtos e/ou serviços e (ii) facilitar o contato 
+                            direto entre usuários vendedores e interessados em adquirir os produtos e serviços anunciados, 
+                            por meio da divulgação dos dados de contato de uma parte à outra. O <b>Encontre & Compre</b>, portanto, 
+                            torna possível a comunicação entre usuários e potenciais clientes para que os mesmos negociem 
+                            entre si, sem qualquer intervenção ou intermediação na negociação ou na concretização dos 
+                            negócios. Assim sendo, ressalta-se que o <b>Encontre & Compre</b> não fornece quaisquer produtos ou 
+                            serviços anunciados pelos no Site.</p>
+
+                            <p align="justify">Os Usuários anunciantes/potenciais vendedores somente poderão anunciar produtos ou serviços 
+                            que estejam autorizados a vender e que tenham em estoque, estabelecendo diretamente os termos 
+                            do anúncio e todas as suas características (como título, descrição e imagem dos bens, preço, 
+                            categoria, quantidade, condições de venda, forma e prazo de entrega, além da forma de pagamento).</p>
+
+                            <p align="justify">O <b>Encontre & Compre</b>, conforme a situação, poderá, sem prejuízo de outras medidas, 
+                            recusar qualquer solicitação de cadastro, suspender, temporária ou definitivamente, a conta de um 
+                            Usuário e seus anúncios, caso julgue necessário, sem necessidade de justificativa prévia.</p>
+
+                            <p align="justify">Não é permitido anunciar produtos expressamente proibidos pela legislação vigente ou que não 
+                            possuam a devida autorização específica de órgãos reguladores competentes, ou que violem direitos 
+                            de terceiros;</p>
+
+                            <p align="justify">Cabe ao comprador, antes de decidir pela compra, atentar-se às informações sobre o preço, às 
+                            formas de pagamento, à disponibilidade, à forma e ao prazo de entrega dos produtos e serviços.</p>
+
+                            <p align="justify">O <b>Encontre & compre</b> não se responsabiliza por problemas ocorridos durante a negociação, como 
+                            falta de pagamento ou a não entrega do bem ou serviço adquirido.</p>
+
+                            <p align="justify">A aceitação destes Termos e condições gerais é absolutamente indispensável à utilização do 
+                            <b>Encontre & Compre</b>. O Usuário deverá ler, certificar-se de haver entendido e aceitar todas as 
+                            condições estabelecidas nos Termos e condições gerais e nas Políticas de privacidade, assim como nos 
+                            demais documentos a eles incorporados por referência, antes de seu cadastro como Usuário do <b>Encontre & Compre</b>.</p>
                             
-                            VISÃO GERAL
+                            <p align="justify">O Usuário compromete-se a notificar o <b>Encontre & Compre</b> imediatamente, e por meio seguro, a respeito 
+                            de qualquer uso não autorizado de sua conta, bem como seu acesso não autorizado por terceiros. 
+                            O Usuário será o único responsável pelo conteúdo de seus anúncios, uma vez que o acesso só será possível 
+                            mediante a inclusão da senha, que deverá ser de conhecimento e propriedade exclusiva do Usuário.</p>
                             
-                            Esse site é operado pelo Paulo Garanhuns. Em todo o site, os termos “nós”, “nos” e “nosso” se referem ao Paulo Garanhuns. O Paulo Garanhuns proporciona esse site, incluindo todas as informações, ferramentas e serviços disponíveis deste site para você, o usuário, com a condição da sua aceitação de todos os termos, condições, políticas e avisos declarados aqui.
-                            
-                            Ao visitar nosso site e/ou comprar alguma coisa no nosso site, você está utilizando nossos “Serviços”. Consequentemente, você  concorda com os seguintes termos e condições (“Termos de serviço”, “Termos”), incluindo os termos e condições e políticas adicionais mencionados neste documento e/ou disponíveis por hyperlink. Esses Termos de serviço se aplicam a todos os usuários do site, incluindo, sem limitação, os usuários que são navegadores, fornecedores, clientes, lojistas e/ou contribuidores de conteúdo.
-                            
-                            Por favor, leia esses Termos de serviço cuidadosamente antes de acessar ou utilizar o nosso site. Ao acessar ou usar qualquer parte do site, você concorda com os Termos de serviço. Se você não concorda com todos os termos e condições desse acordo, então você não pode acessar o site ou usar quaisquer serviços. Se esses Termos de serviço são considerados uma oferta, a aceitação é expressamente limitada a esses Termos de serviço.
-                            
-                            Quaisquer novos recursos ou ferramentas que forem adicionados à loja atual também devem estar sujeitos aos Termos de serviço. Você pode revisar a versão mais atual dos Termos de serviço quando quiser nesta página. Reservamos o direito de atualizar, alterar ou trocar qualquer parte desses Termos de serviço ao publicar atualizações e/ou alterações no nosso site. É sua responsabilidade verificar as alterações feitas nesta página periodicamente. Seu uso contínuo ou acesso ao site após a publicação de quaisquer alterações constitui aceitação de tais alterações.
-                            
-                            Nossa loja é hospedada no Shopify Inc. Eles nos fornecem uma plataforma de e-commerce online que nos permite vender nossos produtos e serviços.
-                            
-                            
-                            SEÇÃO 1 - TERMOS DA LOJA VIRTUAL
-                            
-                            Ao concordar com os Termos de serviço, você confirma que você é maior de idade em seu estado ou província de residência e que você nos deu seu consentimento para permitir que qualquer um dos seus dependentes menores de idade usem esse site.
-                            
-                            Você não deve usar nossos produtos para qualquer fim ilegal ou não autorizado. Você também não pode, ao usufruir deste Serviço, violar quaisquer leis em sua jurisdição (incluindo, mas não limitado, a leis de direitos autorais).
-                            
-                            Você não deve transmitir nenhum vírus ou qualquer código de natureza destrutiva.
-                            
-                            Violar qualquer um dos Termos tem como consequência a rescisão imediata dos seus Serviços.
-                            
-                            
-                            SEÇÃO 2 - CONDIÇÕES GERAIS
-                            
-                            Reservamos o direito de recusar o serviço a qualquer pessoa por qualquer motivo a qualquer momento.
-                            
-                            Você entende que o seu conteúdo (não incluindo informações de cartão de crédito), pode ser transferido sem criptografia e pode: (a) ser transmitido por várias redes; e (b) sofrer alterações para se adaptar e se adequar às exigências técnicas de conexão de redes ou dispositivos. As informações de cartão de crédito sempre são criptografadas durante a transferência entre redes.
-                            
-                            Você concorda em não reproduzir, duplicar, copiar, vender, revender ou explorar qualquer parte do Serviço, uso do Serviço, acesso ao Serviço, ou qualquer contato no site através do qual o serviço é fornecido, sem nossa permissão expressa por escrito.
-                            
-                            Os títulos usados nesse acordo são incluídos apenas por conveniência e não limitam ou  afetam os Termos.
-                            
-                            
-                            SEÇÃO 3 - PRECISÃO, INTEGRIDADE E ATUALIZAÇÃO DAS INFORMAÇÕES
-                            
-                            Não somos responsáveis por informações disponibilizadas nesse site que não sejam precisas, completas ou atuais. O material desse site é fornecido apenas para fins informativos e não deve ser usado como a única base para tomar decisões sem consultar fontes de informações primárias, mais precisas, mais completas ou mais atuais. Qualquer utilização do material desse site é por sua conta e risco.
-                            
-                            Esse site pode conter certas informações históricas. As informações históricas podem não ser atuais e são fornecidas apenas para sua referência. Reservamos o direito de modificar o conteúdo desse site a qualquer momento, mas nós não temos obrigação de atualizar nenhuma informação em nosso site. Você concorda que é de sua responsabilidade monitorar alterações no nosso site.
-                            
-                            
-                            SEÇÃO 4 - MODIFICAÇÕES DO SERVIÇO E PREÇOS
-                            
-                            Os preços dos nossos produtos são sujeitos a alterações sem notificação.
-                            
-                            Reservamos o direito de, a qualquer momento, modificar ou descontinuar o Serviço (ou qualquer parte ou conteúdo do mesmo) sem notificação em qualquer momento.
-                            
-                            Não nos responsabilizados por você ou por qualquer terceiro por qualquer modificação, alteração de preço, suspensão ou descontinuação do Serviço.
-                            
-                            
-                            SEÇÃO 5 - PRODUTOS OU SERVIÇOS (caso aplicável)
-                            
-                            Certos produtos ou serviços podem estar disponíveis exclusivamente online através do site. Tais produtos ou serviços podem ter quantidades limitadas e são sujeitos a apenas devolução ou troca, de acordo com nossa Política de devolução.
-                            
-                            Fizemos todo o esforço possível da forma mais precisa as cores e imagens dos nossos produtos que aparecem na loja. Não podemos garantir que a exibição de qualquer cor no monitor do seu computador será precisa.
-                            
-                            Reservamos o direito, mas não somos obrigados, a limitar as vendas de nossos produtos ou Serviços para qualquer pessoa, região geográfica ou jurisdição. Podemos exercer esse direito conforme o caso. Reservamos o direito de limitar as quantidades de quaisquer produtos ou serviços que oferecemos. Todas as descrições de produtos ou preços de produtos são sujeitos a alteração a qualquer momento sem notificação, a nosso critério exclusivo. Reservamos o direito de descontinuar qualquer produto a qualquer momento. Qualquer oferta feita por qualquer produto ou serviço nesse site é nula onde for proibido por lei.
-                            
-                            Não garantimos que a qualidade de quaisquer produtos, serviços, informações ou outros materiais comprados ou obtidos por você vão atender às suas expectativas, ou que quaisquer erros no Serviço serão corrigidos.
+                            <h4><b>Modificações dos Termos e condições gerais:</b></h4>
+
+                            <p align="justify">O <b>Encontre & Compre</b> poderá alterar, a qualquer tempo, estes Termos e condições gerais, visando 
+                            seu aprimoramento e melhoria. As novas versões dos Termos e condições gerais entrarão em vigor 10 
+                            (dez) dias após sua publicação nos Sites. O Usuário deverá comunicar-se por e-mail caso não concorde 
+                            com os termos alterados dentro do prazo estabelecido para início de vigência.</p>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -398,11 +390,11 @@
             </div>
             <div class="col-md-7">
                 {{-- <label class="col-form-label"><strong>Termos de uso e Privacidade! Leia <a href="{{route('termos.privacidade')}}" target="_blank">AQUI</a> os nossos termos.</strong></label> --}}
-                <label class="col-form-label"><strong>Termos de uso e Privacidade!</strong> Leia clicando <a data-toggle="modal" data-target="#exampleModalLong"><strong>AQUI</strong></a> os nossos termos. Ou em nossa página clicando <a href="{{route('termos.privacidade')}}" target="_blank"><strong>AQUI!</strong></a></label>
+                <label class="col-form-label"><strong>Termos e condições gerais de uso do site!</strong> Leia clicando <a data-toggle="modal" data-target="#exampleModalLong" style="cursor:pointer;"><strong>AQUI!</strong></a></label>
                 <div >
                     <div class="form-check form-check-inline">
                         <input id="termo" type="checkbox" class="form-check-input" name="termo">
-                        <label class="form-check-label" for="termo">Aceito os termos do contrato de licença</label>
+                        <label class="form-check-label" for="termo">Aceito os termos e condições gerais de uso do site.</label>
                     </div>
                 </div>
 
