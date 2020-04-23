@@ -234,7 +234,7 @@
             </div>
             <div class="form-group row mb-0" style="margin: 20px 0 20px 0">
                 @if(auth()->user()->tipo == 'ADMIN')
-                    <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'false']) }}">
+                    <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'estabelecimentoFk' => $estabelecimento->user_id, 'decisao' => 'false']) }}">
                         @csrf
                         <div class="col-md-12" style="padding-left:0">
                             <button type="submit" class="btn btn-secondary botao-form" style="width:100%">
@@ -242,7 +242,7 @@
                             </button>
                         </div>
                         </form>
-                        <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'decisao' => 'true']) }}">
+                        <form method="POST" action="{{ route('estabelecimento.pending.judge', ['estabelecimentoId' => $estabelecimento->id, 'estabelecimentoFk' => $estabelecimento->user_id, 'decisao' => 'true']) }}">
                         @csrf
                         <div class="col-md-12" style="padding-right:0">
                             <button type="submit" class="btn btn-primary botao-form" style="width:100%">

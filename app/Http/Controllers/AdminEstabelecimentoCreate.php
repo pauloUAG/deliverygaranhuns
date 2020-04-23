@@ -177,9 +177,25 @@ class AdminEstabelecimentoCreate extends Controller
         ]);
         $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
 
+        // Encontrar email e nome de dono do estabelecimento
+        //*******************************************************
+        $userfound = \App\User::where('id', $request->estabelecimentoFk)->get();
+        // ******************************************************
+
         if($estabelecimento->status == "Pendente"){
 
             if($request->decisao == 'true'){
+
+                // Enviar e-mai de comprovação de cadastro
+                //************************************** */
+                
+                $user = new \stdClass();
+                $user->name = $userfound[0]->name;
+                $user->email = $userfound[0]->email;
+    
+                \Illuminate\Support\Facades\Mail::send(new \App\Mail\SendMailUser($user));
+                // *************************************
+
                 $estabelecimento->status = "Aprovado";
                 $estabelecimento->save();
       
@@ -198,6 +214,17 @@ class AdminEstabelecimentoCreate extends Controller
         elseif ($estabelecimento->status == "Aprovado" || $estabelecimento->status == "Reprovado") {
 
             if($request->decisao == 'true'){
+                
+                // Enviar e-mai de comprovação de cadastro
+                //************************************** */
+                
+                $user = new \stdClass();
+                $user->name = $userfound[0]->name;
+                $user->email = $userfound[0]->email;
+    
+                \Illuminate\Support\Facades\Mail::send(new \App\Mail\SendMailUser($user));
+                // *************************************
+                
                 $estabelecimento->status = "Aprovado";
                 $estabelecimento->save();
       
