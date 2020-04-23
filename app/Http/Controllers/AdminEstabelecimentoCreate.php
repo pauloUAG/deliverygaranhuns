@@ -176,19 +176,41 @@ class AdminEstabelecimentoCreate extends Controller
             'decisao'           => 'required|string'
         ]);
         $estabelecimento = \App\Estabelecimento::find($request->estabelecimentoId);
-        if($request->decisao == 'true'){
-          $estabelecimento->status = "Aprovado";
-          $estabelecimento->save();
 
-          session()->flash('success', 'Estabelecimento aprovado com sucesso');
-          return redirect()->route('estabelecimento.pending');
+        if($estabelecimento->status == "Pendente"){
+
+            if($request->decisao == 'true'){
+                $estabelecimento->status = "Aprovado";
+                $estabelecimento->save();
+      
+                session()->flash('success', 'Estabelecimento aprovado com sucesso');
+                return redirect()->route('estabelecimento.pending');
+              }
+              else{
+                $estabelecimento->status = "Reprovado";
+                $estabelecimento->save();
+      
+                session()->flash('success', 'Estabelecimento reprovado com sucesso');
+                return redirect()->route('estabelecimento.pending');
+              } 
         }
-        else{
-          $estabelecimento->status = "Reprovado";
-          $estabelecimento->save();
 
-          session()->flash('success', 'Estabelecimento reprovado com sucesso');
-          return redirect()->route('estabelecimento.pending');
+        elseif ($estabelecimento->status == "Aprovado" || $estabelecimento->status == "Reprovado") {
+
+            if($request->decisao == 'true'){
+                $estabelecimento->status = "Aprovado";
+                $estabelecimento->save();
+      
+                session()->flash('success', 'Estabelecimento aprovado com sucesso');
+                return redirect()->route('estabelecimento.revisar');
+              }
+              else{
+                $estabelecimento->status = "Reprovado";
+                $estabelecimento->save();
+      
+                session()->flash('success', 'Estabelecimento reprovado com sucesso');
+                return redirect()->route('estabelecimento.revisar');
+              }
         }
     }
 
