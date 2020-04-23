@@ -9,15 +9,15 @@
   color: var(--color-primary);
 }
 .layout_index .title{
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
 }
 .layout_index .paragraph{
-  font-size: 25px;
+  font-size: 20px;
   text-align: justify;
 }
 .layout_index .image{
-  width: 100%;
+  width: 500px;
 }
 #img-right{
   display: none;
@@ -126,7 +126,7 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
 #styleMenuPrincipal_container_BotaoPesquisar:hover{
-  background-color: #1ca4ff; 
+  background-color: #1ca4ff;
   border-color: white;
   -webkit-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 -moz-box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
@@ -184,11 +184,11 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
   color: #1492e6; display: none;
 }
 #styleMenuPrincipal_sair{
-  background-color: white; 
-  border-color: white; 
-  color: #1492e6; 
+  background-color: white;
+  border-color: white;
+  color: #1492e6;
   height: 36px;
-  width: 100%; 
+  width: 100%;
   margin-bottom: 5px;
   border-radius: 6px;
   font-family: arial;
@@ -199,11 +199,11 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 }
 #styleMenuPrincipal_sair:hover{
-  background-color: white; 
-  border-color: white; 
-  color: #1492e6; 
+  background-color: white;
+  border-color: white;
+  color: #1492e6;
   height: 36px;
-  width: 100%; 
+  width: 100%;
   margin-bottom: 5px;
   border-radius: 6px;
   font-family: arial;
@@ -294,6 +294,14 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 
 /*-- CONTEUDO DO SITE --*/
 
+/*  SLIDESHOW */
+#carrousel_botao_voltar{
+width:40px; margin-top:8.5rem; left:0rem; display: block;
+}
+#carrousel_botao_proximo{
+width:40px; margin-top:8.5rem; right:0rem; display: block;
+}
+
 .styleCategoria_conteiner_button {
   padding: 1rem;
   padding-left: 0rem;
@@ -366,7 +374,7 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
 /*-- RODAPE --*/
 
 .styleRodape {
-  background-color: #2f306f;
+  background-color: #1492e6;
 }
 
 .styleRodape_Imagem_ufape {
@@ -387,16 +395,17 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
   text-align: center;
 }
 
-.styleRodape_Texto_Titulo {
+#styleRodape_Texto_Titulo {
   padding-top: 1rem;
   padding-bottom: 1rem;
   color: white;
+  font-size: 17px;
 }
 
-.styleRodape_Texto_Conteudo_MapaDoSite {
+#styleRodape_Texto_Conteudo_MapaDoSite {
   color: white;
-  font-size: 13px;
-  padding-top: 0.4rem;
+  font-size: 15px;
+  padding-top: 0.2rem;
 }
 
 .styleRodape_container {
@@ -439,7 +448,7 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
     .styleRodape_linha_left{
         border-left: 0;
     }
-    
+
     .styleMenuPrincipal_button{
       margin-top:10px;
       width: 100%;
@@ -503,5 +512,101 @@ box-shadow: 0px 7px 8px 2px rgba(0,0,0,0.15);
   }
   #styleMenuPrincipal_logo{
     width: 119px;
+  }
+}
+
+
+/* SLIDESHOW */
+@media screen and (max-width: 992px) and (min-width: 0px){
+  #carrousel_botao_voltar{
+  display: none;
+  }
+  #carrousel_botao_proximo{
+  display: none;
+  }
+}
+
+/* Maior que 992  */
+@media screen and (min-width:992px){
+  #img-left{
+    width: 480px;
+  }
+  #img-cadastrarLeft{
+    width: 400px;
+    margin-top: 3rem;
+  }
+  #img_categoria{
+  width: 500px;
+  margin-top: 3rem;
+  }
+  #img-aumenteSuasVendas{
+  margin-top: 3rem;
+  }
+  #img-gratuito{
+width: 400px;
+  }
+}
+/* Entre 992 e 768 */
+@media screen and (max-width: 992px) and (min-width: 768px){
+  #img-left{
+    width: 350px;
+  }
+  #img_categoria{
+  width: 100%;
+  }
+  #img-cadastrarLeft{
+    width: 300px;
+  }
+  #img-aumenteSuasVendas{
+    width: 350px;
+  }
+  #img-gratuito{
+    width: 350px;
+  }
+}
+/* Entre 768 e 575 */
+@media screen and (max-width: 768px) and (min-width: 575px){
+  #img-left{
+    width: 350px;
+  }
+  #img_categoria{
+  width: 100%;
+  }
+  #img-cadastrarLeft{
+    width: 200px;
+  }
+  #img-aumenteSuasVendas{
+    width: 260px;
+  }
+  #img-gratuito{
+    width: 290px;
+  }
+}
+/* menor que 575 */
+@media screen and (max-width: 575px){
+  #img-left{
+    width: 350px;
+  }
+  #img_categoria{
+  width: 100%;
+  }
+  #img_cadastrar{
+    width: 100%;
+  }
+  #img-cadastrarLeft{
+    display: none;
+  }
+  #img-aumenteSuasVendas{
+    display: none;
+  }
+  #img-aumenteSuasVendas2{
+    width: 100%;
+  }
+  #img-gratuito{
+    width: 100%;
+  }
+  #styleRodape_Texto_Titulo{
+    margin-left: 0px;
+    text-align: center;
   }
 }

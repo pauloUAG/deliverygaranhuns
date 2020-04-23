@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="Grupo_462" data-name="Grupo 462" transform="translate(-719 279) rotate(-90)">
+    <path id="Caminho_621" data-name="Caminho 621" d="M25,0A25,25,0,1,1,0,25,25,25,0,0,1,25,0Z" transform="translate(229 719)" fill="#1492e6"/>
+    <g id="Polígono_5" data-name="Polígono 5" transform="translate(240 728)" fill="#fff">
+      <path d="M 28.13198089599609 24.5 L 0.8680188059806824 24.5 L 14.5 0.9965841174125671 L 28.13198089599609 24.5 Z" stroke="none"/>
+      <path d="M 14.5 1.99315071105957 L 1.736026763916016 24 L 27.26397323608398 24 L 14.5 1.99315071105957 M 14.5 0 L 29 25 L 0 25 L 14.5 0 Z" stroke="none" fill="#fff"/>
+    </g>
+  </g>
+</svg>
