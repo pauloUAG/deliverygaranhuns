@@ -1,4 +1,9 @@
-<h1>Cadastro Aceito!</h1>
+<h1>Aprovação de Cadastro</h1>
 
-<p>{{$user->name}} seu estabelecimento foi aprovado por um de nossos administradores!
-Basta entrar no Encontre & Compre e logar!</p>
+<p>Olá, {{$user->name}}!</p>
+<p>O Status da sua solicitação para entrar no Encontre&Compre foi aprovada.</b>
+O seu estabelecimento já está disponível para divulgação!
+</p>
+<p>Atenciosamente,<br>
+Encontre&Compre.
+</p>

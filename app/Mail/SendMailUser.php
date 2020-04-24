@@ -31,7 +31,7 @@ class SendMailUser extends Mailable
      */
     public function build()
     {
-        $subject = 'Encontre&Compre - Confirmação de cadastro';
+        $subject = 'Encontre&Compre - Aprovação de cadastro';
         return $this->to($this->user->email, $this->user->name)
                     ->subject($subject)
                     ->view('mail.SendMailUser', [
