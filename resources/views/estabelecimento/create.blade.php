@@ -314,12 +314,97 @@
                 </div>
 
             </div>
+            <!-- Modal -->
+            <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLongTitle"><strong>Termos e condições gerais de uso do site</strong></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p align="justify">O <b>Encontre & Compre</b> é uma plataforma desenvolvida pela Universidade Federal do Agreste 
+                            de Pernambuco (UFAPE), por meio do Laboratório Multidisciplinar de Tecnologias Sociais (LMTS), 
+                            com intuito de facilitar as relações de comércio, profundamente afetadas pela pandemia 
+                            de Coronavírus, mas não se limita à vigência de seus efeitos. Os desenvolvedores, como entes 
+                            públicos, não praticam a exploração com fins lucrativos da plataforma e seu uso é inteiramente 
+                            gratuito, não havendo nenhum tipo de taxa ou cobrança relacionados ao seu uso.</p>
+
+                            <p align="justify">Ace  itar integralmente os termos e condições gerais de uso é condição fundamental 
+                            para qualquer pessoa que deseje utilizar os serviços do <b>Encontre & Compre</b>. O interessado 
+                            após realizar realizar o cadastro e ter aceito os termos e condições gerais de uso, 
+                            passa a ter acesso como usuário ao site.</p>
+
+                            <p align="justify">Os serviços objeto dos presentes Termos e condições gerais consistem em (i) prover espaços 
+                            no site para que os usuários anunciem seus produtos e/ou serviços e (ii) facilitar o contato 
+                            direto entre usuários vendedores e interessados em adquirir os produtos e serviços anunciados, 
+                            por meio da divulgação dos dados de contato de uma parte à outra. O <b>Encontre & Compre</b>, portanto, 
+                            torna possível a comunicação entre usuários e potenciais clientes para que os mesmos negociem 
+                            entre si, sem qualquer intervenção ou intermediação na negociação ou na concretização dos 
+                            negócios. Assim sendo, ressalta-se que o <b>Encontre & Compre</b> não fornece quaisquer produtos ou 
+                            serviços anunciados pelos no Site.</p>
+
+                            <p align="justify">Os Usuários anunciantes/potenciais vendedores somente poderão anunciar produtos ou serviços 
+                            que estejam autorizados a vender e que tenham em estoque, estabelecendo diretamente os termos 
+                            do anúncio e todas as suas características (como título, descrição e imagem dos bens, preço, 
+                            categoria, quantidade, condições de venda, forma e prazo de entrega, além da forma de pagamento).</p>
+
+                            <p align="justify">O <b>Encontre & Compre</b>, conforme a situação, poderá, sem prejuízo de outras medidas, 
+                            recusar qualquer solicitação de cadastro, suspender, temporária ou definitivamente, a conta de um 
+                            Usuário e seus anúncios, caso julgue necessário, sem necessidade de justificativa prévia.</p>
+
+                            <p align="justify">Não é permitido anunciar produtos expressamente proibidos pela legislação vigente ou que não 
+                            possuam a devida autorização específica de órgãos reguladores competentes, ou que violem direitos 
+                            de terceiros;</p>
+
+                            <p align="justify">Cabe ao comprador, antes de decidir pela compra, atentar-se às informações sobre o preço, às 
+                            formas de pagamento, à disponibilidade, à forma e ao prazo de entrega dos produtos e serviços.</p>
+
+                            <p align="justify">O <b>Encontre & compre</b> não se responsabiliza por problemas ocorridos durante a negociação, como 
+                            falta de pagamento ou a não entrega do bem ou serviço adquirido.</p>
+
+                            <p align="justify">A aceitação destes Termos e condições gerais é absolutamente indispensável à utilização do 
+                            <b>Encontre & Compre</b>. O Usuário deverá ler, certificar-se de haver entendido e aceitar todas as 
+                            condições estabelecidas nos Termos e condições gerais e nas Políticas de privacidade, assim como nos 
+                            demais documentos a eles incorporados por referência, antes de seu cadastro como Usuário do <b>Encontre & Compre</b>.</p>
+                            
+                            <p align="justify">O Usuário compromete-se a notificar o <b>Encontre & Compre</b> imediatamente, e por meio seguro, a respeito 
+                            de qualquer uso não autorizado de sua conta, bem como seu acesso não autorizado por terceiros. 
+                            O Usuário será o único responsável pelo conteúdo de seus anúncios, uma vez que o acesso só será possível 
+                            mediante a inclusão da senha, que deverá ser de conhecimento e propriedade exclusiva do Usuário.</p>
+                            
+                            <h4><b>Modificações dos Termos e condições gerais:</b></h4>
+
+                            <p align="justify">O <b>Encontre & Compre</b> poderá alterar, a qualquer tempo, estes Termos e condições gerais, visando 
+                            seu aprimoramento e melhoria. As novas versões dos Termos e condições gerais entrarão em vigor 10 
+                            (dez) dias após sua publicação nos Sites. O Usuário deverá comunicar-se por e-mail caso não concorde 
+                            com os termos alterados dentro do prazo estabelecido para início de vigência.</p>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                {{-- <label class="col-form-label"><strong>Termos de uso e Privacidade! Leia <a href="{{route('termos.privacidade')}}" target="_blank">AQUI</a> os nossos termos.</strong></label> --}}
+                <label class="col-form-label"><strong>Termos e condições gerais de uso do site!</strong> Leia clicando <a data-toggle="modal" data-target="#exampleModalLong" style="cursor:pointer;"><strong>AQUI!</strong></a></label>
+                <div >
+                    <div class="form-check form-check-inline">
+                        <input id="termo" type="checkbox" class="form-check-input" name="termo">
+                        <label class="form-check-label" for="termo">Aceito os termos e condições gerais de uso do site.</label>
+                    </div>
+                </div>
+
+            </div>
             <div class="form-group row mb-0" style="margin: 20px 0 20px 0">
                 <div class="col-md-6">
                     <a class="btn btn-secondary botao-form" href="{{route('inicio')}}" style="width:100%">Cancelar Cadastro</a>
                 </div>
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary botao-form" style="width:100%">
+                    <button id="aplica" type="submit" class="btn btn-primary botao-form" style="width:100%" disabled>
                         Concluir Cadastro
                     </button>
                 </div>
@@ -330,6 +415,12 @@
 @endsection
 @section('javascript')
     <script type="text/javascript" >
+        var checa = document.getElementById("termo");
+        var bt = document.getElementById("aplica");
+        checa.onclick = function checar(){
+            var cont = document.querySelectorAll("input[name='termo']:checked").length;
+            bt.disabled = cont ? false : true;
+        }
         function mascara(o,f){
             v_obj=o
             v_fun=f
