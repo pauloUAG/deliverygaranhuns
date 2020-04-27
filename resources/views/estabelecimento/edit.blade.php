@@ -123,6 +123,16 @@
                         <label class="form-check-label" for="pagamentoDebito">Cartão de Débito</label>
                     </div>
                 </div>
+                <div class="col-md-5">
+                    <label for="cnpj" class="col-form-label">Cnpj (opcional)</label>
+                    <input id="cnpj" type="text" minlength="14" maxlength="18" class="form-control @error('cnpj') is-invalid @enderror" name="cnpj" value="{{ $estabelecimento->cnpj }}"  autocomplete="cnpj">
+
+                    @error('cnpj')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
             </div>
 
             <div class="row">
@@ -176,7 +186,7 @@
                                   </select>
                               </div>
                               <div class='col-md-3' >
-                                  <input   type='checkbox' @if($key->zap) checked @endif class='form-check-input' name='zap[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
+                                  <input type='hidden' name='zap[]'><input   type='checkbox' @if($key->zap) checked @endif class='form-check-input' name='zap1[]' autofocus onclick='this.previousElementSibling.value=1-this.previousElementSibling.value; '>
                                   <label class='form-check-label'>Whatsapp</label>
                               </div>
                           </div>

@@ -112,7 +112,7 @@ class AdminEstabelecimentoCreate extends Controller
         $user = \App\User::create($dadosUsuario);
 
         $dadosEstabelecimento = $request->only(["descricao", "site", "pagamentoDinheiro", "pagamentoTransferencia",
-            "pagamentoCredito", "pagamentoDebito", "instagram", "twitter", "facebook", "modalidade_id", "horarioFuncionamento"]);
+            "pagamentoCredito", "pagamentoDebito", "instagram", "twitter", "facebook", "modalidade_id", "horarioFuncionamento", "cnpj"]);
 
         $dadosEstabelecimento['imagemCapa'] = $imagemCapa;
         $dadosEstabelecimento['imagemInterna'] = $imagemInterna;
