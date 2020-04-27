@@ -32,6 +32,7 @@ Route::post("/alterar/municipio", "CidadeController@set")->name("alterar.municip
 Route::get("/categorias/list", "CategoriaListController@all")->name("categoria.list");
 Route::get("/categorias/show/{pagina}/{id}", "CategoriaShowController@show")->name("categoria.show");
 Route::post("/estabelecimentos/busca", "CategoriaShowController@search")->name("estabelecimento.busca");
+Route::get("/termosprivacidade/", "AdminMunicipioController@termos")->name("termos.privacidade");
 
 Route::middleware(['auth'])->group(function(){
     
@@ -41,7 +42,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post("/admin/estabelecimentoAdmin/pending/judge", "AdminEstabelecimentoCreate@pendingAdminJudge")->name("estabelecimentoAdmin.pending.judge");
     Route::get("/admin/estabelecimentoAdmin/", "AdminEstabelecimentoCreate@pending")->name("estabelecimentoAdmin.pending");
     Route::get("/admin/estabelecimentos/", "AdminMunicipioController@listEst")->name("estabelecimento.listUser");
-
+    Route::get("/admin/estabelecimentoAdmin/", "AdminMunicipioController@revisarAdmin")->name("estabelecimentoAdmin.revisar");
+    
     //editar estabelecimento
     Route::get("/estabelecimento/editar", "EstabelecimentoController@edit")->name("estabelecimento.edit");
     Route::post("/estabelecimento/editar", "EstabelecimentoController@store")->name("estabelecimento.edit");
@@ -61,6 +63,9 @@ Route::middleware('can:autorizarCadastro,App\Estabelecimento')->group(function (
     Route::delete("/admin/carrossel/imagens/{id}", "AdminMunicipioController@carrosselApagar")->name("carrossel.apagar");
     Route::get("/admin/cadastro/", "AdminMunicipioController@prepareAdmin")->name("cadastro.adminCidade");
     Route::post("/admin/estabelecimentos/", "AdminEstabelecimentoCreate@saveAdminCidade")->name("admin.adminCreate");
+    Route::get("/admin/modalidades/", "AdminMunicipioController@createPage")->name("cadastrar.modalidades");
+    Route::post("/admin/modalidades/", "AdminMunicipioController@createModalidade")->name("cadastrar.modalidades");
+    Route::get("/admin/estabelecimento/", "AdminMunicipioController@revisar")->name("estabelecimento.revisar");
 });
 
 Auth::routes();

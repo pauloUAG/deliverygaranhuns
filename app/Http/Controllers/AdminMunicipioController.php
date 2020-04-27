@@ -13,6 +13,9 @@ use Auth;
 
 class AdminMunicipioController extends Controller
 {
+    public function termos() {
+        return view("admin.termosprivacidade");
+    }
     public function index() {
         $municipios = \App\Cidade::all();
         return view('municipio.admin')->with(['municipios' => $municipios]);
@@ -145,4 +148,71 @@ class AdminMunicipioController extends Controller
         session()->flash('success', 'Imagem apagada!');
         return redirect()->route('carrossel.pagina');
     }
+
+    public function createPage() {
+        return view('categoria.create');
+    }
+
+    public function createModalidade(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'nome' => 'required|string|max:30',
+            'icone' => 'required|mimes:png,svg,html'
+        ]);
+
+        $icone = "";
+        if($request->hasFile('icone') && $request->file('icone')->isValid()) {
+            
+            $ext = strtolower(request()->icone->getClientOriginalExtension());
+
+            if(!in_array($ext, array("png","svg","html","jpg", "jpeg", "gif", "bmp")))
+                $validator->errors()->add("icone", "Formato de imagem inválido, utilize apenas o formato .svg");
+            else {
+                $icone = 'c' . time() . '.' . $ext;
+                $thumbPath = public_path('icones/'.$icone);
+                $icon = Image::make(request()->icone->path());
+                $icon->save($thumbPath);
+                
+            }
+        }
+
+        $dadosModalidade['nome'] = $request->nome;
+        $dadosModalidade['icone'] = $icone;
+
+        $modalidade = \App\Modalidade::create($dadosModalidade);
+        
+        session()->flash('success', 'Categoria cadastrada!');
+
+        return redirect()->route('cadastrar.modalidades');
+
+    }
+
+    public function revisarAdmin() {
+        
+        $admin = \App\Admin::where('user_id', Auth::user()->id)->get();
+
+        $lista = \App\Estabelecimento::
+            where('status', 'Aprovado')
+            ->orWhere('status', 'Reprovado')->get();
+        
+        $estabelecimentos = array();
+        foreach($lista as $estabelecimento) {
+            if($estabelecimento->endereco->cidade == $admin[0]->cidade->nome) {
+                $estabelecimentos[] = $estabelecimento;
+            }
+        }
+        // return dd($estabelecimentos);
+        return view("estabelecimento.revisar")->with(['estabelecimentos' => $estabelecimentos]);
+    }
+
+    public function revisar() {
+        $estabelecimentos = \App\Estabelecimento::
+            where('status', 'Aprovado')
+            ->orWhere('status', 'Reprovado')->orderBy('created_at', 'desc')->get();
+        // return dd($estabelecimentos);
+        return view("estabelecimento.revisar")->with([
+            "estabelecimentos" => $estabelecimentos,
+        ]);
+    }
+    
 }
