@@ -170,44 +170,50 @@
 
                                             <div class="col-md-12">
                                                 <label style="color: #2f306f; padding-top: 1rem; font-weight: bold;">Redes Sociais:</label>
-                                                <div class="row">
-                                                    @if(null!==$estabelecimento->instagram && $estabelecimento->instagram != "")
+                                                @if ($estabelecimento->instagram == "" && $estabelecimento->facebook == "" && $estabelecimento->twitter == "" && $estabelecimento->site == "")
                                                     <div class="col-md-12">
-                                                        <div style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
-                                                            <img src="{{asset('icones/instagram_logo_azul.svg')}}" width="20px;">
-                                                            {{ $estabelecimento->instagram }}
-                                                        </div>
+                                                        Não há redes sociais cadastradas!
                                                     </div>
-                                                    @endif
-                                                    @if(null!==$estabelecimento->facebook && $estabelecimento->facebook != "")
-                                                    <div class="col-md-12">
-                                                        <div style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
-                                                            <img src="{{asset('icones/facebook_logo_azul.svg')}}" width="20px;">
-                                                            {{ $estabelecimento->facebook }}
-                                                        </div>
-                                                    </div>
-                                                    @endif
-                                                    @if(null!==$estabelecimento->twitter && $estabelecimento->twitter != "")
-                                                    <div class="col-md-12">
-                                                        <div style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
-                                                            <img src="{{asset('icones/@_logo_azul.svg')}}" width="20px;">
-                                                            {{ $estabelecimento->twitter }}
-                                                        </div>
-                                                    </div>
-                                                    @endif
-                                                    @if(null!==$estabelecimento->site && $estabelecimento->site != "")
+                                                @else
+                                                    <div class="row">
+                                                        @if(null!==$estabelecimento->instagram && $estabelecimento->instagram != "")
                                                         <div class="col-md-12">
-                                                            <div style="padding-top: 0rem; padding-bottom: 0.2rem;">
-                                                                <label style="color: #2f306f; font-size: 20px; margin-top: -2px; font-family: time; font-weight: bold;">W</label>
-                                                                {{$estabelecimento->site}}
+                                                            <div style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
+                                                                <img src="{{asset('icones/instagram_logo_azul.svg')}}" width="20px;">
+                                                                {{ $estabelecimento->instagram }}
                                                             </div>
                                                         </div>
-                                                    @endif
-                                                    <!-- <img src="icones/instagram_logo.svg" width="40px;"><a href="">@ficaemcasa</a>
-                                                    <img src="icones/facebook_logo.svg" width="40px;"><a href="">@ficaemcasa</a>
-                                                    <img src="icones/a-lab.svg" width="90px;"><a href="">a</a>
-                                                    <img src="icones/a-lab.svg" width="90px;"><a href="">a</a> -->
-                                                </div>
+                                                        @endif
+                                                        @if(null!==$estabelecimento->facebook && $estabelecimento->facebook != "")
+                                                        <div class="col-md-12">
+                                                            <div style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
+                                                                <img src="{{asset('icones/facebook_logo_azul.svg')}}" width="20px;">
+                                                                {{ $estabelecimento->facebook }}
+                                                            </div>
+                                                        </div>
+                                                        @endif
+                                                        @if(null!==$estabelecimento->twitter && $estabelecimento->twitter != "")
+                                                        <div class="col-md-12">
+                                                            <div style="padding-top: 0.2rem; padding-bottom: 0.2rem;">
+                                                                <img src="{{asset('icones/@_logo_azul.svg')}}" width="20px;">
+                                                                {{ $estabelecimento->twitter }}
+                                                            </div>
+                                                        </div>
+                                                        @endif
+                                                        @if(null!==$estabelecimento->site && $estabelecimento->site != "")
+                                                            <div class="col-md-12">
+                                                                <div style="padding-top: 0rem; padding-bottom: 0.2rem;">
+                                                                    <label style="color: #2f306f; font-size: 20px; margin-top: -2px; font-family: time; font-weight: bold;">W</label>
+                                                                    {{$estabelecimento->site}}
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        <!-- <img src="icones/instagram_logo.svg" width="40px;"><a href="">@ficaemcasa</a>
+                                                        <img src="icones/facebook_logo.svg" width="40px;"><a href="">@ficaemcasa</a>
+                                                        <img src="icones/a-lab.svg" width="90px;"><a href="">a</a>
+                                                        <img src="icones/a-lab.svg" width="90px;"><a href="">a</a> -->
+                                                    </div>   
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
