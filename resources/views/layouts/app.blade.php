@@ -24,6 +24,12 @@
     <link href="{{ asset('css/autocomplete.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
+<?php
+use Illuminate\Support\Facades\Route;
+$rota_nome = Route::currentRouteName();
+$rota_parametros = Route::current()->parameters();
+
+?>
 <body>
     <div id="app">
         <!-- barra menu -->
@@ -50,7 +56,7 @@
                             <div class="col-md-7" style="padding-top: 7px;">
                                 <div class="row justify-content-center">
                                     <div class="col-md-3 styleMenuPrincipal_input_cidade">
-                                        <form action="{{route('alterar.municipio')}}" method="POST">
+                                        <form action="{{route('alterar.municipio', ['rota_nome' => $rota_nome, 'rota_parametros' => $rota_parametros])}}" method="POST">
                                         @csrf
                                         <select id="selectCidade" class="custom-select styleMenuPrincipal_container_select" name="cidade"  onchange="this.form.submit()" style="color: #1492e6">
                                             @foreach($cidades as $cidade)
