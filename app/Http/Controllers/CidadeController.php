@@ -7,9 +7,21 @@ use Illuminate\Http\Request;
 class CidadeController extends Controller
 {
     public function set(Request $request) {
+        // dd($request->rota_nome);
+        $parametros = $request->rota_parametros;
+        dd($parametros);
         $municipio = $request->all()['cidade'];
         $request->session()->put('cidade', $municipio);
-        return redirect(route("inicio"));
+        if($request->rota_nome == 'categoria.show'){
+          return redirect(route($request->rota_nome,["pagina" => $parametros["pagina"], "id" => $parametros["id"]]));
+        }
+        elseif($request->rota_nome == 'categoria.list'){
+          return redirect(route($request->rota_nome));
+        }
+        elseif($request->rota_nome == 'estabelecimento.busca'){
+          return redirect(route($request->rota_nome));
+        }
+        return redirect(route('inicio'));
     }
 
     public function getCategoriasEstabelecimentosPorCidade(Request $request){
