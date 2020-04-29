@@ -126,6 +126,17 @@
 
                 </div>
 
+                <div class="col-md-5">
+                    <label for="cnpj" class="col-form-label">Cnpj (opcional)</label>
+                    <input id="cnpj" type="text" minlength="14" maxlength="18" class="form-control @error('cnpj') is-invalid @enderror" name="cnpj" value="{{ old('cnpj') }}"  autocomplete="cnpj">
+
+                    @error('cnpj')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
             </div>
 
             <div class="row">

@@ -80,7 +80,7 @@ class EstabelecimentoController extends Controller
         $dadosEstabelecimento = $request->only(["descricao", "site",
             "pagamentoDinheiro", "pagamentoTransferencia",
             "pagamentoCredito", "pagamentoDebito", "instagram", "twitter", "facebook",
-            "modalidade_id", "horarioFuncionamento"]);
+            "modalidade_id", "horarioFuncionamento", "cnpj"]);
 
         if($imagemCapa != ""){
           $estabelecimento->imagemCapa = $imagemCapa;
@@ -121,12 +121,13 @@ class EstabelecimentoController extends Controller
         $estabelecimento->facebook = $request->facebook;
         $estabelecimento->modalidade_id = $request->modalidade_id;
         $estabelecimento->horarioFuncionamento = $request->horarioFuncionamento;
+        $estabelecimento->cnpj = $request->cnpj;
         $estabelecimento->save();
 
         $user = \App\User::find(Auth::user()->id);
         $user->name = $request->name;
         $user->save();
-
+        
         $telefones = $request['telefone'];
         $operadoras = $request['operadora'];
         $zaps = $request['zap'];
@@ -136,11 +137,13 @@ class EstabelecimentoController extends Controller
 
         for($i = 0; $i < count($telefones); $i++) {
             if($i < count($cadastrados)){
+              
               $cadastrados[$i]->numero = $telefones[$i];
               $cadastrados[$i]->operadora = $operadoras[$i];
               $cadastrados[$i]->zap = $zaps[$i];
             }
             else{
+              
               $fones[] = new \App\Telefone([
                 'numero' => $telefones[$i],
                 'operadora' => $operadoras[$i],
@@ -149,6 +152,7 @@ class EstabelecimentoController extends Controller
 
             }
         }
+
         $estabelecimento->telefones()->saveMany($fones);
 
         session()->flash('success', 'Estabelecimento editado com sucesso');

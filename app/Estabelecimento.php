@@ -12,7 +12,7 @@ class Estabelecimento extends Model
         "instagram", "twitter", "facebook",
         "pagamentoCredito", "pagamentoDebito", "user_id", "endereco_id", "modalidade_id",
         //status de aprovada ou não
-        "status", "horarioFuncionamento"
+        "status", "horarioFuncionamento", "cnpj",
     ];
 
     public function endereco() {
