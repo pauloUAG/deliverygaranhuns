@@ -70,7 +70,7 @@ $rota_parametros = Route::current()->parameters();
                                         </form>
                                     </div>
                                     <div class="col-md-9">
-                                        <form method="post" action="{{route('estabelecimento.busca')}}">
+                                        <form method="get" action="{{route('estabelecimento.busca')}}">
                                         @csrf
                                         <div class="row">
                                             <div class="col-sm-9 styleMenuPrincipal_input_pesquisar">
@@ -142,7 +142,7 @@ $rota_parametros = Route::current()->parameters();
                                                           </div>
                                                           <div class="col-sm-12" style="margin-left: 40px; text-align: left; margin-top: 5px;">
                                                               <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                              <label class="form-check-label" for="exampleCheck1">Contínuar conectado</label>
+                                                              <label class="form-check-label" for="exampleCheck1">Continuar conectado</label>
                                                           </div>
                                                           <div class="col-sm-12" style="text-align: left; margin-top: 10px;">
                                                               <button type="submit" class="btn styleMenuPrincipal_button_logar" onclick="enviar()">Entrar</button>

@@ -9,7 +9,7 @@ class CidadeController extends Controller
     public function set(Request $request) {
         // dd($request->rota_nome);
         $parametros = $request->rota_parametros;
-        dd($parametros);
+
         $municipio = $request->all()['cidade'];
         $request->session()->put('cidade', $municipio);
         if($request->rota_nome == 'categoria.show'){

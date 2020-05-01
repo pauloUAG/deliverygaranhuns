@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="col-md-5">
-                    <label for="cnpj" class="col-form-label">Cnpj (opcional)</label>
+                    <label for="cnpj" class="col-form-label">Cnpj</label>
                     <input id="cnpj" type="text" minlength="14" maxlength="18" class="form-control @error('cnpj') is-invalid @enderror" name="cnpj" value="{{ old('cnpj') }}"  autocomplete="cnpj">
 
                     @error('cnpj')
@@ -343,7 +343,7 @@
                             públicos, não praticam a exploração com fins lucrativos da plataforma e seu uso é inteiramente 
                             gratuito, não havendo nenhum tipo de taxa ou cobrança relacionados ao seu uso.</p>
 
-                            <p align="justify">Ace  itar integralmente os termos e condições gerais de uso é condição fundamental 
+                            <p align="justify">Aceitar integralmente os termos e condições gerais de uso é condição fundamental 
                             para qualquer pessoa que deseje utilizar os serviços do <b>Encontre & Compre</b>. O interessado 
                             após realizar realizar o cadastro e ter aceito os termos e condições gerais de uso, 
                             passa a ter acesso como usuário ao site.</p>
